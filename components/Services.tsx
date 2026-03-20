@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Camera, Video, MonitorPlay, Users, Sparkles, Building } from "lucide-react";
 import { cn } from "@/lib/utils";
 
