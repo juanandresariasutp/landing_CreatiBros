@@ -17,8 +17,8 @@ export function Hero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Overlay para garantizar legibilidad */}
-        <div className="absolute inset-0 bg-cb-dark/60 mix-blend-multiply" />
+        {/* Overlay oscuro para legibilidad que se intensifica un poco en modo oscuro */}
+        <div className="absolute inset-0 bg-cb-dark/60 dark:bg-cb-dark/80 mix-blend-multiply transition-colors" />
       </div>
 
       {/* Content */}

@@ -45,16 +45,16 @@ const videoImages: PortfolioImage[] = [
 
 export default function PortafolioPage() {
   return (
-    <main className="bg-cb-white pt-24 pb-12">
+    <main className="bg-cb-white dark:bg-cb-dark pt-24 pb-12">
       {/* Cabecera */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
         <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
           Nuestro Trabajo
         </span>
-        <h1 className="font-arsenica text-5xl md:text-7xl font-bold text-cb-navy mt-4 mb-6">
+        <h1 className="font-arsenica text-5xl md:text-7xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
           Portafolio
         </h1>
-        <p className="text-lg md:text-xl text-cb-dark/80 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-cb-dark/80 dark:text-cb-white/80 max-w-2xl mx-auto">
           Un repaso por las historias que hemos ayudado a contar y las marcas que hemos impulsado a través del lente.
         </p>
       </div>
@@ -62,7 +62,7 @@ export default function PortafolioPage() {
       {/* Sección Eventos - Dividida */}
       <section className="mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <h2 className="font-arsenica text-4xl font-bold text-cb-navy border-b border-cb-lavender-light pb-4">
+          <h2 className="font-arsenica text-4xl font-bold text-cb-navy dark:text-cb-white border-b border-cb-lavender-light dark:border-cb-white/20 pb-4">
             Eventos
           </h2>
         </div>
@@ -83,7 +83,7 @@ export default function PortafolioPage() {
       {/* Otras Categorías */}
       <section className="mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <h2 className="font-arsenica text-4xl font-bold text-cb-navy border-b border-cb-lavender-light pb-4">
+          <h2 className="font-arsenica text-4xl font-bold text-cb-navy dark:text-cb-white border-b border-cb-lavender-light dark:border-cb-white/20 pb-4">
             Servicios Profesionales
           </h2>
         </div>

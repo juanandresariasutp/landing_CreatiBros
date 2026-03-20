@@ -50,20 +50,20 @@ export function PortfolioCarousel({ title, description, images }: Props) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h3 className="font-arsenica text-3xl font-bold text-cb-navy">{title}</h3>
-            {description && <p className="text-cb-dark/70 mt-2">{description}</p>}
+            <h3 className="font-arsenica text-3xl font-bold text-cb-navy dark:text-cb-white">{title}</h3>
+            {description && <p className="text-cb-dark/70 dark:text-cb-white/70 mt-2">{description}</p>}
           </div>
           
           <div className="hidden sm:flex gap-3">
             <button
               onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-cb-lavender-med flex items-center justify-center text-cb-navy hover:bg-cb-lavender-light transition-colors"
+              className="w-10 h-10 rounded-full border border-cb-lavender-med dark:border-cb-white/20 flex items-center justify-center text-cb-navy dark:text-cb-white hover:bg-cb-lavender-light dark:hover:bg-cb-white/10 transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-cb-lavender-med flex items-center justify-center text-cb-navy hover:bg-cb-lavender-light transition-colors"
+              className="w-10 h-10 rounded-full border border-cb-lavender-med dark:border-cb-white/20 flex items-center justify-center text-cb-navy dark:text-cb-white hover:bg-cb-lavender-light dark:hover:bg-cb-white/10 transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
