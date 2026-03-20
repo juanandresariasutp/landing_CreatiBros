@@ -1,5 +1,6 @@
-import { Camera, Video, MonitorPlay, Users, Sparkles, Building } from "lucide-react";
+import { Camera, Video, MonitorPlay, Users, Sparkles, Building, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const services = [
   {
@@ -17,6 +18,7 @@ const services = [
     icon: Video,
     color: "bg-cb-lavender-light/30",
     iconColor: "text-cb-navy",
+    href: "/audiovisual",
   },
   {
     id: "fotografia-comercial",
@@ -86,12 +88,21 @@ export function Services() {
               <p className="text-cb-dark/70 dark:text-cb-white/70 leading-relaxed mb-6">
                 {service.description}
               </p>
-              <a
-                href="#portafolio"
-                className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
-              >
-                Ver ejemplos &rarr;
-              </a>
+              {service.href ? (
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
+                >
+                  Saber más <ArrowRight className="ml-1 w-4 h-4" />
+                </Link>
+              ) : (
+                <a
+                  href="#portafolio"
+                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
+                >
+                  Ver ejemplos &rarr;
+                </a>
+              )}
             </div>
           ))}
         </div>

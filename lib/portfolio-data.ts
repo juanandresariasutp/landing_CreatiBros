@@ -109,16 +109,28 @@ export const portfolioCategories: PortfolioCategory[] = [
   },
   {
     id: "6",
-    slug: "video",
-    title: "Producción de Video",
-    description: "Piezas audiovisuales con calidad cinematográfica pensadas para conectar.",
+    slug: "deportes",
+    title: "Deportes",
+    description: "Capturamos la adrenalina, el esfuerzo y la pasión en cada movimiento.",
     group: "Servicios Profesionales",
-    coverImage: "video1.jpg",
+    coverImage: "deporte1.jpg",
     images: [
-      { id: 1, folder: "video", filename: "video1.jpg", alt: "Detrás de cámaras" },
-      { id: 2, folder: "video", filename: "video2.jpg", alt: "Comercial de producto" },
-      { id: 3, folder: "video", filename: "video3.jpg", alt: "Reel redes sociales" },
-      { id: 4, folder: "video", filename: "video4.jpg", alt: "Cobertura de evento" },
+      { id: 1, folder: "deportes", filename: "deporte1.jpg", alt: "Acción en competencia" },
+      { id: 2, folder: "deportes", filename: "deporte2.jpg", alt: "Retrato de atleta" },
+      { id: 3, folder: "deportes", filename: "deporte3.jpg", alt: "Detalle de equipamiento" },
+    ]
+  },
+  {
+    id: "7",
+    slug: "boudoir",
+    title: "Boudoir",
+    description: "Sesiones íntimas y elegantes, celebrando la sensualidad y el amor propio con estilo.",
+    group: "Servicios Profesionales",
+    coverImage: "boudoir1.jpg",
+    images: [
+      { id: 1, folder: "boudoir", filename: "boudoir1.jpg", alt: "Retrato íntimo" },
+      { id: 2, folder: "boudoir", filename: "boudoir2.jpg", alt: "Juegos de iluminación" },
+      { id: 3, folder: "boudoir", filename: "boudoir3.jpg", alt: "Detalles finos" },
     ]
   }
 ];
