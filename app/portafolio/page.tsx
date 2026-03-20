@@ -1,114 +1,110 @@
-import { PortfolioCarousel, PortfolioImage } from "@/components/PortfolioCarousel";
 import { Contact } from "@/components/Contact";
+import Link from "next/link";
+import Image from "next/image";
+import { portfolioCategories } from "@/lib/portfolio-data";
+import { buildImageUrl } from "@/lib/cloudinary";
 
 export const metadata = {
   title: "Portafolio | Creatibros",
   description: "Explora nuestros trabajos en fotografía de bodas, quince años, retrato, gastronomía y video corporativo.",
 };
 
-// Datos fijos (Mock)
-const bodasImages: PortfolioImage[] = [
-  { id: 1, folder: "bodas", filename: "boda1.jpg", alt: "Ceremonia al aire libre" },
-  { id: 2, folder: "bodas", filename: "boda2.jpg", alt: "Primer baile" },
-  { id: 3, folder: "bodas", filename: "boda3.jpg", alt: "Retrato de novios" },
-  { id: 4, folder: "bodas", filename: "boda4.jpg", alt: "Detalles de anillos" },
-  { id: 5, folder: "bodas", filename: "boda5.jpg", alt: "Preparación de la novia" },
-];
-
-const quinceImages: PortfolioImage[] = [
-  { id: 1, folder: "quince", filename: "quince1.jpg", alt: "Sesión pre-quince" },
-  { id: 2, folder: "quince", filename: "quince2.jpg", alt: "Entrada principal" },
-  { id: 3, folder: "quince", filename: "quince3.jpg", alt: "Baile familiar" },
-  { id: 4, folder: "quince", filename: "quince4.jpg", alt: "Celebración y amigos" },
-];
-
-const retratosImages: PortfolioImage[] = [
-  { id: 1, folder: "retratos", filename: "retrato1.jpg", alt: "Retrato corporativo" },
-  { id: 2, folder: "retratos", filename: "retrato2.jpg", alt: "Sesión marca personal" },
-  { id: 3, folder: "retratos", filename: "retrato3.jpg", alt: "Retrato artístico" },
-  { id: 4, folder: "retratos", filename: "retrato4.jpg", alt: "Estudio" },
-];
-
-const gastronomiaImages: PortfolioImage[] = [
-  { id: 1, folder: "gastronomia", filename: "gastro1.jpg", alt: "Fotografía de menú" },
-  { id: 2, folder: "gastronomia", filename: "gastro2.jpg", alt: "Postre gourmet" },
-  { id: 3, folder: "gastronomia", filename: "gastro3.jpg", alt: "Bebidas y coctelería" },
-  { id: 4, folder: "gastronomia", filename: "gastro4.jpg", alt: "Tomas de cocina" },
-];
-
-const videoImages: PortfolioImage[] = [
-  { id: 1, folder: "video", filename: "video1.jpg", alt: "Detrás de cámaras" },
-  { id: 2, folder: "video", filename: "video2.jpg", alt: "Comercial de producto" },
-  { id: 3, folder: "video", filename: "video3.jpg", alt: "Reel redes sociales" },
-  { id: 4, folder: "video", filename: "video4.jpg", alt: "Cobertura de evento" },
-];
+const eventos = portfolioCategories.filter((c) => c.group === "Eventos");
+const servicios = portfolioCategories.filter((c) => c.group === "Servicios Profesionales");
 
 export default function PortafolioPage() {
   return (
-    <main className="bg-cb-white dark:bg-cb-dark pt-24 pb-12">
+    <main className="bg-cb-navy dark:bg-cb-dark min-h-screen text-cb-white pt-24 pb-12 font-sans">
       {/* Cabecera */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
-        <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
-          Nuestro Trabajo
-        </span>
-        <h1 className="font-arsenica text-5xl md:text-7xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
-          Portafolio
+        <h1 className="font-arsenica text-5xl md:text-7xl font-bold mt-4 mb-6 tracking-wide">
+          E V E N T O S
         </h1>
-        <p className="text-lg md:text-xl text-cb-dark/80 dark:text-cb-white/80 max-w-2xl mx-auto">
-          Un repaso por las historias que hemos ayudado a contar y las marcas que hemos impulsado a través del lente.
+        <div className="w-16 h-1 bg-cb-purple mx-auto mb-6 rounded-full"></div>
+        <p className="text-lg md:text-xl text-cb-lavender-light max-w-2xl mx-auto">
+          Capturando momentos inolvidables en tus celebraciones más especiales.
         </p>
       </div>
 
-      {/* Sección Eventos - Dividida */}
-      <section className="mt-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <h2 className="font-arsenica text-4xl font-bold text-cb-navy dark:text-cb-white border-b border-cb-lavender-light dark:border-cb-white/20 pb-4">
-            Eventos
-          </h2>
+      {/* Grid de Eventos */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {eventos.map((categoria) => (
+            <Link 
+              key={categoria.id} 
+              href={`/portafolio/${categoria.slug}`}
+              className="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl block"
+            >
+              {/* Imagen de fondo */}
+              <Image 
+                src={buildImageUrl(`portafolio/${categoria.slug}`, categoria.coverImage)}
+                alt={categoria.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Gradiente */}
+              <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/90 md:from-cb-navy/80 via-cb-navy/20 to-transparent transition-opacity duration-300"></div>
+              
+              {/* Contenido inferior */}
+              <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end">
+                <h3 className="text-3xl font-bold uppercase tracking-wider mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">
+                  {categoria.title}
+                </h3>
+                <p className="text-cb-lavender-light font-medium opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  Explorar Galería
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
-        
-        <PortfolioCarousel 
-          title="Bodas" 
-          description="Inmortalizando la magia de tu gran día desde los preparativos hasta la fiesta."
-          images={bodasImages} 
-        />
-        
-        <PortfolioCarousel 
-          title="15 Años" 
-          description="Acompañamos esta etapa única capturando emociones frescas e irrepetibles."
-          images={quinceImages} 
-        />
       </section>
 
-      {/* Otras Categorías */}
-      <section className="mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <h2 className="font-arsenica text-4xl font-bold text-cb-navy dark:text-cb-white border-b border-cb-lavender-light dark:border-cb-white/20 pb-4">
-            Servicios Profesionales
-          </h2>
+      {/* Cabecera Servicios */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 pb-16 border-t border-cb-lavender-light/10">
+        <h2 className="font-arsenica text-4xl md:text-5xl font-bold mt-4 mb-6 tracking-wide">
+          S E R V I C I O S   P R O F E S I O N A L E S
+        </h2>
+        <div className="w-16 h-1 bg-cb-purple mx-auto mb-6 rounded-full"></div>
+        <p className="text-lg md:text-xl text-cb-lavender-light max-w-2xl mx-auto">
+          Imágenes de alto impacto para potenciar la identidad de tu marca o empresa.
+        </p>
+      </div>
+
+      {/* Grid de Servicios */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicios.map((categoria) => (
+            <Link 
+              key={categoria.id} 
+              href={`/portafolio/${categoria.slug}`}
+              className="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl block"
+            >
+              {/* Imagen de fondo */}
+              <Image 
+                src={buildImageUrl(`portafolio/${categoria.slug}`, categoria.coverImage)}
+                alt={categoria.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Gradiente */}
+              <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/90 md:from-cb-navy/80 via-cb-navy/20 to-transparent transition-opacity duration-300"></div>
+              
+              {/* Contenido inferior */}
+              <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end">
+                <h3 className="text-2xl font-bold uppercase tracking-wider mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">
+                  {categoria.title}
+                </h3>
+                <p className="text-cb-lavender-light font-medium opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  Explorar Galería
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
-
-        <PortfolioCarousel 
-          title="Retratos" 
-          description="Marca personal, corporativo y artístico. Tu mejor perfil profesional."
-          images={retratosImages} 
-        />
-
-        <PortfolioCarousel 
-          title="Gastronomía" 
-          description="Imágenes que abren el apetito y elevan la identidad de tu restaurante."
-          images={gastronomiaImages} 
-        />
-
-        <PortfolioCarousel 
-          title="Producción de Video" 
-          description="Piezas audiovisuales con calidad cinematográfica pensadas para conectar."
-          images={videoImages} 
-        />
       </section>
 
-      {/* CTA final */}
-      <div className="mt-24">
+      {/* CTA final (necesitará un contenedor con fondo blanco si Contact asume eso) */}
+      <div className="bg-cb-white dark:bg-cb-dark">
         <Contact />
       </div>
     </main>
