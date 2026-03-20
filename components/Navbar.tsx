@@ -6,11 +6,11 @@ import { Menu, X, Camera } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Inicio", href: "#" },
-  { name: "Servicios", href: "#servicios" },
-  { name: "Portafolio", href: "#portafolio" },
-  { name: "Quiénes Somos", href: "#quienes-somos" },
-  { name: "Clientes", href: "#clientes" },
+  { name: "Inicio", href: "/" },
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Portafolio", href: "/portafolio" },
+  { name: "Quiénes Somos", href: "/#quienes-somos" },
+  { name: "Clientes", href: "/#clientes" },
 ];
 
 export function Navbar() {
@@ -56,7 +56,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="#contacto"
+              href="/#contacto"
               className="bg-cb-purple hover:bg-cb-navy text-cb-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
             >
               Contacto
@@ -88,7 +88,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="#contacto"
+            href="/#contacto"
             className="bg-cb-purple hover:bg-cb-navy text-cb-white px-5 py-3 rounded-md text-center text-base font-medium mt-2 transition-colors"
             onClick={() => setIsOpen(false)}
           >

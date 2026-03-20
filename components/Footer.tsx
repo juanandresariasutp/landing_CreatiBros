@@ -37,11 +37,11 @@ export function Footer() {
           <div className="col-span-1">
             <h4 className="font-arsenica text-xl font-bold mb-6">Enlaces</h4>
             <ul className="space-y-3">
-              <li><Link href="#" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Inicio</Link></li>
-              <li><Link href="#servicios" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Servicios</Link></li>
-              <li><Link href="#portafolio" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Portafolio</Link></li>
-              <li><Link href="#quienes-somos" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Quiénes Somos</Link></li>
-              <li><Link href="#contacto" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Contacto</Link></li>
+              <li><Link href="/" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Inicio</Link></li>
+              <li><Link href="/#servicios" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Servicios</Link></li>
+              <li><Link href="/portafolio" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Portafolio</Link></li>
+              <li><Link href="/#quienes-somos" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Quiénes Somos</Link></li>
+              <li><Link href="/#contacto" className="text-cb-lavender-light/80 hover:text-cb-lavender-light transition-colors">Contacto</Link></li>
             </ul>
           </div>
 
