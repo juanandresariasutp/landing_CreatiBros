@@ -54,6 +54,32 @@ export const portfolioCategories: PortfolioCategory[] = [
     ]
   },
   {
+    id: "7",
+    slug: "bautizos",
+    title: "Bautizos",
+    description: "Documentamos el primer sacramento con la delicadeza y ternura que merece.",
+    group: "Eventos",
+    coverImage: "bautizo1.jpg",
+    images: [
+      { id: 1, folder: "bautizos", filename: "bautizo1.jpg", alt: "Ceremonia principal" },
+      { id: 2, folder: "bautizos", filename: "bautizo2.jpg", alt: "Detalles del ropón" },
+      { id: 3, folder: "bautizos", filename: "bautizo3.jpg", alt: "Familia y padrinos" },
+    ]
+  },
+  {
+    id: "8",
+    slug: "primeras-comuniones",
+    title: "Primeras Comuniones",
+    description: "Recuerdos imborrables de una de las etapas más hermosas de la niñez.",
+    group: "Eventos",
+    coverImage: "comunion1.jpg",
+    images: [
+      { id: 1, folder: "comuniones", filename: "comunion1.jpg", alt: "Retrato del niño/niña" },
+      { id: 2, folder: "comuniones", filename: "comunion2.jpg", alt: "Detalles del evento" },
+      { id: 3, folder: "comuniones", filename: "comunion3.jpg", alt: "Recepción familiar" },
+    ]
+  },
+  {
     id: "4",
     slug: "retratos",
     title: "Retratos",
