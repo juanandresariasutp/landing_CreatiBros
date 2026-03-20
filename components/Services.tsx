@@ -54,16 +54,16 @@ const services = [
 
 export function Services() {
   return (
-    <section id="servicios" className="py-24 bg-cb-white">
+    <section id="servicios" className="py-24 bg-cb-white dark:bg-cb-dark/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
             Lo que hacemos
           </span>
-          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy mt-4 mb-6">
+          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
             Nuestros Servicios
           </h2>
-          <p className="text-lg text-cb-dark/80">
+          <p className="text-lg text-cb-dark/80 dark:text-cb-white/80">
             Ofrecemos soluciones visuales integrales para documentar tus momentos más importantes o potenciar la imagen de tu negocio.
           </p>
         </div>
@@ -73,22 +73,22 @@ export function Services() {
             <div
               key={service.id}
               className={cn(
-                "p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 border border-cb-lavender-light/30",
-                service.color
+                "p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 border border-cb-lavender-light/30 dark:border-cb-white/10 dark:bg-cb-dark",
+                service.color.replace('bg-cb-white', '').replace('bg-cb-lavender-light/', 'dark:bg-cb-lavender-light/10 bg-cb-lavender-light/')
               )}
             >
-              <div className="w-14 h-14 bg-cb-white rounded-xl flex items-center justify-center shadow-sm mb-6">
-                <service.icon className={cn("w-7 h-7", service.iconColor)} />
+              <div className="w-14 h-14 bg-cb-white dark:bg-cb-white/5 rounded-xl flex items-center justify-center shadow-sm mb-6">
+                <service.icon className={cn("w-7 h-7", service.iconColor === "text-cb-navy" ? "text-cb-navy dark:text-cb-white" : service.iconColor)} />
               </div>
-              <h3 className="font-arsenica text-2xl font-bold text-cb-navy mb-4">
+              <h3 className="font-arsenica text-2xl font-bold text-cb-navy dark:text-cb-white mb-4">
                 {service.title}
               </h3>
-              <p className="text-cb-dark/70 leading-relaxed mb-6">
+              <p className="text-cb-dark/70 dark:text-cb-white/70 leading-relaxed mb-6">
                 {service.description}
               </p>
               <a
                 href="#portafolio"
-                className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy transition-colors"
+                className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
               >
                 Ver ejemplos &rarr;
               </a>

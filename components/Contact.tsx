@@ -36,7 +36,7 @@ ${formData.mensaje}`;
   };
 
   return (
-    <section id="contacto" className="py-24 bg-cb-white">
+    <section id="contacto" className="py-24 bg-cb-white dark:bg-cb-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           
@@ -45,51 +45,51 @@ ${formData.mensaje}`;
             <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
               Contectemos
             </span>
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy mt-4 mb-6">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
               ¿Listo para crear algo increíble?
             </h2>
-            <p className="text-lg text-cb-dark/80 mb-10">
+            <p className="text-lg text-cb-dark/80 dark:text-cb-white/80 mb-10">
               Escríbenos para agendar una sesión, pedir una cotización o simplemente saludar. Estamos aquí para darle vida a tus ideas.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 rounded-full flex items-center justify-center text-cb-purple">
+                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
                   <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-cb-dark/60">WhatsApp</p>
-                  <p className="font-medium text-cb-navy">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
+                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">WhatsApp</p>
+                  <p className="font-medium text-cb-navy dark:text-cb-white">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 rounded-full flex items-center justify-center text-cb-purple">
+                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-cb-dark/60">Email</p>
-                  <p className="font-medium text-cb-navy">hola@creatibros.com</p>
+                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Email</p>
+                  <p className="font-medium text-cb-navy dark:text-cb-white">hola@creatibros.com</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 rounded-full flex items-center justify-center text-cb-purple">
+                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-cb-dark/60">Ubicación</p>
-                  <p className="font-medium text-cb-navy">Colombia / Disponible para viajes</p>
+                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Ubicación</p>
+                  <p className="font-medium text-cb-navy dark:text-cb-white">Colombia / Disponible para viajes</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Formulario */}
-          <div className="bg-cb-lavender-light/10 p-8 rounded-2xl border border-cb-lavender-light/30 shadow-sm">
+          <div className="bg-cb-lavender-light/10 dark:bg-cb-white/5 p-8 rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/10 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="nombre" className="block text-sm font-medium text-cb-dark mb-2">Nombre completo *</label>
+                <label htmlFor="nombre" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Nombre completo *</label>
                 <input
                   type="text"
                   id="nombre"
@@ -97,14 +97,14 @@ ${formData.mensaje}`;
                   required
                   value={formData.nombre}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white"
+                  className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light dark:border-cb-white/20 focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white dark:bg-cb-dark dark:text-cb-white"
                   placeholder="Tu nombre"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="telefono" className="block text-sm font-medium text-cb-dark mb-2">Teléfono *</label>
+                  <label htmlFor="telefono" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Teléfono *</label>
                   <input
                     type="tel"
                     id="telefono"
@@ -112,18 +112,18 @@ ${formData.mensaje}`;
                     required
                     value={formData.telefono}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white"
+                    className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light dark:border-cb-white/20 focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white dark:bg-cb-dark dark:text-cb-white"
                     placeholder="+57..."
                   />
                 </div>
                 <div>
-                  <label htmlFor="servicio" className="block text-sm font-medium text-cb-dark mb-2">Servicio de interés</label>
+                  <label htmlFor="servicio" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Servicio de interés</label>
                   <select
                     id="servicio"
                     name="servicio"
                     value={formData.servicio}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white"
+                    className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light dark:border-cb-white/20 focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all bg-cb-white dark:bg-cb-dark dark:text-cb-white"
                   >
                     <option value="Fotografía de Eventos">Fotografía de Eventos</option>
                     <option value="Producción de Video">Producción de Video</option>
@@ -135,7 +135,7 @@ ${formData.mensaje}`;
               </div>
 
               <div>
-                <label htmlFor="mensaje" className="block text-sm font-medium text-cb-dark mb-2">Mensaje *</label>
+                <label htmlFor="mensaje" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Mensaje *</label>
                 <textarea
                   id="mensaje"
                   name="mensaje"
@@ -143,7 +143,7 @@ ${formData.mensaje}`;
                   rows={4}
                   value={formData.mensaje}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all resize-none bg-cb-white"
+                  className="w-full px-4 py-3 rounded-lg border border-cb-lavender-light dark:border-cb-white/20 focus:border-cb-purple focus:ring-2 focus:ring-cb-purple/20 outline-none transition-all resize-none bg-cb-white dark:bg-cb-dark dark:text-cb-white"
                   placeholder="Cuéntanos un poco sobre lo que necesitas..."
                 ></textarea>
               </div>
