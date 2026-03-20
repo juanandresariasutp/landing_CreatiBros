@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Lora } from "next/font/google";
+import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -27,7 +28,8 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${arsenicaAlternative.variable} font-sans antialiased text-cb-dark bg-cb-white`}
       >
-        {children}
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
