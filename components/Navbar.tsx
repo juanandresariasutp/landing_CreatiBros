@@ -32,16 +32,16 @@ export function Navbar() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
         isScrolled
-          ? "bg-cb-white/90 dark:bg-cb-dark/90 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-cb-white/90 dark:bg-cb-dark/90 backdrop-blur-md shadow-sm py-4"
+          : "bg-transparent py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <Camera className="w-8 h-8 text-cb-purple" />
-            <span className="font-arsenica text-2xl font-bold text-cb-navy dark:text-cb-white tracking-tight">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Camera className="w-10 h-10 text-cb-purple transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-arsenica text-3xl font-bold text-cb-navy dark:text-cb-white tracking-tight transition-colors duration-300 group-hover:text-cb-purple">
               Creatibros
             </span>
           </Link>
@@ -52,16 +52,17 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-cb-dark dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-purple transition-colors"
+                className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-navy/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 {link.name}
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
-            <div className="flex items-center gap-4 border-l pl-4 border-cb-dark/10 dark:border-cb-white/10">
+            <div className="flex items-center gap-5 border-l pl-5 border-cb-dark/10 dark:border-cb-white/10">
               <ThemeToggle />
               <Link
                 href="/#contacto"
-                className="bg-cb-purple hover:bg-cb-navy text-cb-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors"
+                className="bg-cb-purple hover:bg-cb-navy dark:hover:bg-cb-white dark:hover:text-cb-navy text-cb-white px-7 py-3 rounded-full text-base font-bold transition-all duration-300 hover:scale-105 shadow-md"
               >
                 Contacto
               </Link>
