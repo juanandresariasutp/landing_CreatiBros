@@ -52,8 +52,25 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${arsenicaAlternative.variable} font-sans antialiased text-cb-dark bg-cb-white dark:bg-cb-dark dark:text-cb-white transition-colors duration-300`}
+        className={`${dmSans.variable} ${arsenicaAlternative.variable} font-sans antialiased text-cb-dark bg-cb-white dark:bg-cb-dark dark:text-cb-white transition-colors duration-300 relative overflow-x-hidden min-h-screen flex flex-col`}
       >
+        {/* Global Aurora Background */}
+        <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+          {/* Dark Mode Aurora */}
+          <div className="hidden dark:block absolute -top-[50%] -left-[50%] w-[200%] h-[200%] opacity-[0.15] mix-blend-screen">
+            <div className="absolute top-1/4 left-1/4 w-[40%] h-[40%] bg-cb-blue rounded-full filter blur-[150px] animate-aurora"></div>
+            <div className="absolute top-1/3 right-1/4 w-[35%] h-[45%] bg-[#4f46e5] rounded-full filter blur-[180px] animate-aurora-reverse"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-[45%] h-[40%] bg-[#2563eb] rounded-full filter blur-[200px] animate-aurora"></div>
+          </div>
+          
+          {/* Light Mode Aurora */}
+          <div className="dark:hidden absolute -top-[50%] -left-[50%] w-[200%] h-[200%] opacity-[0.4] mix-blend-multiply">
+            <div className="absolute top-1/4 left-1/4 w-[40%] h-[40%] bg-blue-100 rounded-full filter blur-[120px] animate-aurora"></div>
+            <div className="absolute top-1/3 right-1/4 w-[35%] h-[45%] bg-indigo-100 rounded-full filter blur-[140px] animate-aurora-reverse"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-[45%] h-[40%] bg-cyan-100 rounded-full filter blur-[120px] animate-aurora"></div>
+          </div>
+        </div>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
