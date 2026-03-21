@@ -67,6 +67,19 @@ export function About() {
                 </p>
               </div>
             </div>
+
+            {/* Botón Leer Más */}
+            <div className="mt-10">
+              <Link 
+                href="/nosotros" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-cb-navy hover:bg-cb-purple text-cb-white dark:bg-cb-white dark:text-cb-navy dark:hover:bg-cb-purple dark:hover:text-cb-white rounded-full font-medium transition-colors duration-300 shadow-lg"
+              >
+                Conoce más de nosotros
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
         </div>
