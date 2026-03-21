@@ -28,12 +28,22 @@ const config: Config = {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-15px)' },
+        },
+        aurora: {
+          '0%, 100%': { transform: 'translateX(-10%) scale(1)' },
+          '50%': { transform: 'translateX(10%) scale(1.1)' },
+        },
+        'aurora-reverse': {
+          '0%, 100%': { transform: 'translateX(10%) scale(1.1)' },
+          '50%': { transform: 'translateX(-10%) scale(1)' },
         }
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
         'float-delayed': 'float 6s ease-in-out 3s infinite',
         'float-fast': 'float 4.5s ease-in-out infinite',
+        aurora: 'aurora 25s ease-in-out infinite',
+        'aurora-reverse': 'aurora-reverse 30s ease-in-out infinite',
       }
     },
   },
