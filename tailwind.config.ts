@@ -17,7 +17,7 @@ const config: Config = {
         'cb-lavender-med': '#B0AEFF',
         'cb-purple': '#8684FF',
         'cb-navy': '#454496',
-        'cb-dark': '#343341',
+        'cb-dark': '#0B0D17',
         'cb-black': '#000000',
       },
       fontFamily: {
