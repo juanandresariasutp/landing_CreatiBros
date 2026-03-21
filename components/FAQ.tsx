@@ -35,7 +35,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-24 bg-cb-lavender-light/10 dark:bg-cb-dark/50 border-t border-cb-lavender-light/20 dark:border-cb-white/5">
+    <section className="py-24 bg-white/60 dark:bg-cb-dark/50 border-t border-cb-lavender-light/20 dark:border-cb-white/5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Cabecera FAQ */}
@@ -43,10 +43,10 @@ export function FAQ() {
           <div className="inline-flex items-center justify-center p-3 bg-cb-purple/10 rounded-full mb-6 text-cb-purple">
             <HelpCircle className="w-8 h-8" />
           </div>
-          <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-6 text-cb-navy dark:text-cb-white">
+          <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-6 text-cb-dark dark:text-cb-white">
             Preguntas Frecuentes
           </h2>
-          <p className="text-lg text-cb-navy/70 dark:text-cb-white/70 max-w-2xl mx-auto">
+          <p className="text-lg text-cb-dark/70 dark:text-cb-white/70 max-w-2xl mx-auto">
             Resolvemos las inquietudes más comunes que tienen las personas antes de trabajar con nosotros.
           </p>
         </div>
@@ -73,13 +73,13 @@ export function FAQ() {
                 >
                   <span className={cn(
                     "font-bold text-lg transition-colors",
-                    isOpen ? "text-cb-purple" : "text-cb-navy dark:text-cb-white"
+                    isOpen ? "text-cb-purple" : "text-cb-dark dark:text-cb-white"
                   )}>
                     {faq.question}
                   </span>
                   <div className={cn(
                     "ml-4 flex-shrink-0 p-2 rounded-full transition-colors",
-                    isOpen ? "bg-cb-purple text-white" : "bg-cb-lavender-light/20 text-cb-navy dark:text-cb-white/50 dark:bg-white/5"
+                    isOpen ? "bg-cb-purple text-white" : "bg-cb-lavender-light/20 text-cb-dark dark:text-cb-white/50 dark:bg-white/5"
                   )}>
                     {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                   </div>
@@ -93,7 +93,7 @@ export function FAQ() {
                   )}
                 >
                   <div className="overflow-hidden px-6">
-                    <p className="text-cb-navy/80 dark:text-cb-white/70 leading-relaxed border-t border-cb-lavender-light/20 dark:border-white/10 pt-4">
+                    <p className="text-cb-dark/80 dark:text-cb-white/70 leading-relaxed border-t border-cb-lavender-light/20 dark:border-white/10 pt-4">
                       {faq.answer}
                     </p>
                   </div>

@@ -32,13 +32,13 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
   const isEvento = category.group === "Eventos";
 
   return (
-    <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-navy dark:text-cb-white transition-colors duration-300">
+    <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Navegación Top */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Link 
           href="/portafolio" 
-          className="inline-flex items-center gap-2 text-cb-purple hover:text-cb-navy dark:hover:text-cb-lavender-light transition-colors font-medium border border-transparent hover:border-cb-purple px-4 py-2 rounded-full"
+          className="inline-flex items-center gap-2 text-cb-purple hover:text-cb-dark dark:hover:text-cb-lavender-light transition-colors font-medium border border-transparent hover:border-cb-purple px-4 py-2 rounded-full"
         >
           <ArrowLeft className="w-5 h-5" />
           Volver al portafolio
@@ -56,14 +56,14 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
             <h1 className="font-arsenica text-5xl md:text-7xl font-bold leading-[1.1] mt-2 mb-6">
               {category.title}
             </h1>
-            <p className="text-xl md:text-2xl text-cb-dark/80 dark:text-cb-white/80 leading-relaxed mb-8">
+            <p className="text-xl md:text-2xl text-cb-dark dark:text-cb-white/80 leading-relaxed mb-8">
               {category.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-               <a href="#galeria" className="px-8 py-4 bg-cb-navy text-cb-white dark:bg-cb-white dark:text-cb-navy rounded-full font-bold text-center hover:bg-cb-purple dark:hover:bg-cb-purple hover:text-cb-white transition-colors duration-300 shadow-lg">
+               <a href="#galeria" className="px-8 py-4 bg-cb-navy text-cb-white dark:bg-cb-white dark:text-cb-dark rounded-full font-bold text-center hover:bg-cb-purple dark:hover:bg-cb-purple hover:text-cb-white transition-colors duration-300 shadow-lg">
                 Ver galería
                </a>
-               <a href="#contacto" className="px-8 py-4 border-2 border-cb-navy dark:border-cb-white rounded-full font-bold text-center hover:bg-cb-navy hover:text-cb-white dark:hover:bg-cb-white dark:hover:text-cb-navy transition-colors duration-300">
+               <a href="#contacto" className="px-8 py-4 border-2 border-cb-navy dark:border-cb-white rounded-full font-bold text-center hover:bg-cb-navy hover:text-cb-white dark:hover:bg-cb-white dark:hover:text-cb-dark transition-colors duration-300">
                 Cotizar ahora
                </a>
             </div>
@@ -83,7 +83,7 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
       </section>
 
       {/* 3. Propuesta de Valor Dinámica (Depende si es Evento o Servicio) */}
-      <section className="bg-cb-lavender-light/10 dark:bg-white/5 py-20 lg:py-28 mt-12">
+      <section className="bg-white/60 dark:bg-white/5 py-20 lg:py-28 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-12">
             {isEvento ? "¿Por qué documentar este momento?" : "¿Por qué invertir en tu imagen?"}
@@ -95,17 +95,17 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <Heart className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Emoción Intacta</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">Los recuerdos se desvanecen, pero una fotografía captura el sentimiento exacto para que lo revivas una y otra vez.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">Los recuerdos se desvanecen, pero una fotografía captura el sentimiento exacto para que lo revivas una y otra vez.</p>
                 </div>
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <Star className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Detalles Únicos</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">Todo en lo que has invertido tiempo y amor merece quedar plasmado: las miradas, la decoración y las sonrisas.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">Todo en lo que has invertido tiempo y amor merece quedar plasmado: las miradas, la decoración y las sonrisas.</p>
                 </div>
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <Award className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Legado Familiar</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">Estás creando el archivo visual que tus hijos y nietos verán en el futuro para conectar con su historia.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">Estás creando el archivo visual que tus hijos y nietos verán en el futuro para conectar con su historia.</p>
                 </div>
                </>
             ) : (
@@ -113,17 +113,17 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <CheckCircle2 className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Profesionalismo Total</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">Como te ven te perciben. Una imagen de alta calidad eleva el valor percibido de tus productos y servicios instantáneamente.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">Como te ven te perciben. Una imagen de alta calidad eleva el valor percibido de tus productos y servicios instantáneamente.</p>
                 </div>
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <Star className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Diferenciación</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">En un mercado saturado, destacar es vital. Te ayudamos a crear un estilo visual que tu competencia no podrá copiar.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">En un mercado saturado, destacar es vital. Te ayudamos a crear un estilo visual que tu competencia no podrá copiar.</p>
                 </div>
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
                   <Award className="w-12 h-12 text-cb-purple mb-6 mx-auto" />
                   <h3 className="font-bold text-xl mb-3">Confianza Rápida</h3>
-                  <p className="text-cb-dark/70 dark:text-cb-white/70">Tus clientes potenciales confiarán en tu marca y tomarán decisiones de compra más rápido al ver fotos que inspiran calidad.</p>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">Tus clientes potenciales confiarán en tu marca y tomarán decisiones de compra más rápido al ver fotos que inspiran calidad.</p>
                 </div>
                </>
             )}
@@ -135,7 +135,7 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
       <section id="galeria" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
            <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-4">Nuestro Trabajo</h2>
-           <p className="text-lg text-cb-dark/70 dark:text-cb-white/70 max-w-2xl mx-auto">
+           <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 max-w-2xl mx-auto">
              Observa cómo cuidamos la luz, la composición y el instante preciso en cada toma.
            </p>
         </div>

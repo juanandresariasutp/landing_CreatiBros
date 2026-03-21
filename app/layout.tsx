@@ -65,7 +65,7 @@ export default function RootLayout({
           
           {/* Light Mode Aurora */}
           <div className="dark:hidden absolute -top-[50%] -left-[50%] w-[200%] h-[200%] opacity-[0.4] mix-blend-multiply">
-            <div className="absolute top-1/4 left-1/4 w-[40%] h-[40%] bg-blue-100 rounded-full filter blur-[120px] animate-aurora"></div>
+            <div className="absolute top-1/4 left-1/4 w-[0%] h-[40%] bg-blue-100 rounded-full filter blur-[120px] animate-aurora"></div>
             <div className="absolute top-1/3 right-1/4 w-[35%] h-[45%] bg-indigo-100 rounded-full filter blur-[140px] animate-aurora-reverse"></div>
             <div className="absolute bottom-1/4 left-1/3 w-[45%] h-[40%] bg-cyan-100 rounded-full filter blur-[120px] animate-aurora"></div>
           </div>
@@ -77,10 +77,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppButton />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -44,7 +44,7 @@ const clientCategories = [
 
 export default function ClientesPage() {
   return (
-    <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-navy dark:text-cb-white transition-colors duration-300">
+    <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Hero Section - Enfoque en Autoridad y Confianza */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
@@ -58,7 +58,7 @@ export default function ClientesPage() {
           <h1 className="font-arsenica text-5xl md:text-7xl font-bold leading-tight mb-8">
             Marcas que confían en <br className="hidden md:block"/> nuestra <span className="text-cb-purple italic">visión</span>
           </h1>
-          <p className="text-xl text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-cb-dark dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto mb-10">
             Hemos tenido el privilegio de impulsar marcas locales creando fotografías y videos profesionales que no solo se ven increíbles, sino que <strong>venden y conectan</strong>.
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function ClientesPage() {
             
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="w-14 h-14 bg-[#D4FF00] rounded-2xl flex items-center justify-center mb-6">
-                <TrendingUp className="w-7 h-7 text-cb-navy" />
+                <TrendingUp className="w-7 h-7 text-cb-dark" />
               </div>
               <h3 className="text-2xl font-bold mb-4 font-arsenica text-[#D4FF00]">Incrementa Ventas</h3>
               <p className="text-cb-lavender-light/80">
@@ -141,7 +141,7 @@ export default function ClientesPage() {
 
               {/* Lista de clientes */}
               <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                <p className="text-lg text-cb-dark/70 dark:text-cb-white/70 mb-8 leading-relaxed">
+                <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
                   {category.description}
                 </p>
                 
@@ -149,9 +149,9 @@ export default function ClientesPage() {
                   {category.clients.map((client, index) => (
                     <div 
                       key={index}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-2xl bg-cb-lavender-light/10 dark:bg-white/5 border border-cb-dark/5 dark:border-white/5 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 hover:bg-cb-purple/5 dark:hover:bg-cb-purple/10 transition-all duration-300"
+                      className="flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-2xl bg-white/60 dark:bg-white/5 border border-cb-dark/5 dark:border-white/5 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 hover:bg-cb-purple/5 dark:hover:bg-cb-purple/10 transition-all duration-300"
                     >
-                      <span className="font-bold text-lg text-cb-navy dark:text-cb-white">{client.name}</span>
+                      <span className="font-bold text-lg text-cb-dark dark:text-cb-white">{client.name}</span>
                       <span className="text-sm font-medium px-4 py-1.5 rounded-full bg-cb-purple/10 text-cb-purple mt-2 sm:mt-0 w-fit">
                         {client.type}
                       </span>

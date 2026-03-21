@@ -41,7 +41,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <Camera className="w-10 h-10 text-cb-purple transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-arsenica text-3xl font-bold text-cb-navy dark:text-cb-white tracking-tight transition-colors duration-300 group-hover:text-cb-purple">
+            <span className="font-arsenica text-3xl font-bold text-cb-dark dark:text-cb-white tracking-tight transition-colors duration-300 group-hover:text-cb-purple">
               Creatibros
             </span>
           </Link>
@@ -52,7 +52,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-navy/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 group"
+                className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 {link.name}
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
@@ -62,7 +62,7 @@ export function Navbar() {
               <ThemeToggle />
               <Link
                 href="/#contacto"
-                className="bg-cb-purple hover:bg-cb-navy dark:hover:bg-cb-white dark:hover:text-cb-navy text-cb-white px-7 py-3 rounded-full text-base font-bold transition-all duration-300 hover:scale-105 shadow-md"
+                className="bg-cb-purple hover:bg-cb-navy dark:hover:bg-cb-white dark:hover:text-cb-dark text-cb-white px-7 py-3 rounded-full text-base font-bold transition-all duration-300 hover:scale-105 shadow-md"
               >
                 Contacto
               </Link>

@@ -45,10 +45,10 @@ ${formData.mensaje}`;
             <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
               Contectemos
             </span>
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
               ¿Listo para crear algo increíble?
             </h2>
-            <p className="text-lg text-cb-dark/80 dark:text-cb-white/80 mb-10">
+            <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-10">
               Escríbenos para agendar una sesión, pedir una cotización o simplemente saludar. Estamos aquí para darle vida a tus ideas.
             </p>
 
@@ -59,7 +59,7 @@ ${formData.mensaje}`;
                 </div>
                 <div>
                   <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">WhatsApp</p>
-                  <p className="font-medium text-cb-navy dark:text-cb-white">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
+                  <p className="font-medium text-cb-dark dark:text-cb-white">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
                 </div>
               </div>
               
@@ -69,7 +69,7 @@ ${formData.mensaje}`;
                 </div>
                 <div>
                   <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Email</p>
-                  <p className="font-medium text-cb-navy dark:text-cb-white">hola@creatibros.com</p>
+                  <p className="font-medium text-cb-dark dark:text-cb-white">hola@creatibros.com</p>
                 </div>
               </div>
 
@@ -79,14 +79,14 @@ ${formData.mensaje}`;
                 </div>
                 <div>
                   <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Ubicación</p>
-                  <p className="font-medium text-cb-navy dark:text-cb-white">Colombia / Disponible para viajes</p>
+                  <p className="font-medium text-cb-dark dark:text-cb-white">Colombia / Disponible para viajes</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Formulario */}
-          <div className="bg-cb-lavender-light/10 dark:bg-cb-white/5 p-8 rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/10 shadow-sm">
+          <div className="bg-white/60 dark:bg-cb-white/5 p-8 rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/10 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Nombre completo *</label>

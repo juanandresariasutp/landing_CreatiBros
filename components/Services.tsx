@@ -17,7 +17,7 @@ const services = [
     description: "Videos corporativos, reels para redes sociales y cobertura de eventos en formato cine. Llevamos tus ideas a la pantalla con calidad profesional.",
     icon: Video,
     color: "bg-cb-lavender-light/30",
-    iconColor: "text-cb-navy",
+    iconColor: "text-cb-dark",
     href: "/audiovisual",
   },
   {
@@ -34,7 +34,7 @@ const services = [
     description: "Fotografía de retrato profesional para emprendedores, directivos y artistas que buscan elevar su presencia digital.",
     icon: Users,
     color: "bg-cb-white",
-    iconColor: "text-cb-navy",
+    iconColor: "text-cb-dark",
   },
   {
     id: "creacion-contenido",
@@ -50,7 +50,7 @@ const services = [
     description: "Servicios de colorización, retoque fotográfico y montaje de video para proyectos independientes.",
     icon: Sparkles,
     color: "bg-cb-lavender-light/30",
-    iconColor: "text-cb-navy",
+    iconColor: "text-cb-dark",
   },
 ];
 
@@ -62,10 +62,10 @@ export function Services() {
           <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
             Lo que hacemos
           </span>
-          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mt-4 mb-6">
+          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
             Nuestros Servicios
           </h2>
-          <p className="text-lg text-cb-dark/80 dark:text-cb-white/80">
+          <p className="text-lg text-cb-dark dark:text-cb-white/80">
             Ofrecemos soluciones visuales integrales para documentar tus momentos más importantes o potenciar la imagen de tu negocio.
           </p>
         </div>
@@ -80,25 +80,25 @@ export function Services() {
               )}
             >
               <div className="w-14 h-14 bg-cb-white dark:bg-cb-white/5 rounded-xl flex items-center justify-center shadow-sm mb-6">
-                <service.icon className={cn("w-7 h-7", service.iconColor === "text-cb-navy" ? "text-cb-navy dark:text-cb-white" : service.iconColor)} />
+                <service.icon className={cn("w-7 h-7", service.iconColor === "text-cb-dark" ? "text-cb-dark dark:text-cb-white" : service.iconColor)} />
               </div>
-              <h3 className="font-arsenica text-2xl font-bold text-cb-navy dark:text-cb-white mb-4">
+              <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
                 {service.title}
               </h3>
-              <p className="text-cb-dark/70 dark:text-cb-white/70 leading-relaxed mb-6">
+              <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed mb-6">
                 {service.description}
               </p>
               {service.href ? (
                 <Link
                   href={service.href}
-                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
+                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
                 >
                   Saber más <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
               ) : (
                 <a
                   href="#portafolio"
-                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-navy dark:hover:text-cb-white transition-colors"
+                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
                 >
                   Ver ejemplos &rarr;
                 </a>

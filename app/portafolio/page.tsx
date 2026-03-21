@@ -14,7 +14,7 @@ const servicios = portfolioCategories.filter((c) => c.group === "Servicios Profe
 
 export default function PortafolioPage() {
   return (
-    <main className="bg-cb-white dark:bg-cb-dark min-h-screen text-cb-navy dark:text-cb-white pt-24 font-sans selection:bg-cb-purple selection:text-white transition-colors duration-300">
+    <main className="bg-cb-white dark:bg-cb-dark min-h-screen text-cb-dark dark:text-cb-white pt-24 font-sans selection:bg-cb-purple selection:text-white transition-colors duration-300">
       {/* Hero Section Persuasivo */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="max-w-4xl">
@@ -26,7 +26,7 @@ export default function PortafolioPage() {
             Instantes fugaces, <br />
             <span className="text-cb-purple italic">legados eternos.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-cb-dark/80 dark:text-cb-white/80 max-w-2xl leading-relaxed">
+          <p className="text-xl md:text-2xl text-cb-dark dark:text-cb-white/80 max-w-2xl leading-relaxed">
             No tomamos fotografías; capturamos la esencia de tu historia. Ya sea el día más importante de tu vida o la identidad visual de tu marca, creamos imágenes que trascienden.
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function PortafolioPage() {
           <div className="lg:w-1/3 flex flex-col justify-start">
             <div className="lg:sticky lg:top-32">
               <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6 leading-tight">Celebraciones <br className="hidden lg:block"/> Inolvidables</h2>
-              <p className="text-lg text-cb-dark/70 dark:text-cb-white/70 mb-8 leading-relaxed">
+              <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
                 Revive la emoción de tu gran día. Cuidamos cada detalle arquitectónico de tus recuerdos para que tu inversión hoy, sea el tesoro invaluable de mañana.
               </p>
               <div className="hidden lg:block w-16 h-1 bg-cb-purple rounded-full"></div>
@@ -89,7 +89,7 @@ export default function PortafolioPage() {
           <div className="lg:w-1/3 flex flex-col justify-start">
             <div className="lg:sticky lg:top-32">
               <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6 leading-tight">Marcas con <br className="hidden lg:block"/> Propósito</h2>
-              <p className="text-lg text-cb-dark/70 dark:text-cb-white/70 mb-8 leading-relaxed">
+              <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
                 Eleva la percepción de tu negocio. Una dirección de arte impecable y fotografías de alta gama son la clave para atraer a tu cliente ideal y destacar en tu industria.
               </p>
               <div className="hidden lg:block w-16 h-1 bg-cb-purple rounded-full"></div>

@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function NosotrosPage() {
   return (
-    <main className="min-h-screen pt-24 pb-0 bg-cb-white dark:bg-cb-dark text-cb-navy dark:text-cb-white transition-colors duration-300">
+    <main className="min-h-screen pt-24 pb-0 bg-cb-white dark:bg-cb-dark text-cb-dark dark:text-cb-white transition-colors duration-300">
       {/* Hero Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 py-20 lg:py-28 max-w-7xl mx-auto text-center">
         <div className="max-w-4xl mx-auto">
@@ -22,7 +22,7 @@ export default function NosotrosPage() {
             Más que capturar imágenes, <br className="hidden md:block" />
             <span className="text-cb-purple italic">construimos legados.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto">
             Fundamos Creatibros con la visión de fusionar el arte audiovisual con el mundo digital y los grandes momentos.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function NosotrosPage() {
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Cineasta / Ingeniero
             </p>
-            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
+            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               Con más de <strong>6 años de experiencia</strong> en el cubrimiento de eventos y 2 años como realizador audiovisual. Su perfil técnico como <strong>Ingeniero de Sistemas y Computación</strong> le permite integrar tecnología y eficiencia en estrategias de marketing digital de alto impacto.
             </p>
           </div>
@@ -125,7 +125,7 @@ export default function NosotrosPage() {
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Creador de Contenido
             </p>
-            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
+            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               <strong>Profesional en Ciencias del Deporte y la Recreación.</strong> Ha integrado su disciplina con 2 años de experiencia en fotografía y video. Aporta una visión dinámica, creativa y llena de vitalidad para que la identidad de cada marca se conecte genuinamente con su audiencia.
             </p>
           </div>

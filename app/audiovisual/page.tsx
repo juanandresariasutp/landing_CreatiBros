@@ -48,7 +48,7 @@ export default function AudiovisualPage() {
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mb-6">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
               ¿Por qué invertir en video?
             </h2>
             <div className="w-16 h-1 bg-cb-purple mx-auto rounded-full"></div>
@@ -58,15 +58,15 @@ export default function AudiovisualPage() {
             {reasons.map((item, index) => (
               <div 
                 key={index}
-                className="bg-cb-lavender-light/10 dark:bg-cb-white/5 p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300"
+                className="bg-white/60 dark:bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300"
               >
                 <div className="w-14 h-14 bg-cb-purple text-cb-white rounded-2xl flex items-center justify-center mb-6">
                   <item.icon className="w-7 h-7" />
                 </div>
-                <h3 className="font-arsenica text-2xl font-bold text-cb-navy dark:text-cb-white mb-4">
+                <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
                   {item.title}
                 </h3>
-                <p className="text-cb-dark/70 dark:text-cb-white/70 leading-relaxed">
+                <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -83,10 +83,10 @@ export default function AudiovisualPage() {
               <MonitorSmartphone className="w-5 h-5" />
               EL FORMATO DEL MOMENTO
             </span>
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mb-6">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
               El impacto visual del contenido corto (Reels / TikToks)
             </h2>
-            <div className="space-y-6 text-cb-dark/80 dark:text-cb-white/80 text-lg leading-relaxed">
+            <div className="space-y-6 text-cb-dark dark:text-cb-white/80 text-lg leading-relaxed">
               <p>
                 Hoy en día, la moneda más valiosa es la atención. El formato de video vertical ha transformado la forma en que consumimos información, volviéndose indispensable para cualquier estrategia digital.
               </p>
@@ -120,17 +120,17 @@ export default function AudiovisualPage() {
       {/* Referencias en Reels */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-navy dark:text-cb-white mb-6">
+          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
             Nuestro trabajo en acción
           </h2>
-          <p className="text-lg text-cb-dark/80 dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
             Próximamente estaremos mostrando nuestras mejores producciones audiovisuales directamente desde Instagram.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {/* Placeholders */}
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="aspect-[9/16] bg-cb-lavender-light/30 dark:bg-cb-white/5 rounded-xl border border-cb-lavender-light dark:border-cb-white/10 flex flex-col items-center justify-center text-cb-navy/50 dark:text-cb-white/30 p-6 group cursor-not-allowed">
+              <div key={i} className="aspect-[9/16] bg-cb-lavender-light/30 dark:bg-cb-white/5 rounded-xl border border-cb-lavender-light dark:border-cb-white/10 flex flex-col items-center justify-center text-cb-dark/50 dark:text-cb-white/30 p-6 group cursor-not-allowed">
                 <Video className="w-10 h-10 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
                 <p className="font-medium text-sm text-center">Espacio para Video Reservado</p>
               </div>

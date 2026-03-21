@@ -24,7 +24,7 @@ export function Clients() {
   return (
     <section id="clientes" className="py-20 bg-cb-lavender-light/20 dark:bg-cb-dark/30 border-y border-cb-lavender-light/30 dark:border-cb-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-center font-arsenica text-2xl md:text-3xl font-bold text-cb-navy dark:text-cb-white mb-12">
+        <h3 className="text-center font-arsenica text-2xl md:text-3xl font-bold text-cb-dark dark:text-cb-white mb-12">
           Marcas que confían en nuestro foco
         </h3>
 
