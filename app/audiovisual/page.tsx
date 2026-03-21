@@ -1,7 +1,5 @@
 import { Contact } from "@/components/Contact";
 import { PlayCircle, Video, TrendingUp, MonitorSmartphone } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
 
 export const metadata = {
   title: "Producción Audiovisual | Creatibros",

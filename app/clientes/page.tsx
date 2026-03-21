@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Contact } from "@/components/Contact";
 import { TrendingUp, Users, Target, Utensils, Activity, Briefcase } from "lucide-react";
 
 export const metadata = {

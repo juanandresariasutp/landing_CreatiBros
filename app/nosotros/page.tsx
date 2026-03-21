@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Contact } from "@/components/Contact";
-import { Camera, Video, MonitorPlay, Mountain } from "lucide-react";
+import { Camera, Mountain } from "lucide-react";
 
 export const metadata = {
   title: "Quiénes Somos | Creatibros",
