@@ -85,16 +85,16 @@ export default function NosotrosPage() {
       </section>
 
       {/* Los Fundadores */}
-      <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-16 lg:mb-24">
-          <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6">Conoce al Equipo</h2>
+      <section className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-4">Conoce al Equipo</h2>
           <div className="w-24 h-1 bg-cb-purple mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           {/* Juan Andrés Arias */}
           <div className="group flex flex-col items-center text-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8 rounded-full overflow-hidden shadow-2xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
                 alt="Juan Andrés Arias"
@@ -102,18 +102,18 @@ export default function NosotrosPage() {
                 className="object-cover"
               />
             </div>
-            <h3 className="font-arsenica text-3xl font-bold mb-2">Juan Andrés Arias</h3>
-            <p className="text-cb-purple font-medium mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-arsenica text-2xl md:text-3xl font-bold mb-2">Juan Andrés Arias</h3>
+            <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Cineasta / Ingeniero
             </p>
-            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm">
+            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               Con más de <strong>6 años de experiencia</strong> en el cubrimiento de eventos y 2 años como realizador audiovisual. Su perfil técnico como <strong>Ingeniero de Sistemas y Computación</strong> le permite integrar tecnología y eficiencia en estrategias de marketing digital de alto impacto.
             </p>
           </div>
 
           {/* Andrés Camilo Trochez */}
           <div className="group flex flex-col items-center text-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8 rounded-full overflow-hidden shadow-2xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src="https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=2070&auto=format&fit=crop" 
                 alt="Andrés Camilo Trochez"
@@ -121,11 +121,11 @@ export default function NosotrosPage() {
                 className="object-cover"
               />
             </div>
-            <h3 className="font-arsenica text-3xl font-bold mb-2">Andrés Camilo Trochez</h3>
-            <p className="text-cb-purple font-medium mb-6 uppercase tracking-wider text-sm">
+            <h3 className="font-arsenica text-2xl md:text-3xl font-bold mb-2">Andrés Camilo Trochez</h3>
+            <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Creador de Contenido
             </p>
-            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm">
+            <p className="text-cb-navy/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               <strong>Profesional en Ciencias del Deporte y la Recreación.</strong> Ha integrado su disciplina con 2 años de experiencia en fotografía y video. Aporta una visión dinámica, creativa y llena de vitalidad para que la identidad de cada marca se conecte genuinamente con su audiencia.
             </p>
           </div>
