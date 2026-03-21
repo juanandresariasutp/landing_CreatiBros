@@ -12,7 +12,7 @@ const navLinks = [
   { name: "Portafolio", href: "/portafolio" },
   { name: "Audiovisual", href: "/audiovisual" },
   { name: "Quiénes Somos", href: "/nosotros" },
-  { name: "Clientes", href: "/#clientes" },
+  { name: "Clientes", href: "/clientes" },
 ];
 
 export function Navbar() {
