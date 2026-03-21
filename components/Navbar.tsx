@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Camera } from "lucide-react";
+import { Menu, X, Camera, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { portfolioCategories } from "@/lib/portfolio-data";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
   { name: "Servicios", href: "/#servicios" },
-  { name: "Portafolio", href: "/portafolio" },
+  { name: "Portafolio", href: "/portafolio", hasDropdown: true },
   { name: "Audiovisual", href: "/audiovisual" },
   { name: "Quiénes Somos", href: "/nosotros" },
   { name: "Clientes", href: "/clientes" },
@@ -18,6 +19,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,9 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const eventos = portfolioCategories.filter((c) => c.group === "Eventos");
+  const servicios = portfolioCategories.filter((c) => c.group === "Servicios Profesionales");
 
   return (
     <header
@@ -49,14 +54,63 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 group"
-              >
-                {link.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+              <div key={link.name} className="relative group">
+                {link.hasDropdown ? (
+                  <div className="flex items-center gap-1 cursor-pointer py-2 px-1">
+                    <Link
+                      href={link.href}
+                      className="relative text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white transition-all duration-300"
+                    >
+                      {link.name}
+                      <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
+                    </Link>
+                    <ChevronDown className="w-4 h-4 text-cb-dark/50 dark:text-cb-white/50 group-hover:text-cb-purple dark:group-hover:text-cb-white transition-transform duration-300 group-hover:rotate-180" />
+                    
+                    {/* Dropdown Menu modificado con PUENTE INVISIBLE para evitar cierre al mover el ratón */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[500px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
+                      <div className="relative bg-cb-white/95 dark:bg-cb-dark/95 backdrop-blur-xl border border-cb-lavender-light/30 dark:border-cb-white/10 rounded-2xl shadow-xl p-6 flex gap-8">
+                        {/* THE FIX: Puente invisible rellenando el hueco entre el botón y el menù para q no pierda el hover */}
+                        <div className="absolute -top-6 left-0 w-full h-8 bg-transparent"></div>
+                        
+                        <div className="absolute -top-[9px] left-1/2 -translate-x-1/2 w-4 h-4 bg-cb-white/95 dark:bg-cb-dark/95 border-l border-t border-cb-lavender-light/30 dark:border-cb-white/10 rotate-45 pointer-events-none"></div>
+                        
+                        <div className="flex-1">
+                          <h4 className="font-arsenica font-bold text-cb-dark dark:text-cb-white border-b border-cb-lavender-light/30 dark:border-cb-white/10 pb-2 mb-3 text-lg">Eventos</h4>
+                          <ul className="space-y-2">
+                            {eventos.map(item => (
+                              <li key={item.slug}>
+                                <Link href={`/portafolio/${item.slug}`} className="block text-cb-dark/70 dark:text-cb-white/70 hover:text-cb-purple dark:hover:text-cb-purple transition-colors py-1 text-sm font-medium">
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex-1 border-l border-cb-lavender-light/30 dark:border-cb-white/10 pl-8">
+                          <h4 className="font-arsenica font-bold text-cb-dark dark:text-cb-white border-b border-cb-lavender-light/30 dark:border-cb-white/10 pb-2 mb-3 text-lg">Servicios</h4>
+                          <ul className="space-y-2">
+                            {servicios.map(item => (
+                              <li key={item.slug}>
+                                <Link href={`/portafolio/${item.slug}`} className="block text-cb-dark/70 dark:text-cb-white/70 hover:text-cb-purple dark:hover:text-cb-purple transition-colors py-1 text-sm font-medium">
+                                  {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 inline-block group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                  >
+                    {link.name}
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                )}
+              </div>
             ))}
             <div className="flex items-center gap-5 border-l pl-5 border-cb-dark/10 dark:border-cb-white/10">
               <ThemeToggle />
@@ -85,16 +139,52 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-base font-medium text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple p-2"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </Link>
+            <div key={link.name} className="flex flex-col">
+              {link.hasDropdown ? (
+                <>
+                  <div className="flex justify-between items-center p-2 cursor-pointer text-base font-medium text-cb-dark dark:text-cb-white hover:text-cb-purple transition-colors" onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}>
+                    <Link href={link.href} onClick={() => setIsOpen(false)} className="flex-1">
+                      {link.name}
+                    </Link>
+                    <ChevronDown className={cn("w-5 h-5 transition-transform", mobilePortfolioOpen && "rotate-180")} />
+                  </div>
+                  {mobilePortfolioOpen && (
+                    <div className="pl-6 pr-2 py-2 flex flex-col gap-4 bg-cb-lavender-light/10 dark:bg-white/5 rounded-xl mt-1">
+                      <div>
+                        <span className="text-sm font-bold text-cb-dark/50 dark:text-cb-white/50 uppercase tracking-wider mb-2 block">Eventos</span>
+                        <div className="flex flex-col gap-2">
+                          {eventos.map(item => (
+                            <Link key={item.slug} href={`/portafolio/${item.slug}`} className="text-sm font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple" onClick={() => setIsOpen(false)}>
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-sm font-bold text-cb-dark/50 dark:text-cb-white/50 uppercase tracking-wider mb-2 block">Servicios</span>
+                        <div className="flex flex-col gap-2">
+                          {servicios.map(item => (
+                            <Link key={item.slug} href={`/portafolio/${item.slug}`} className="text-sm font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple" onClick={() => setIsOpen(false)}>
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href={link.href}
+                  className="text-base font-medium text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple p-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              )}
+            </div>
           ))}
           <Link
             href="/#contacto"
