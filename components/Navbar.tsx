@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Servicios", href: "/#servicios" },
   { name: "Portafolio", href: "/portafolio" },
   { name: "Audiovisual", href: "/audiovisual" },
-  { name: "Quiénes Somos", href: "/#quienes-somos" },
+  { name: "Quiénes Somos", href: "/nosotros" },
   { name: "Clientes", href: "/#clientes" },
 ];
 
