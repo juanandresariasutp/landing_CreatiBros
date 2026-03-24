@@ -94,10 +94,10 @@ export default function ClientesPage() {
             </div>
             
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
-              <div className="w-14 h-14 bg-[#D4FF00] rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-cb-lavender-light rounded-2xl flex items-center justify-center mb-6">
                 <TrendingUp className="w-7 h-7 text-cb-dark" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-arsenica text-[#D4FF00]">Incrementa Ventas</h3>
+              <h3 className="text-2xl font-bold mb-4 font-arsenica text-cb-lavender-light">Incrementa Ventas</h3>
               <p className="text-cb-lavender-light/80">
                 Está comprobado: las personas están dispuestas a pagar más por productos y servicios que se presentan con una calidad premium.
               </p>

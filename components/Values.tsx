@@ -6,7 +6,7 @@ const values = [
   {
     icon: <Award className="w-5 h-5 text-cb-dark" />,
     title: "Más Alta Calidad",
-    color: "bg-[#D4FF00]",
+    color: "bg-cb-lavender-light",
     position: "hidden xl:flex xl:top-[12%] xl:left-[50%] xl:-translate-x-1/2",
     animation: "animate-float"
   },
@@ -20,14 +20,14 @@ const values = [
   {
     icon: <Heart className="w-5 h-5 text-cb-dark" />,
     title: "Atención Personalizada",
-    color: "bg-[#D4FF00]",
+    color: "bg-cb-lavender-light",
     position: "hidden xl:flex xl:bottom-[35%] xl:left-[10%]",
     animation: "animate-float-fast"
   },
   {
     icon: <Camera className="w-5 h-5 text-cb-dark" />,
     title: "Tecnología Avanzada",
-    color: "bg-[#D4FF00]",
+    color: "bg-cb-lavender-light",
     position: "hidden xl:flex xl:top-[30%] xl:right-[15%]",
     animation: "animate-float"
   },
@@ -41,8 +41,8 @@ const values = [
   {
     icon: <Sparkles className="w-5 h-5 text-cb-dark" />,
     title: "Ideas Ilimitadas",
-    color: "bg-[#D4FF00]",
-    position: "hidden xl:flex xl:bottom-[15%] xl:left-[50%] xl:-translate-x-1/2",
+    color: "bg-cb-lavender-light",
+    position: "hidden xl:flex xl:bottom-[10%] xl:left-[40%]",
     animation: "animate-float-fast"
   },
 ];
@@ -76,8 +76,8 @@ export function Values() {
       {/* Center Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="flex items-center gap-2 mb-8">
-          <Sparkles className="w-5 h-5 text-[#D4FF00]" />
-          <span className="text-[#D4FF00] font-bold tracking-widest uppercase text-sm">
+          <Sparkles className="w-5 h-5 text-cb-lavender-med" />
+          <span className="text-cb-lavender-med font-bold tracking-widest uppercase text-sm">
             Nuestros Valores
           </span>
         </div>
@@ -96,7 +96,7 @@ export function Values() {
         <div className="flex flex-col sm:flex-row justify-center gap-5 w-full sm:w-auto">
           <Link
             href="/nosotros"
-            className="px-8 py-4 bg-[#D4FF00] text-[#06060c] rounded-full font-bold hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(212,255,0,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] text-center text-lg"
+            className="px-8 py-4 bg-cb-lavender-light text-cb-dark rounded-full font-bold hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(217,217,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] text-center text-lg"
           >
             Saber Más
           </Link>
