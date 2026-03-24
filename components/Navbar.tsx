@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Camera, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
@@ -9,7 +10,6 @@ import { portfolioCategories } from "@/lib/portfolio-data";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Servicios", href: "/#servicios" },
   { name: "Portafolio", href: "/portafolio", hasDropdown: true },
   { name: "Audiovisual", href: "/audiovisual" },
   { name: "Quiénes Somos", href: "/nosotros" },
@@ -20,6 +20,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,18 +54,35 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              // Determina si esta es la ruta activa. Maneja tanto matching exacto como subrutas (ej: /portafolio/bodas)
+              const isActive = link.href === "/" 
+                ? pathname === "/" 
+                : pathname.startsWith(link.href.replace(/#.*$/, ''));
+
+              return (
               <div key={link.name} className="relative group">
                 {link.hasDropdown ? (
                   <div className="flex items-center gap-1 cursor-pointer py-2 px-1">
                     <Link
                       href={link.href}
-                      className="relative text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white transition-all duration-300"
+                      className={cn(
+                        "relative text-base lg:text-[1.05rem] font-medium transition-all duration-300",
+                        isActive 
+                          ? "text-cb-purple dark:text-cb-white" 
+                          : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                      )}
                     >
                       {link.name}
-                      <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
+                      <span className={cn(
+                        "absolute left-0 -bottom-1 h-0.5 bg-cb-purple transition-all duration-300",
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      )}></span>
                     </Link>
-                    <ChevronDown className="w-4 h-4 text-cb-dark/50 dark:text-cb-white/50 group-hover:text-cb-purple dark:group-hover:text-cb-white transition-transform duration-300 group-hover:rotate-180" />
+                    <ChevronDown className={cn(
+                      "w-4 h-4 transition-transform duration-300 group-hover:rotate-180",
+                      isActive ? "text-cb-purple dark:text-cb-white" : "text-cb-dark/50 dark:text-cb-white/50 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                    )} />
                     
                     {/* Dropdown Menu modificado con PUENTE INVISIBLE para evitar cierre al mover el ratón */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[500px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto">
@@ -104,14 +122,22 @@ export function Navbar() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="relative py-2 text-base lg:text-[1.05rem] font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-white transition-all duration-300 hover:-translate-y-0.5 inline-block group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                    className={cn(
+                      "relative py-2 text-base lg:text-[1.05rem] font-medium transition-all duration-300 hover:-translate-y-0.5 inline-block",
+                      isActive
+                        ? "text-cb-purple dark:text-cb-white"
+                        : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                    )}
                   >
                     {link.name}
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-cb-purple transition-all duration-300 group-hover:w-full"></span>
+                    <span className={cn(
+                      "absolute left-0 bottom-0 h-0.5 bg-cb-purple transition-all duration-300",
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    )}></span>
                   </Link>
                 )}
               </div>
-            ))}
+            )})}
             <div className="flex items-center gap-5 border-l pl-5 border-cb-dark/10 dark:border-cb-white/10">
               <ThemeToggle />
               <Link
@@ -140,15 +166,27 @@ export function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {navLinks.map((link) => {
+            const isActive = link.href === "/" 
+              ? pathname === "/" 
+              : pathname.startsWith(link.href.replace(/#.*$/, ''));
+
+            return (
             <div key={link.name} className="flex flex-col">
               {link.hasDropdown ? (
                 <>
-                  <div className="flex justify-between items-center p-2 cursor-pointer text-base font-medium text-cb-dark dark:text-cb-white hover:text-cb-purple transition-colors" onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}>
-                    <Link href={link.href} onClick={() => setIsOpen(false)} className="flex-1">
+                  <div className="flex justify-between items-center p-2 cursor-pointer text-base font-medium transition-colors" onClick={() => setMobilePortfolioOpen(!mobilePortfolioOpen)}>
+                    <Link 
+                      href={link.href} 
+                      onClick={() => setIsOpen(false)} 
+                      className={cn(
+                        "flex-1",
+                        isActive ? "text-cb-purple dark:text-cb-white font-semibold" : "text-cb-dark dark:text-cb-white hover:text-cb-purple"
+                      )}
+                    >
                       {link.name}
                     </Link>
-                    <ChevronDown className={cn("w-5 h-5 transition-transform", mobilePortfolioOpen && "rotate-180")} />
+                    <ChevronDown className={cn("w-5 h-5 transition-transform", mobilePortfolioOpen && "rotate-180", isActive ? "text-cb-purple dark:text-cb-white" : "")} />
                   </div>
                   {mobilePortfolioOpen && (
                     <div className="pl-6 pr-2 py-2 flex flex-col gap-4 bg-cb-lavender-light/10 dark:bg-white/5 rounded-xl mt-1">
@@ -178,14 +216,17 @@ export function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className="text-base font-medium text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple p-2"
+                  className={cn(
+                    "text-base font-medium p-2",
+                    isActive ? "text-cb-purple dark:text-cb-white font-semibold" : "text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple"
+                  )}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </Link>
               )}
             </div>
-          ))}
+          )})}
           <Link
             href="/#contacto"
             className="bg-cb-purple hover:bg-cb-navy text-cb-white px-5 py-3 rounded-md text-center text-base font-medium mt-2 transition-colors"
