@@ -1,4 +1,4 @@
-import { Camera, Video, MonitorPlay, Users, Sparkles, Building, ArrowRight } from "lucide-react";
+import { Camera, Video, MonitorPlay, Users, Building, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ const services = [
     icon: Camera,
     color: "bg-cb-lavender-light/50",
     iconColor: "text-cb-purple",
+    href: "/portafolio",
   },
   {
     id: "produccion-video",
@@ -21,36 +22,13 @@ const services = [
     href: "/audiovisual",
   },
   {
-    id: "fotografia-comercial",
-    title: "Fotografía Comercial",
-    description: "Gastronomía, producto y arquitectura. Imágenes de alto impacto diseñadas para destacar tu marca y vender más.",
+    id: "clientes-comerciales",
+    title: "Servicios para Empresas",
+    description: "Imágenes de alto impacto, gastronomía, producto, arquitectura y contenido mensual optimizado para destacar tu marca y vender más.",
     icon: Building,
     color: "bg-cb-white",
     iconColor: "text-cb-purple",
-  },
-  {
-    id: "retrato-corporativo",
-    title: "Retrato y Marca Personal",
-    description: "Fotografía de retrato profesional para emprendedores, directivos y artistas que buscan elevar su presencia digital.",
-    icon: Users,
-    color: "bg-cb-white",
-    iconColor: "text-cb-dark",
-  },
-  {
-    id: "creacion-contenido",
-    title: "Creación de Contenido",
-    description: "Paquetes mensuales de fotografía y video optimizados para Instagram, TikTok y plataformas digitales.",
-    icon: MonitorPlay,
-    color: "bg-cb-lavender-light/50",
-    iconColor: "text-cb-purple",
-  },
-  {
-    id: "edicion-post",
-    title: "Edición y Postproducción",
-    description: "Servicios de colorización, retoque fotográfico y montaje de video para proyectos independientes.",
-    icon: Sparkles,
-    color: "bg-cb-lavender-light/30",
-    iconColor: "text-cb-dark",
+    href: "/clientes",
   },
 ];
 
