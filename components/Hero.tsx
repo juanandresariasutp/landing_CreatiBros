@@ -1,9 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { buildImageUrl } from "@/lib/cloudinary";
 
 export function Hero() {
   const bgImage = buildImageUrl("hero", "hero-bg.jpg");
+  const phoneNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
+  const wpText = "Hola Creatibros, me gustaría obtener más información y agendar una sesión con ustedes.";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(wpText)}`;
 
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -34,18 +38,20 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="#contacto"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-2 bg-cb-purple hover:bg-cb-navy text-cb-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 w-full sm:w-auto justify-center"
           >
             Habla con nosotros
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a
-            href="#portafolio"
+          <Link
+            href="/portafolio"
             className="group flex items-center gap-2 bg-cb-white/10 hover:bg-cb-white/20 text-cb-white px-8 py-4 rounded-full text-lg font-medium backdrop-blur-sm border border-cb-white/30 transition-all duration-300 w-full sm:w-auto justify-center"
           >
             Ver portafolio
-          </a>
+          </Link>
         </div>
       </div>
     </section>
