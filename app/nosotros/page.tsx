@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Contact } from "@/components/Contact";
+import { Values } from "@/components/Values";
 import { Camera, Mountain } from "lucide-react";
 
 export const metadata = {
@@ -131,6 +132,9 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+
+      {/* Valores */}
+      <Values showButtons={false} />
 
       {/* CTA final */}
       <Contact />

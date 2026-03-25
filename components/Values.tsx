@@ -47,7 +47,7 @@ const values = [
   },
 ];
 
-export function Values() {
+export function Values({ showButtons = true }: { showButtons?: boolean }) {
   return (
     <section className="relative w-full py-20 lg:py-40 bg-[#06060c] text-white overflow-hidden flex flex-col xl:flex-row items-center justify-center min-h-[700px] xl:min-h-[800px] border-t border-white/5">
       
@@ -93,20 +93,22 @@ export function Values() {
           tus objetivos comerciales.
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-5 w-full sm:w-auto">
-          <Link
-            href="/nosotros"
-            className="px-8 py-4 bg-cb-lavender-light text-cb-dark rounded-full font-bold hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(217,217,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] text-center text-lg"
-          >
-            Saber Más
-          </Link>
-          <Link
-            href="/#contacto"
-            className="px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-full font-bold hover:border-white hover:bg-white/5 transition-colors duration-300 text-center text-lg"
-          >
-            Contáctanos
-          </Link>
-        </div>
+        {showButtons && (
+          <div className="flex flex-col sm:flex-row justify-center gap-5 w-full sm:w-auto">
+            <Link
+              href="/nosotros"
+              className="px-8 py-4 bg-cb-lavender-light text-cb-dark rounded-full font-bold hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(217,217,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] text-center text-lg"
+            >
+              Saber Más
+            </Link>
+            <Link
+              href="/#contacto"
+              className="px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-full font-bold hover:border-white hover:bg-white/5 transition-colors duration-300 text-center text-lg"
+            >
+              Contáctanos
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Mobile Badges Grid (visible only on smaller screens < xl) */}
