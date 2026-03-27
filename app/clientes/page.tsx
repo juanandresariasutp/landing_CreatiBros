@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TrendingUp, Users, Target, Utensils, Activity, Briefcase } from "lucide-react";
+import { buildImageUrl } from "@/lib/cloudinary";
 
 export const metadata = {
   title: "Nuestros Clientes | Creatibros",
@@ -43,24 +44,39 @@ const clientCategories = [
 ];
 
 export default function ClientesPage() {
+  const clientesHeroBg = buildImageUrl("", "hero-clientes.jpg");
+
   return (
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Hero Section - Enfoque en Autoridad y Confianza */}
-      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cb-purple/5 dark:bg-cb-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
-            <span className="w-12 h-px bg-cb-purple"></span>
+      <section className="relative overflow-hidden border-b border-cb-white/10 min-h-[65vh] lg:min-h-[72vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={clientesHeroBg}
+            alt="Clientes Creatibros"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-cb-dark/85" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center text-cb-white">
+          <div className="max-w-4xl mx-auto">
+          <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
+            <span className="w-12 h-px bg-cb-lavender-light"></span>
             Casos de Éxito
-            <span className="w-12 h-px bg-cb-purple"></span>
+            <span className="w-12 h-px bg-cb-lavender-light"></span>
           </p>
           <h1 className="font-arsenica text-5xl md:text-7xl font-bold leading-tight mb-8">
-            Marcas que confían en <br className="hidden md:block"/> nuestra <span className="text-cb-purple italic">visión</span>
+            Marcas que confían en <br className="hidden md:block"/> nuestra <span className="text-cb-lavender-light italic">visión</span>
           </h1>
-          <p className="text-xl text-cb-dark dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-cb-white/90 leading-relaxed max-w-2xl mx-auto mb-10">
             Hemos tenido el privilegio de impulsar marcas locales creando fotografías y videos profesionales que no solo se ven increíbles, sino que <strong>venden y conectan</strong>.
           </p>
+          </div>
         </div>
       </section>
 
