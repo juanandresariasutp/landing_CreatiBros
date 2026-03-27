@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Contact } from "@/components/Contact";
 import { Values } from "@/components/Values";
 import { Camera, Mountain } from "lucide-react";
+import { buildImageUrl } from "@/lib/cloudinary";
 
 export const metadata = {
   title: "Quiénes Somos | Creatibros",
@@ -9,23 +10,39 @@ export const metadata = {
 };
 
 export default function NosotrosPage() {
+  const nosotrosHeroBg = buildImageUrl("", "hero-nosotros.jpg");
+
   return (
     <main className="min-h-screen pt-24 pb-0 bg-cb-white dark:bg-cb-dark text-cb-dark dark:text-cb-white transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20 lg:py-28 max-w-7xl mx-auto text-center">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
-            <span className="w-12 h-px bg-cb-purple"></span>
+      <section className="relative overflow-hidden border-b border-cb-white/10 min-h-[65vh] lg:min-h-[72vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={nosotrosHeroBg}
+            alt="Equipo Creatibros"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-cb-dark/75" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center text-cb-white">
+          <div className="max-w-4xl mx-auto">
+          <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
+            <span className="w-12 h-px bg-cb-lavender-light"></span>
             Nuestra Historia
-            <span className="w-12 h-px bg-cb-purple"></span>
+            <span className="w-12 h-px bg-cb-lavender-light"></span>
           </p>
           <h1 className="font-arsenica text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
             Más que capturar imágenes, <br className="hidden md:block" />
-            <span className="text-cb-purple italic">construimos legados.</span>
+            <span className="text-cb-lavender-light italic">construimos legados.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-cb-white/90 leading-relaxed max-w-2xl mx-auto">
             Fundamos Creatibros con la visión de fusionar el arte audiovisual con el mundo digital y los grandes momentos.
           </p>
+          </div>
         </div>
       </section>
 
@@ -70,7 +87,7 @@ export default function NosotrosPage() {
             <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
                {/* Imagen representativa del eje cafetero o trabajando. Reemplazar cuando se tenga fotos reales. */}
                <Image 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
+                src={buildImageUrl("", "proposito.png")}
                 alt="Creatibros trabajando en el Eje Cafetero"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -97,7 +114,7 @@ export default function NosotrosPage() {
           <div className="group flex flex-col items-center text-center">
             <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
+                src={buildImageUrl("", "juan.jpg")}
                 alt="Juan Andrés Arias"
                 fill
                 className="object-cover"
@@ -105,7 +122,7 @@ export default function NosotrosPage() {
             </div>
             <h3 className="font-arsenica text-2xl md:text-3xl font-bold mb-2">Juan Andrés Arias</h3>
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
-              Fotógrafo / Cineasta / Ingeniero
+              Fotógrafo / Ingeniero de Sistemas
             </p>
             <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               Con más de <strong>6 años de experiencia</strong> en el cubrimiento de eventos y 2 años como realizador audiovisual. Su perfil técnico como <strong>Ingeniero de Sistemas y Computación</strong> le permite integrar tecnología y eficiencia en estrategias de marketing digital de alto impacto.
@@ -116,7 +133,7 @@ export default function NosotrosPage() {
           <div className="group flex flex-col items-center text-center">
             <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
-                src="https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=2070&auto=format&fit=crop" 
+                src={buildImageUrl("", "camilo1.jpg")}
                 alt="Andrés Camilo Trochez"
                 fill
                 className="object-cover"
@@ -124,10 +141,10 @@ export default function NosotrosPage() {
             </div>
             <h3 className="font-arsenica text-2xl md:text-3xl font-bold mb-2">Andrés Camilo Trochez</h3>
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
-              Fotógrafo / Creador de Contenido
+              Fotógrafo / Realizador Audiovisual
             </p>
             <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
-              <strong>Profesional en Ciencias del Deporte y la Recreación.</strong> Ha integrado su disciplina con 2 años de experiencia en fotografía y video. Aporta una visión dinámica, creativa y llena de vitalidad para que la identidad de cada marca se conecte genuinamente con su audiencia.
+              Con <strong>más de 5 años de experiencia</strong> en el sector de la recreación, aporta un enfoque creativo y dinámico para dar solución a necesidades logísticas, desarrollando propuestas innovadoras que conectan de manera efectiva con cada proyecto y su público.
             </p>
           </div>
         </div>

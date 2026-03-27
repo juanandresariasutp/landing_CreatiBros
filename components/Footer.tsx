@@ -27,7 +27,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a 
-                href="https://instagram.com/creatibros" 
+                href="https://instagram.com/_avenue.vitae_" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border border-cb-white/10 flex items-center justify-center hover:bg-cb-purple hover:border-cb-purple hover:-translate-y-1 transition-all duration-300 group"
@@ -97,7 +97,7 @@ export function Footer() {
               </li>
               <li>
                 <a 
-                  href="mailto:hola@creatibros.com" 
+                  href="mailto:creatibros.co@gmail.com" 
                   className="flex items-start gap-4 p-4 rounded-2xl bg-cb-white/5 border border-cb-white/5 hover:border-cb-purple/50 hover:bg-cb-purple/10 transition-colors group"
                 >
                   <div className="p-2 bg-cb-white/10 rounded-lg group-hover:bg-cb-purple/20 transition-colors">
@@ -105,7 +105,7 @@ export function Footer() {
                   </div>
                   <div>
                     <span className="block text-sm text-cb-white/50 font-medium mb-1">Email</span>
-                    <span className="text-cb-white font-medium">hola@creatibros.com</span>
+                    <span className="text-cb-white font-medium">creatibros.co@gmail.com</span>
                   </div>
                 </a>
               </li>

@@ -21,6 +21,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const pathname = usePathname();
+  const isHomeTop = pathname === "/" && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +40,9 @@ export function Navbar() {
         "fixed top-0 w-full z-50 transition-all duration-300",
         isScrolled
           ? "bg-cb-white/90 dark:bg-cb-dark/90 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
+          : isHomeTop
+            ? "bg-cb-dark/25 backdrop-blur-[2px] py-6"
+            : "bg-transparent py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +50,10 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <Camera className="w-10 h-10 text-cb-purple transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-arsenica text-3xl font-bold text-cb-dark dark:text-cb-white tracking-tight transition-colors duration-300 group-hover:text-cb-purple">
+            <span className={cn(
+              "font-arsenica text-3xl font-bold tracking-tight transition-colors duration-300 group-hover:text-cb-purple",
+              isHomeTop ? "text-cb-white" : "text-cb-dark dark:text-cb-white"
+            )}>
               Creatibros
             </span>
           </Link>
@@ -68,9 +74,11 @@ export function Navbar() {
                       href={link.href}
                       className={cn(
                         "relative text-base lg:text-[1.05rem] font-medium transition-all duration-300",
-                        isActive 
-                          ? "text-cb-purple dark:text-cb-white" 
-                          : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                        isActive
+                          ? (isHomeTop ? "text-cb-lavender-light" : "text-cb-purple dark:text-cb-white")
+                          : (isHomeTop
+                            ? "text-cb-white/90 group-hover:text-cb-lavender-light"
+                            : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white")
                       )}
                     >
                       {link.name}
@@ -81,7 +89,11 @@ export function Navbar() {
                     </Link>
                     <ChevronDown className={cn(
                       "w-4 h-4 transition-transform duration-300 group-hover:rotate-180",
-                      isActive ? "text-cb-purple dark:text-cb-white" : "text-cb-dark/50 dark:text-cb-white/50 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                      isActive
+                        ? (isHomeTop ? "text-cb-lavender-light" : "text-cb-purple dark:text-cb-white")
+                        : (isHomeTop
+                          ? "text-cb-white/75 group-hover:text-cb-lavender-light"
+                          : "text-cb-dark/50 dark:text-cb-white/50 group-hover:text-cb-purple dark:group-hover:text-cb-white")
                     )} />
                     
                     {/* Dropdown Menu modificado con PUENTE INVISIBLE para evitar cierre al mover el ratón */}
@@ -125,8 +137,10 @@ export function Navbar() {
                     className={cn(
                       "relative py-2 text-base lg:text-[1.05rem] font-medium transition-all duration-300 hover:-translate-y-0.5 inline-block",
                       isActive
-                        ? "text-cb-purple dark:text-cb-white"
-                        : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white"
+                        ? (isHomeTop ? "text-cb-lavender-light" : "text-cb-purple dark:text-cb-white")
+                        : (isHomeTop
+                          ? "text-cb-white/90 group-hover:text-cb-lavender-light"
+                          : "text-cb-dark/80 dark:text-cb-white/80 group-hover:text-cb-purple dark:group-hover:text-cb-white")
                     )}
                   >
                     {link.name}
@@ -138,7 +152,10 @@ export function Navbar() {
                 )}
               </div>
             )})}
-            <div className="flex items-center gap-5 border-l pl-5 border-cb-dark/10 dark:border-cb-white/10">
+            <div className={cn(
+              "flex items-center gap-5 border-l pl-5",
+              isHomeTop ? "border-cb-white/25" : "border-cb-dark/10 dark:border-cb-white/10"
+            )}>
               <ThemeToggle />
               <Link
                 href="/#contacto"
@@ -153,7 +170,10 @@ export function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
-              className="p-2 text-cb-dark dark:text-cb-white hover:text-cb-purple transition-colors"
+              className={cn(
+                "p-2 hover:text-cb-purple transition-colors",
+                isHomeTop ? "text-cb-white" : "text-cb-dark dark:text-cb-white"
+              )}
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
