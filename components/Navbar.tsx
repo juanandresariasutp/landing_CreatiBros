@@ -22,6 +22,12 @@ export function Navbar() {
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
   const pathname = usePathname();
   const isHomeTop = pathname === "/" && !isScrolled;
+  const phoneNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
+  const waText = "Hola, me gustaría obtener más información sobre sus servicios.";
+  const whatsappUrl = phoneNumber
+    ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waText)}`
+    : "/#contacto";
+  const isWhatsappLink = whatsappUrl.startsWith("https://wa.me/");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -157,12 +163,14 @@ export function Navbar() {
               isHomeTop ? "border-cb-white/25" : "border-cb-dark/10 dark:border-cb-white/10"
             )}>
               <ThemeToggle />
-              <Link
-                href="/#contacto"
+              <a
+                href={whatsappUrl}
+                target={isWhatsappLink ? "_blank" : undefined}
+                rel={isWhatsappLink ? "noopener noreferrer" : undefined}
                 className="bg-cb-purple hover:bg-cb-navy dark:hover:bg-cb-white dark:hover:text-cb-dark text-cb-white px-7 py-3 rounded-full text-base font-bold transition-all duration-300 hover:scale-105 shadow-md"
               >
                 Contacto
-              </Link>
+              </a>
             </div>
           </nav>
 
@@ -247,13 +255,15 @@ export function Navbar() {
               )}
             </div>
           )})}
-          <Link
-            href="/#contacto"
+          <a
+            href={whatsappUrl}
+            target={isWhatsappLink ? "_blank" : undefined}
+            rel={isWhatsappLink ? "noopener noreferrer" : undefined}
             className="bg-cb-purple hover:bg-cb-navy text-cb-white px-5 py-3 rounded-md text-center text-base font-medium mt-2 transition-colors"
             onClick={() => setIsOpen(false)}
           >
             Contáctanos
-          </Link>
+          </a>
         </div>
       )}
     </header>
