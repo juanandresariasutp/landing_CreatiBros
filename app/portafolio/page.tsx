@@ -3,16 +3,30 @@ import Link from "next/link";
 import Image from "next/image";
 import { portfolioCategories } from "@/lib/portfolio-data";
 import { buildImageUrl } from "@/lib/cloudinary";
+import { getCoverImageFromFolder } from "@/lib/cloudinary-actions";
 
 export const metadata = {
   title: "Portafolio | Creatibros",
   description: "Explora nuestros trabajos en fotografía de bodas, quince años, retrato, gastronomía y video corporativo.",
 };
 
-const eventos = portfolioCategories.filter((c) => c.group === "Eventos");
-const servicios = portfolioCategories.filter((c) => c.group === "Servicios Profesionales");
+export default async function PortafolioPage() {
+  const categoriesWithCovers = await Promise.all(
+    portfolioCategories.map(async (category) => {
+      const controlledCover = await getCoverImageFromFolder(`portafolio/${category.slug}`);
 
-export default function PortafolioPage() {
+      return {
+        ...category,
+        dynamicCoverUrl:
+          controlledCover?.url ??
+          buildImageUrl(`portafolio/${category.slug}`, category.coverImage),
+      };
+    })
+  );
+
+  const eventos = categoriesWithCovers.filter((c) => c.group === "Eventos");
+  const servicios = categoriesWithCovers.filter((c) => c.group === "Servicios Profesionales");
+
   return (
     <main className="bg-cb-white dark:bg-cb-dark min-h-screen text-cb-dark dark:text-cb-white pt-24 font-sans selection:bg-cb-purple selection:text-white transition-colors duration-300">
       {/* Hero Section Persuasivo */}
@@ -54,7 +68,7 @@ export default function PortafolioPage() {
               >
                 {/* Imagen de fondo */}
                 <Image 
-                  src={buildImageUrl(`portafolio/${categoria.slug}`, categoria.coverImage)}
+                  src={categoria.dynamicCoverUrl}
                   alt={`Galería de ${categoria.title}`}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
@@ -106,7 +120,7 @@ export default function PortafolioPage() {
               >
                 {/* Imagen de fondo */}
                 <Image 
-                  src={buildImageUrl(`portafolio/${categoria.slug}`, categoria.coverImage)}
+                  src={categoria.dynamicCoverUrl}
                   alt={`Galería de ${categoria.title}`}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
