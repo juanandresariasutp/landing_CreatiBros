@@ -49,11 +49,11 @@ const values = [
 
 export function Values({ showButtons = true }: { showButtons?: boolean }) {
   return (
-    <section className="relative w-full py-20 lg:py-40 bg-[#06060c] text-white overflow-hidden flex flex-col xl:flex-row items-center justify-center min-h-[700px] xl:min-h-[800px] border-t border-white/5">
+    <section className="relative w-full py-20 lg:py-40 bg-cb-white text-cb-dark dark:bg-[#06060c] dark:text-white overflow-hidden flex flex-col xl:flex-row items-center justify-center min-h-[700px] xl:min-h-[800px] border-t border-cb-lavender-light/30 dark:border-white/5">
       
       {/* Radial Gradient Glow in the background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[800px] h-[800px] bg-cb-purple/10 blur-[150px] rounded-full"></div>
+        <div className="w-[800px] h-[800px] bg-cb-lavender-med/20 dark:bg-cb-purple/10 blur-[150px] rounded-full"></div>
       </div>
 
       {/* Floating Badges (Desktop XL) */}
@@ -61,7 +61,7 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
         <div 
           key={i} 
           className={cn(
-            "absolute items-center gap-4 bg-[#16161f] border border-white/10 pr-6 p-2 rounded-full shadow-2xl backdrop-blur-sm z-20 hover:scale-105 hover:border-cb-purple/50 transition-all duration-300",
+            "absolute items-center gap-4 bg-cb-white/80 dark:bg-[#16161f] border border-cb-lavender-light/40 dark:border-white/10 pr-6 p-2 rounded-full shadow-xl dark:shadow-2xl backdrop-blur-sm z-20 hover:scale-105 hover:border-cb-purple/50 transition-all duration-300",
             v.position,
             v.animation
           )}
@@ -69,7 +69,7 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
           <div className={cn("w-10 h-10 rounded-full flex items-center justify-center shadow-inner", v.color)}>
             {v.icon}
           </div>
-          <span className="font-medium text-sm lg:text-base text-white/90">{v.title}</span>
+          <span className="font-medium text-sm lg:text-base text-cb-dark/85 dark:text-white/90">{v.title}</span>
         </div>
       ))}
 
@@ -82,12 +82,12 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
           </span>
         </div>
         
-        <h2 className="font-arsenica text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-8 text-white drop-shadow-md">
+        <h2 className="font-arsenica text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-8 text-cb-dark dark:text-white drop-shadow-md">
           Más que una <br className="hidden md:block"/>
           Agencia Creativa
         </h2>
         
-        <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed mx-auto font-medium">
+        <p className="text-lg md:text-xl text-cb-dark/70 dark:text-white/70 mb-12 max-w-2xl leading-relaxed mx-auto font-medium">
           Nuestra agencia te ofrece un conjunto de soluciones visuales diseñadas 
           para organizar tus ideas, potenciar enormemente la presencia de tu marca y alcanzar 
           tus objetivos comerciales.
@@ -103,7 +103,7 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
             </Link>
             <Link
               href="/#contacto"
-              className="px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-full font-bold hover:border-white hover:bg-white/5 transition-colors duration-300 text-center text-lg"
+              className="px-8 py-4 bg-transparent border-2 border-cb-dark/20 dark:border-white/20 text-cb-dark dark:text-white rounded-full font-bold hover:border-cb-dark dark:hover:border-white hover:bg-cb-dark/5 dark:hover:bg-white/5 transition-colors duration-300 text-center text-lg"
             >
               Contáctanos
             </Link>
@@ -116,12 +116,12 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
         {values.map((v, i) => (
           <div 
             key={i} 
-            className="flex items-center gap-3 bg-[#16161f] border border-white/10 pr-5 p-1.5 rounded-full shadow-lg"
+            className="flex items-center gap-3 bg-cb-white/80 dark:bg-[#16161f] border border-cb-lavender-light/40 dark:border-white/10 pr-5 p-1.5 rounded-full shadow-lg"
           >
             <div className={cn("w-9 h-9 rounded-full flex items-center justify-center", v.color)}>
               {v.icon}
             </div>
-            <span className="font-medium text-xs sm:text-sm text-white/90">{v.title}</span>
+            <span className="font-medium text-xs sm:text-sm text-cb-dark/85 dark:text-white/90">{v.title}</span>
           </div>
         ))}
       </div>
