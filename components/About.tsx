@@ -15,7 +15,7 @@ export function About() {
               <div className="absolute -inset-4 bg-cb-lavender-light/40 dark:bg-cb-lavender-light/20 rounded-3xl -rotate-6 transform origin-bottom-left transition-transform hover:rotate-0 duration-500"></div>
               <div className="absolute inset-0 overflow-hidden rounded-2xl bg-cb-lavender-light">
                 <Image
-                  src={buildImageUrl("equipo", "nosotros.jpg")}
+                  src={buildImageUrl("", "foto-nosotros.jpg")}
                   alt="Equipo de Creatibros"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

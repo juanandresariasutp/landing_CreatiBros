@@ -4,7 +4,7 @@ import Link from "next/link";
 import { buildImageUrl } from "@/lib/cloudinary";
 
 export function Hero() {
-  const bgImage = buildImageUrl("hero", "hero-bg.jpg");
+  const bgImage = buildImageUrl("", "hero-bg.jpg");
   const phoneNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
   const wpText = "Hola Creatibros, me gustaría obtener más información y agendar una sesión con ustedes.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(wpText)}`;

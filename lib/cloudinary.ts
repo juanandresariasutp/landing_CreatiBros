@@ -7,10 +7,13 @@
  */
 
 export function buildImageUrl(folder: string, filename: string): string {
-  // Currently using placeholder.co for active development as requested
-  // Dimensions can be extracted loosely or we return a standard size
-  // Since we require different shapes, we can encode sizes in the filename temporarily if needed
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   
-  // Return placeholder
-  return `https://placehold.co/800x600/e2e8f0/8684FF?text=${encodeURIComponent(folder+'\n'+filename)}`;
+  if (!cloudName || cloudName === "") {
+    console.warn("Falta configurar NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME en .env.local");
+    return `https://placehold.co/800x600/e2e8f0/8684FF?text=${encodeURIComponent(folder+'\n'+filename)}`;
+  }
+
+  const path = folder ? `${folder}/${filename}` : filename;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/v1/${path}`;
 }
