@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Heart, Award, Star } from "lucide-react";
 import Image from "next/image";
 import { buildImageUrl } from "@/lib/cloudinary";
+import { getCoverImageFromFolder, getImagesFromFolder } from "@/lib/cloudinary-actions";
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const category = portfolioCategories.find((c) => c.slug === params.slug);
@@ -22,7 +23,7 @@ export function generateStaticParams() {
   }));
 }
 
-export default function PortfolioCategoryPage({ params }: { params: { slug: string } }) {
+export default async function PortfolioCategoryPage({ params }: { params: { slug: string } }) {
   const category = portfolioCategories.find((c) => c.slug === params.slug);
 
   if (!category) {
@@ -30,6 +31,24 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
   }
 
   const isEvento = category.group === "Eventos";
+  const cloudinaryImages = await getImagesFromFolder(`portafolio/${category.slug}`);
+  const controlledCover = await getCoverImageFromFolder(`portafolio/${category.slug}`);
+
+  const galleryImages =
+    cloudinaryImages.length > 0
+      ? cloudinaryImages.map((img, index) => ({
+          id: index + 1,
+          folder: category.slug,
+          filename: `${img.publicId.split("/").pop()}.${img.format}`,
+          alt: `${category.title} ${index + 1}`,
+          url: img.url,
+        }))
+      : category.images;
+
+  const heroImageUrl =
+    controlledCover?.url ??
+    cloudinaryImages[0]?.url ??
+    buildImageUrl(`portafolio/${category.slug}`, category.coverImage);
 
   return (
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
@@ -71,7 +90,7 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
           
           <div className="order-1 lg:order-2 w-full h-[50vh] lg:h-[70vh] relative rounded-3xl overflow-hidden shadow-2xl">
             <Image 
-              src={buildImageUrl(`portafolio/${category.slug}`, category.coverImage)}
+              src={heroImageUrl}
               alt={`${category.title} - Cover`}
               fill
               className="object-cover"
@@ -142,7 +161,7 @@ export default function PortfolioCategoryPage({ params }: { params: { slug: stri
         <PortfolioCarousel 
           title=""
           description={""}
-          images={category.images} 
+          images={galleryImages} 
         />
       </section>
 

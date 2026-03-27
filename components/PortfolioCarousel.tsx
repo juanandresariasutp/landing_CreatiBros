@@ -13,6 +13,7 @@ export type PortfolioImage = {
   folder: string;
   filename: string;
   alt: string;
+  url?: string;
 };
 
 interface Props {
@@ -39,7 +40,7 @@ export function PortfolioCarousel({ title, description, images }: Props) {
   }, [emblaApi]);
 
   const lightboxSlides = images.map((img) => ({
-    src: buildImageUrl(`portafolio/${img.folder}`, img.filename),
+    src: img.url ?? buildImageUrl(`portafolio/${img.folder}`, img.filename),
     alt: img.alt,
   }));
 
@@ -84,7 +85,7 @@ export function PortfolioCarousel({ title, description, images }: Props) {
                 }}
               >
                 <Image
-                  src={buildImageUrl(`portafolio/${img.folder}`, img.filename)}
+                  src={img.url ?? buildImageUrl(`portafolio/${img.folder}`, img.filename)}
                   alt={img.alt}
                   fill
                   sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 25vw"

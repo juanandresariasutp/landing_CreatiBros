@@ -12,6 +12,18 @@ export type CloudinaryFolderImage = {
   url: string;
 };
 
+function mapCloudinaryResource(file: { public_id: string; format: string }): CloudinaryFolderImage {
+  return {
+    publicId: file.public_id,
+    format: file.format,
+    url: cloudinary.url(file.public_id, {
+      secure: true,
+      fetch_format: "auto",
+      quality: "auto",
+    }),
+  };
+}
+
 export async function getImagesFromFolder(folderName: string): Promise<CloudinaryFolderImage[]> {
   try {
     const { resources } = await cloudinary.search
@@ -20,17 +32,39 @@ export async function getImagesFromFolder(folderName: string): Promise<Cloudinar
       .max_results(50)
       .execute();
 
-    return resources.map((file: { public_id: string; format: string }) => ({
-      publicId: file.public_id,
-      format: file.format,
-      url: cloudinary.url(file.public_id, {
-        secure: true,
-        fetch_format: "auto",
-        quality: "auto",
-      }),
-    }));
+    return resources.map(mapCloudinaryResource);
   } catch (error) {
     console.error("Error obteniendo imágenes de Cloudinary:", error);
     return [];
+  }
+}
+
+export async function getCoverImageFromFolder(folderName: string): Promise<CloudinaryFolderImage | null> {
+  try {
+    // Prioridad 1: imagen con tag "cover" en esa carpeta.
+    const taggedCover = await cloudinary.search
+      .expression(`folder="${folderName}" AND tags="cover"`)
+      .sort_by("created_at", "desc")
+      .max_results(1)
+      .execute();
+
+    if (taggedCover.resources.length > 0) {
+      return mapCloudinaryResource(taggedCover.resources[0] as { public_id: string; format: string });
+    }
+
+    // Prioridad 2: archivo llamado "cover" dentro de la carpeta.
+    const namedCover = await cloudinary.search
+      .expression(`folder="${folderName}" AND public_id="${folderName}/cover"`)
+      .max_results(1)
+      .execute();
+
+    if (namedCover.resources.length > 0) {
+      return mapCloudinaryResource(namedCover.resources[0] as { public_id: string; format: string });
+    }
+
+    return null;
+  } catch (error) {
+    console.error("Error obteniendo portada de Cloudinary:", error);
+    return null;
   }
 }
