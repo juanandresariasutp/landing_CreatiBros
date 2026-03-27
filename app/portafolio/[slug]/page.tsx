@@ -43,12 +43,12 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
           alt: `${category.title} ${index + 1}`,
           url: img.url,
         }))
-      : category.images;
+      : [];
 
   const heroImageUrl =
     controlledCover?.url ??
     cloudinaryImages[0]?.url ??
-    buildImageUrl(`portafolio/${category.slug}`, category.coverImage);
+    buildImageUrl("", "hero-portafolio2.jpg");
 
   return (
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
@@ -158,6 +158,11 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
              Observa cómo cuidamos la luz, la composición y el instante preciso en cada toma.
            </p>
         </div>
+        {galleryImages.length === 0 && (
+          <p className="text-center text-cb-dark/70 dark:text-cb-white/70 mb-8 px-4">
+            Aún no hay imágenes disponibles en esta categoría o Cloudinary alcanzó su límite temporal.
+          </p>
+        )}
         <PortfolioCarousel 
           title=""
           description={""}
