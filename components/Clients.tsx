@@ -69,7 +69,7 @@ export function Clients() {
                 key={logo.publicId}
                 className="flex-[0_0_50%] sm:flex-[0_0_33.33%] md:flex-[0_0_25%] lg:flex-[0_0_16.66%] min-w-0 px-4"
               >
-                <div className="relative h-20 grayscale opacity-60 dark:invert dark:opacity-50 hover:grayscale-0 dark:hover:invert-0 hover:opacity-100 dark:hover:opacity-100 transition-all duration-300">
+                <div className="relative h-24 md:h-28 transition-transform duration-300 hover:scale-105">
                   <Image
                     src={logo.url}
                     alt={`Logo ${logo.publicId}`}
