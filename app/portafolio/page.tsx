@@ -11,6 +11,9 @@ export const metadata = {
 };
 
 export default async function PortafolioPage() {
+  const portfolioHeroBg = buildImageUrl("", "hero-portafolio2.jpg");
+  const safeFallbackCover = portfolioHeroBg;
+
   const categoriesWithCovers = await Promise.all(
     portfolioCategories.map(async (category) => {
       const controlledCover = await getCoverImageFromFolder(`portafolio/${category.slug}`);
@@ -19,7 +22,7 @@ export default async function PortafolioPage() {
         ...category,
         dynamicCoverUrl:
           controlledCover?.url ??
-          buildImageUrl(`portafolio/${category.slug}`, category.coverImage),
+          safeFallbackCover,
       };
     })
   );
@@ -30,19 +33,33 @@ export default async function PortafolioPage() {
   return (
     <main className="bg-cb-white dark:bg-cb-dark min-h-screen text-cb-dark dark:text-cb-white pt-24 font-sans selection:bg-cb-purple selection:text-white transition-colors duration-300">
       {/* Hero Section Persuasivo */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-4xl">
-          <p className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center gap-4">
-            <span className="w-12 h-px bg-cb-purple"></span>
-            Nuestro Trabajo
-          </p>
-          <h1 className="font-arsenica text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8">
-            Instantes fugaces, <br />
-            <span className="text-cb-purple italic">legados eternos.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-cb-dark dark:text-cb-white/80 max-w-2xl leading-relaxed">
-            No tomamos fotografías; capturamos la esencia de tu historia. Ya sea el día más importante de tu vida o la identidad visual de tu marca, creamos imágenes que trascienden.
-          </p>
+      <section className="relative overflow-hidden border-b border-cb-white/10 min-h-[70vh] lg:min-h-[80vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={portfolioHeroBg}
+            alt="Portafolio Creatibros"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-cb-dark/75" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full text-cb-white">
+          <div className="max-w-4xl">
+            <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center gap-4">
+              <span className="w-12 h-px bg-cb-lavender-light"></span>
+              Nuestro Trabajo
+            </p>
+            <h1 className="font-arsenica text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8">
+              Instantes fugaces, <br />
+              <span className="text-cb-lavender-light italic">legados eternos.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-cb-white/90 max-w-2xl leading-relaxed">
+              No tomamos fotografías; capturamos la esencia de tu historia. Ya sea el día más importante de tu vida o la identidad visual de tu marca, creamos imágenes que trascienden.
+            </p>
+          </div>
         </div>
       </section>
 
