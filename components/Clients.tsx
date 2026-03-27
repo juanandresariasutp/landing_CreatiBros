@@ -50,14 +50,17 @@ export function Clients() {
   }, []);
 
   return (
-    <section id="clientes" className="py-20 bg-cb-lavender-light/20 dark:bg-cb-dark/30 border-y border-cb-lavender-light/30 dark:border-cb-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-center font-arsenica text-2xl md:text-3xl font-bold text-cb-dark dark:text-cb-white mb-12">
+    <section id="clientes" className="relative py-20 bg-gradient-to-br from-[#04050b] via-[#091230] to-[#06060c] border-y border-cb-white/10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[420px] w-[420px] rounded-full bg-cb-purple/10 blur-[110px]" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 className="text-center font-arsenica text-2xl md:text-3xl font-bold text-cb-white mb-12">
           Marcas que confían en nuestro foco
         </h3>
 
         {logos.length === 0 && (
-          <p className="text-center text-cb-dark/70 dark:text-cb-white/70 mb-8">
+          <p className="text-center text-cb-white/70 mb-8">
             Sube tus logos a la carpeta "clientes" en Cloudinary para mostrarlos aquí automáticamente.
           </p>
         )}
