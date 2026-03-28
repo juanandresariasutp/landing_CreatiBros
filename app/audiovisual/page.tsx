@@ -1,5 +1,7 @@
 import { Contact } from "@/components/Contact";
+import Image from "next/image";
 import { PlayCircle, Video, TrendingUp, MonitorSmartphone } from "lucide-react";
+import { buildImageUrl, buildVideoUrl } from "@/lib/cloudinary";
 
 export const metadata = {
   title: "Producción Audiovisual | Creatibros",
@@ -25,22 +27,40 @@ const reasons = [
 ];
 
 export default function AudiovisualPage() {
+  const audiovisualHeroBg = buildImageUrl("", "hero-audiovisual.jpg");
+  const reelVideos = ["reel-1", "reel-2", "reel-3", "reel-4"];
+
   return (
-    <main className="bg-cb-white dark:bg-cb-dark min-h-screen pt-24 pb-12">
+    <main className="bg-cb-white dark:bg-cb-dark min-h-screen pt-24 pb-12 text-cb-dark dark:text-cb-white selection:bg-cb-purple selection:text-white transition-colors duration-300">
       {/* Hero Section */}
-      <section className="relative w-full bg-cb-navy dark:bg-cb-dark text-cb-white py-24 md:py-32 overflow-hidden border-b border-cb-white/10 text-center">
-        {/* Usamos un patron de fondo sutil o div decorativo */}
-        <div className="absolute inset-0 opacity-10 bg-[url('/noise.png')] mix-blend-overlay"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-cb-lavender-light font-semibold tracking-widest uppercase text-sm mb-4 block">
-            Producción Audiovisual
-          </span>
-          <h1 className="font-arsenica text-5xl md:text-7xl font-bold mb-6">
-            Dale movimiento a tu marca
-          </h1>
-          <p className="text-xl md:text-2xl text-cb-lavender-light/80 font-light leading-relaxed max-w-2xl mx-auto">
-            Desde piezas cinematográficas hasta el impacto del formato vertical. Creamos videos que cuentan historias y generan resultados.
-          </p>
+      <section className="relative overflow-hidden border-b border-cb-white/10 min-h-[70vh] lg:min-h-[80vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={audiovisualHeroBg}
+            alt="Producción audiovisual Creatibros"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-cb-dark/80" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full text-cb-white text-center">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
+              <span className="w-12 h-px bg-cb-lavender-light"></span>
+              Producción Audiovisual
+              <span className="w-12 h-px bg-cb-lavender-light"></span>
+            </p>
+            <h1 className="font-arsenica text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-8">
+              Dale movimiento <br />
+              <span className="text-cb-lavender-light italic">a tu marca.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-cb-white/90 max-w-2xl mx-auto leading-relaxed">
+              Desde piezas cinematográficas hasta el impacto del formato vertical. Creamos videos que cuentan historias y generan resultados.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -124,17 +144,44 @@ export default function AudiovisualPage() {
             Nuestro trabajo en acción
           </h2>
           <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
-            Próximamente estaremos mostrando nuestras mejores producciones audiovisuales directamente desde Instagram.
+            Aquí se muestran 4 reels desde Cloudinary. Sube tus videos a la carpeta "audiovisual" con nombres reel-1, reel-2, reel-3 y reel-4.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {/* Placeholders */}
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="aspect-[9/16] bg-cb-lavender-light/30 dark:bg-cb-white/5 rounded-xl border border-cb-lavender-light dark:border-cb-white/10 flex flex-col items-center justify-center text-cb-dark/50 dark:text-cb-white/30 p-6 group cursor-not-allowed">
-                <Video className="w-10 h-10 mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
-                <p className="font-medium text-sm text-center">Espacio para Video Reservado</p>
-              </div>
-            ))}
+            {reelVideos.map((videoId) => {
+              const videoSources = [
+                buildVideoUrl("audiovisual", `${videoId}.mp4`),
+                buildVideoUrl("audiovisual", `${videoId}.mov`),
+                buildVideoUrl("", `${videoId}.mp4`),
+                buildVideoUrl("", `${videoId}.mov`),
+              ].filter(Boolean);
+
+              return (
+                <div
+                  key={videoId}
+                  className="aspect-[9/16] rounded-xl border border-cb-lavender-light dark:border-cb-white/10 overflow-hidden bg-cb-navy dark:bg-cb-white/5"
+                >
+                  {videoSources.length > 0 ? (
+                    <video
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="w-full h-full object-cover"
+                    >
+                      {videoSources.map((src) => (
+                        <source key={src} src={src} />
+                      ))}
+                      Tu navegador no soporta reproducción de video.
+                    </video>
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center text-cb-dark/50 dark:text-cb-white/30 p-6">
+                      <Video className="w-10 h-10 mb-4 opacity-60" />
+                      <p className="font-medium text-sm text-center">Configura Cloudinary para ver este video</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

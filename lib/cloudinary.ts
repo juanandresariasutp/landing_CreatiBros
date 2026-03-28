@@ -17,3 +17,15 @@ export function buildImageUrl(folder: string, filename: string): string {
   const path = folder ? `${folder}/${filename}` : filename;
   return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/v1/${path}`;
 }
+
+export function buildVideoUrl(folder: string, filename: string): string {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+  if (!cloudName || cloudName === "") {
+    console.warn("Falta configurar NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME en .env.local");
+    return "";
+  }
+
+  const path = folder ? `${folder}/${filename}` : filename;
+  return `https://res.cloudinary.com/${cloudName}/video/upload/f_auto,q_auto/v1/${path}`;
+}
