@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { TrendingUp, Users, Target, Utensils, Activity, Briefcase } from "lucide-react";
+import { TrendingUp, Users, Target } from "lucide-react";
 import { buildImageUrl } from "@/lib/cloudinary";
 
 export const metadata = {
@@ -8,39 +8,63 @@ export const metadata = {
   description: "Descubre las marcas que han confiado en Creatibros para potenciar su presencia con fotografía y video profesional.",
 };
 
-const clientCategories = [
+const clients = [
   {
-    title: "Gastronomía & Experiencias",
-    icon: <Utensils className="w-6 h-6 text-cb-purple" />,
-    description: "Hacemos que tus platillos y espacios luzcan irresistibles. Despertamos el apetito de tu audiencia a través de la pantalla.",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000&auto=format&fit=crop",
-    clients: [
-      { name: "@faroles.plaza", type: "Mall de Comidas" },
-      { name: "@zabroxoeloriginal", type: "Restaurante" },
-      { name: "@dulcettecolombia", type: "Tortas y Postres" },
-    ]
+    name: "@faroles.plaza",
+    type: "Mall de Comidas",
+    category: "Gastronomía",
+    description: "Los mejores espacios gastronómicos reunidos en un solo lugar. Capturamos la esencia del sabor.",
+    image: buildImageUrl("tarjetas", "faroles.jpg"),
   },
   {
-    title: "Deportes & Bienestar",
-    icon: <Activity className="w-6 h-6 text-cb-purple" />,
-    description: "Capturamos la adrenalina, el esfuerzo y la pasión. Transmitimos energía pura que inspira a tu comunidad a moverse.",
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2000&auto=format&fit=crop",
-    clients: [
-      { name: "@carrera.riocana", type: "Evento Deportivo" },
-      { name: "@lucho.entrenador", type: "Personal Trainer" },
-    ]
+    name: "@zabroxoeloriginal",
+    type: "Restaurante",
+    category: "Gastronomía",
+    description: "Cocina auténtica con un toque especial. Cada plato es una obra maestra visual.",
+    image: buildImageUrl("tarjetas", "zabroxo.jpg"),
   },
   {
-    title: "Lifestyle & Servicios",
-    icon: <Briefcase className="w-6 h-6 text-cb-purple" />,
-    description: "Elevamos la percepción de marca. Mostramos la verdadera calidad de tus servicios para atraer clientes de alto valor.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop",
-    clients: [
-      { name: "@correcaminos.viajes", type: "Agencia de Viajes" },
-      { name: "@bran.medinatattoo", type: "Tattoos Store" },
-      { name: "@_aeternum_official", type: "Boutique" },
-    ]
-  }
+    name: "@dulcettecolombia",
+    type: "Tortas y Postres",
+    category: "Gastronomía",
+    description: "Dulzura hecha arte. Cada postre merece ser fotografiado y compartido.",
+    image: buildImageUrl("tarjetas", "dulcette.jpg"),
+  },
+  {
+    name: "@carrera.riocana",
+    type: "Evento Deportivo",
+    category: "Deportes",
+    description: "La adrenalina y el espíritu competitivo capturados en cada fotograma.",
+    image: buildImageUrl("tarjetas", "carrera.jpg"),
+  },
+  {
+    name: "@lucho.entrenador",
+    type: "Personal Trainer",
+    category: "Deportes",
+    description: "Transformación y disciplina. El viaje del fitness merecía ser documentado.",
+    image: buildImageUrl("tarjetas", "lucho.jpg"),
+  },
+  {
+    name: "@correcaminos.viajes",
+    type: "Agencia de Viajes",
+    category: "Lifestyle",
+    description: "Destinos soñados hechos accesibles. Inspiramos viajes a través de imágenes.",
+    image: buildImageUrl("tarjetas", "correcaminos.jpg"),
+  },
+  {
+    name: "@bran.medinatattoo",
+    type: "Tattoos Store",
+    category: "Lifestyle",
+    description: "Arte tatuado. Cada diseño es una historia que merece ser retratada perfectamente.",
+    image: buildImageUrl("tarjetas", "bran-tattoo.jpg"),
+  },
+  {
+    name: "@_aeternum_official",
+    type: "Boutique",
+    category: "Lifestyle",
+    description: "Moda y elegancia redefinida. Cada pieza brilla con nuestro toque visual.",
+    image: buildImageUrl("tarjetas", "aeternum.jpg"),
+  },
 ];
 
 export default function ClientesPage() {
@@ -80,7 +104,60 @@ export default function ClientesPage() {
         </div>
       </section>
 
-      {/* 2. Sección de Marketing: ¿Por qué invertir en contenido visual? */}
+      {/* 2. Grid de Empresas Clientes */}
+      <section className="py-24 lg:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6">Empresas que impulsamos</h2>
+          <div className="w-24 h-1 bg-cb-purple rounded-full"></div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {clients.map((client, idx) => (
+            <div
+              key={idx}
+              className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-cb-navy/30 border border-cb-dark/5 dark:border-white/10 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 shadow-md hover:shadow-xl transition-all duration-300"
+            >
+              {/* Imagen */}
+              <div className="relative aspect-video overflow-hidden bg-cb-dark">
+                <Image
+                  src={client.image}
+                  alt={client.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-cb-dark/20 group-hover:bg-cb-dark/10 transition-colors duration-300"></div>
+              </div>
+
+              {/* Contenido */}
+              <div className="flex-1 flex flex-col p-5">
+                {/* Nombre y tipo */}
+                <div className="mb-3">
+                  <h3 className="font-arsenica text-lg font-bold text-cb-dark dark:text-cb-white mb-1 line-clamp-1">
+                    {client.name}
+                  </h3>
+                  <p className="text-sm font-medium text-cb-dark/70 dark:text-cb-white/70">
+                    {client.type}
+                  </p>
+                </div>
+
+                {/* Descripción */}
+                <p className="text-sm text-cb-dark/80 dark:text-cb-white/70 mb-4 line-clamp-2 flex-grow">
+                  {client.description}
+                </p>
+
+                {/* Badge de categoría */}
+                <div className="flex items-center justify-between">
+                  <span className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full bg-cb-purple/15 text-cb-purple dark:bg-cb-purple/20 dark:text-cb-lavender-light">
+                    {client.category}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Sección de Marketing: ¿Por qué invertir en contenido visual? */}
       <section className="bg-cb-navy text-cb-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -119,65 +196,6 @@ export default function ClientesPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 3. Categorización de Clientes (Estilo Bento/Grid) */}
-      <section className="py-24 lg:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6">Empresas que impulsamos</h2>
-          <div className="w-24 h-1 bg-cb-purple rounded-full"></div>
-        </div>
-
-        <div className="space-y-24">
-          {clientCategories.map((category, idx) => (
-            <div key={idx} className={`flex flex-col lg:flex-row gap-12 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-              
-              {/* Imagen representativa del sector */}
-              <div className="w-full lg:w-1/2">
-                <div className="relative aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
-                  <Image 
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-cb-navy/40 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-0"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/90 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-6 left-8 flex items-center gap-3">
-                    <div className="p-3 bg-white/20 backdrop-blur-md rounded-xl">
-                      {category.icon}
-                    </div>
-                    <h3 className="text-2xl font-arsenica font-bold text-white shadow-sm">
-                      {category.title}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-
-              {/* Lista de clientes */}
-              <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
-                  {category.description}
-                </p>
-                
-                <div className="grid gap-4">
-                  {category.clients.map((client, index) => (
-                    <div 
-                      key={index}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between p-5 rounded-2xl bg-white/60 dark:bg-white/5 border border-cb-dark/5 dark:border-white/5 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 hover:bg-cb-purple/5 dark:hover:bg-cb-purple/10 transition-all duration-300"
-                    >
-                      <span className="font-bold text-lg text-cb-dark dark:text-cb-white">{client.name}</span>
-                      <span className="text-sm font-medium px-4 py-1.5 rounded-full bg-cb-purple/10 text-cb-purple mt-2 sm:mt-0 w-fit">
-                        {client.type}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          ))}
         </div>
       </section>
 
