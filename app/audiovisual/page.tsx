@@ -144,7 +144,7 @@ export default function AudiovisualPage() {
             Nuestro trabajo en acción
           </h2>
           <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
-            Aquí se muestran 4 reels desde Cloudinary. Sube tus videos a la carpeta "audiovisual" con nombres reel-1, reel-2, reel-3 y reel-4.
+            Historias que capturan miradas en segundos: descubre una selección de reels diseñados para emocionar, conectar y convertir tu contenido en resultados reales.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
