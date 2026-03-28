@@ -3,8 +3,6 @@ import Image from "next/image";
 import { Instagram, ArrowUpRight, Mail, Phone } from "lucide-react";
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="bg-cb-dark text-cb-white pt-20 pb-10 border-t border-cb-white/10 relative overflow-hidden">
       {/* Background Glow */}

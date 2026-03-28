@@ -1,4 +1,4 @@
-import { Camera, Video, MonitorPlay, Users, Building, ArrowRight } from "lucide-react";
+import { Camera, Video, Building, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 

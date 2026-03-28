@@ -61,7 +61,7 @@ export function Clients() {
 
         {logos.length === 0 && (
           <p className="text-center text-cb-white/70 mb-8">
-            Sube tus logos a la carpeta "clientes" en Cloudinary para mostrarlos aquí automáticamente.
+            Sube tus logos a la carpeta &quot;clientes&quot; en Cloudinary para mostrarlos aquí automáticamente.
           </p>
         )}
 
