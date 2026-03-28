@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Camera, Instagram, ArrowUpRight, Mail, Phone } from "lucide-react";
+import Image from "next/image";
+import { Instagram, ArrowUpRight, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -14,13 +15,14 @@ export function Footer() {
           
           {/* Logo y descripción */}
           <div className="col-span-1 md:col-span-5 lg:col-span-4">
-            <Link href="/" className="flex items-center gap-2 mb-6 group inline-flex">
-              <div className="p-2 bg-cb-lavender-light/10 rounded-xl group-hover:bg-cb-purple/20 transition-colors">
-                <Camera className="w-7 h-7 text-cb-lavender-light group-hover:text-cb-white transition-colors" />
-              </div>
-              <span className="font-arsenica text-3xl font-bold tracking-tight">
-                Creatibros
-              </span>
+            <Link href="/" className="mb-6 group inline-flex">
+              <Image
+                src="/creatibros-logo.svg"
+                alt="Logo Creatibros"
+                width={320}
+                height={90}
+                className="h-14 md:h-16 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
+              />
             </Link>
             <p className="text-cb-white/60 leading-relaxed mb-8 max-w-sm text-lg font-light">
               Inmortalizamos lo que importa. Estudio creativo, fotografía y producción audiovisual de alto impacto.

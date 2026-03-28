@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Camera, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 import { portfolioCategories } from "@/lib/portfolio-data";
@@ -54,14 +55,20 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Camera className="w-10 h-10 text-cb-purple transition-transform duration-300 group-hover:scale-110" />
-            <span className={cn(
-              "font-arsenica text-3xl font-bold tracking-tight transition-colors duration-300 group-hover:text-cb-purple",
-              isHomeTop ? "text-cb-white" : "text-cb-dark dark:text-cb-white"
-            )}>
-              Creatibros
-            </span>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/creatibros-logo.svg"
+              alt="Logo Creatibros"
+              width={320}
+              height={90}
+              className={cn(
+                "h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-[1.02] dark:invert-0",
+                isHomeTop
+                  ? "drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
+                  : "invert"
+              )}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
