@@ -1,4 +1,5 @@
 import { Contact } from "@/components/Contact";
+import { ReelsGrid } from "@/components/ReelsGrid";
 import Image from "next/image";
 import { PlayCircle, Video, TrendingUp, MonitorSmartphone } from "lucide-react";
 import { buildImageUrl, buildVideoUrl } from "@/lib/cloudinary";
@@ -66,37 +67,6 @@ export default function AudiovisualPage() {
             <p className="text-xl md:text-2xl text-cb-white/90 max-w-2xl mx-auto leading-relaxed">
               Desde piezas cinematográficas hasta el impacto del formato vertical. Creamos videos que cuentan historias y generan resultados.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Por qué crear videos */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
-              ¿Por qué invertir en video?
-            </h2>
-            <div className="w-16 h-1 bg-cb-purple mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {reasons.map((item, index) => (
-              <div 
-                key={index}
-                className="bg-white/60 dark:bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300"
-              >
-                <div className="w-14 h-14 bg-cb-purple text-cb-white rounded-2xl flex items-center justify-center mb-6">
-                  <item.icon className="w-7 h-7" />
-                </div>
-                <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -172,41 +142,37 @@ export default function AudiovisualPage() {
             Historias que capturan miradas en segundos: descubre una selección de reels diseñados para emocionar, conectar y convertir tu contenido en resultados reales.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {reelVideos.map((videoId) => {
-              const videoSources = [
-                buildVideoUrl("audiovisual", `${videoId}.mp4`),
-                buildVideoUrl("audiovisual", `${videoId}.mov`),
-                buildVideoUrl("", `${videoId}.mp4`),
-                buildVideoUrl("", `${videoId}.mov`),
-              ].filter(Boolean);
+          <ReelsGrid reelIds={reelVideos} />
+        </div>
+      </section>
 
-              return (
-                <div
-                  key={videoId}
-                  className="aspect-[9/16] rounded-xl border border-cb-lavender-light dark:border-cb-white/10 overflow-hidden bg-cb-navy dark:bg-cb-white/5"
-                >
-                  {videoSources.length > 0 ? (
-                    <video
-                      controls
-                      preload="metadata"
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
-                      {videoSources.map((src) => (
-                        <source key={src} src={src} />
-                      ))}
-                      Tu navegador no soporta reproducción de video.
-                    </video>
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center text-cb-dark/50 dark:text-cb-white/30 p-6">
-                      <Video className="w-10 h-10 mb-4 opacity-60" />
-                      <p className="font-medium text-sm text-center">Configura Cloudinary para ver este video</p>
-                    </div>
-                  )}
+      {/* Por qué crear videos */}
+      <section className="py-20 md:py-28 bg-cb-lavender-light/15 dark:bg-cb-white/5 border-y border-cb-lavender-light/30 dark:border-cb-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
+              ¿Por qué invertir en video?
+            </h2>
+            <div className="w-16 h-1 bg-cb-purple mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {reasons.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/60 dark:bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div className="w-14 h-14 bg-cb-purple text-cb-white rounded-2xl flex items-center justify-center mb-6">
+                  <item.icon className="w-7 h-7" />
                 </div>
-              );
-            })}
+                <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
