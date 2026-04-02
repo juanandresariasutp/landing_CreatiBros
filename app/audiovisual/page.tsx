@@ -29,6 +29,12 @@ const reasons = [
 export default function AudiovisualPage() {
   const audiovisualHeroBg = buildImageUrl("", "hero-audiovisual.jpg");
   const reelVideos = ["reel-1", "reel-2", "reel-3", "reel-4"];
+  const featuredVideoSources = [
+    buildVideoUrl("audiovisual", "reel-muestra.mp4"),
+    buildVideoUrl("audiovisual", "reel-muestra.mov"),
+    buildVideoUrl("", "reel-muestra.mp4"),
+    buildVideoUrl("", "reel-muestra.mov"),
+  ].filter(Boolean);
 
   return (
     <main className="bg-cb-white dark:bg-cb-dark min-h-screen pt-24 pb-12 text-cb-dark dark:text-cb-white selection:bg-cb-purple selection:text-white transition-colors duration-300">
@@ -97,8 +103,8 @@ export default function AudiovisualPage() {
 
       {/* El poder del Reel */}
       <section className="py-24 bg-cb-lavender-light/20 dark:bg-cb-white/5 border-y border-cb-lavender-light/30 dark:border-cb-white/10 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
+          <div className="max-w-xl">
             <span className="flex items-center gap-2 text-cb-purple font-semibold tracking-wider text-sm mb-4">
               <MonitorSmartphone className="w-5 h-5" />
               EL FORMATO DEL MOMENTO
@@ -115,24 +121,43 @@ export default function AudiovisualPage() {
               </p>
             </div>
           </div>
-          
-          <div className="relative">
-            <div className="aspect-[9/16] w-full max-w-sm mx-auto bg-cb-navy dark:bg-cb-dark rounded-[2.5rem] shadow-2xl overflow-hidden border-[8px] border-cb-white dark:border-cb-white/10 flex items-center justify-center relative">
-              {/* Pantalla falsa del celular */}
-              <div className="absolute top-0 inset-x-0 h-7 bg-cb-white dark:bg-cb-white/10 rounded-b-3xl w-40 mx-auto"></div>
-              
-              <div className="w-20 h-20 bg-cb-purple/20 rounded-full flex items-center justify-center animate-pulse">
-                <PlayCircle className="w-10 h-10 text-cb-purple ml-1" />
-              </div>
 
-              <div className="absolute bottom-6 inset-x-6">
-                <div className="w-3/4 h-4 bg-cb-white/20 rounded mb-3"></div>
-                <div className="w-1/2 h-3 bg-cb-white/20 rounded"></div>
-              </div>
+          <div className="relative flex justify-center lg:justify-self-end w-full">
+            <div className="aspect-[9/16] w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[300px] bg-cb-navy dark:bg-cb-dark rounded-[2rem] shadow-2xl overflow-hidden border-[6px] border-cb-white dark:border-cb-white/10 flex items-center justify-center relative mx-auto lg:mx-0">
+              {/* Pantalla falsa del celular */}
+              <div className="absolute top-0 inset-x-0 h-6 bg-cb-white dark:bg-cb-white/10 rounded-b-3xl w-32 mx-auto"></div>
+
+              {featuredVideoSources.length > 0 ? (
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  preload="auto"
+                  muted
+                >
+                  {featuredVideoSources.map((src) => (
+                    <source key={src} src={src} />
+                  ))}
+                  Tu navegador no soporta reproducción de video.
+                </video>
+              ) : (
+                <>
+                  <div className="w-20 h-20 bg-cb-purple/20 rounded-full flex items-center justify-center animate-pulse">
+                    <PlayCircle className="w-10 h-10 text-cb-purple ml-1" />
+                  </div>
+
+                  <div className="absolute bottom-6 inset-x-6">
+                    <div className="w-3/4 h-4 bg-cb-white/20 rounded mb-3"></div>
+                    <div className="w-1/2 h-3 bg-cb-white/20 rounded"></div>
+                  </div>
+                </>
+              )}
             </div>
-            
+
             {/* Decors */}
-            <div className="absolute -z-10 top-1/2 -translate-y-1/2 -right-12 w-64 h-64 bg-cb-purple/30 rounded-full blur-3xl"></div>
+            <div className="absolute -z-10 top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 w-64 h-64 bg-cb-purple/30 rounded-full blur-3xl"></div>
           </div>
         </div>
       </section>
