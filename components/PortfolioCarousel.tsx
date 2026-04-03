@@ -123,10 +123,6 @@ export function PortfolioCarousel({ title, description, images }: Props) {
           animation-iteration-count: infinite;
         }
 
-        .marquee-track:hover {
-          animation-play-state: paused;
-        }
-
         @keyframes scroll-left {
           from {
             transform: translateX(0);
