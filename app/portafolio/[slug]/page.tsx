@@ -54,7 +54,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Navegación Top */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
         <Link 
           href="/portafolio" 
           className="inline-flex items-center gap-2 text-cb-purple hover:text-cb-dark dark:hover:text-cb-lavender-light transition-colors font-medium border border-transparent hover:border-cb-purple px-4 py-2 rounded-full"
@@ -65,7 +65,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
       </div>
 
       {/* 2. Hero Emocional / Persuasivo */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 lg:pt-6 lg:pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-1">
             <span className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-xs md:text-sm mb-4 flex items-center gap-3">
