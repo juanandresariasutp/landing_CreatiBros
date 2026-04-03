@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -21,6 +21,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
   const pathname = usePathname();
   const isHomeTop = pathname === "/" && !isScrolled;
   const phoneNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
@@ -37,6 +39,28 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+
+      if (mobileMenuRef.current?.contains(target)) return;
+      if (mobileMenuButtonRef.current?.contains(target)) return;
+
+      setIsOpen(false);
+      setMobilePortfolioOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
+  }, [isOpen]);
 
   const eventos = portfolioCategories.filter((c) => c.group === "Eventos");
   const servicios = portfolioCategories.filter((c) => c.group === "Servicios Profesionales");
@@ -185,6 +209,7 @@ export function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
+              ref={mobileMenuButtonRef}
               className={cn(
                 "p-2 hover:text-cb-purple transition-colors",
                 isHomeTop ? "text-cb-white" : "text-cb-dark dark:text-cb-white"
@@ -200,7 +225,7 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
+        <div ref={mobileMenuRef} className="md:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
           {navLinks.map((link) => {
             const isActive = link.href === "/" 
               ? pathname === "/" 
@@ -221,28 +246,36 @@ export function Navbar() {
                     >
                       {link.name}
                     </Link>
-                    <ChevronDown className={cn("w-5 h-5 transition-transform", mobilePortfolioOpen && "rotate-180", isActive ? "text-cb-purple dark:text-cb-white" : "")} />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cb-purple/50 bg-cb-purple/10 hover:border-cb-purple hover:bg-cb-purple/20 transition-all dark:border-cb-purple/60 dark:bg-cb-purple/20 dark:hover:border-cb-purple dark:hover:bg-cb-purple/30">
+                      <ChevronDown className={cn("w-6 h-6 transition-transform", mobilePortfolioOpen && "rotate-180", isActive ? "text-cb-purple dark:text-cb-lavender-light" : "text-cb-dark/60 dark:text-cb-white/80")} />
+                    </div>
                   </div>
                   {mobilePortfolioOpen && (
-                    <div className="pl-6 pr-2 py-2 flex flex-col gap-4 bg-cb-lavender-light/10 dark:bg-white/5 rounded-xl mt-1">
-                      <div>
-                        <span className="text-sm font-bold text-cb-dark/50 dark:text-cb-white/50 uppercase tracking-wider mb-2 block">Eventos</span>
+                    <div className="grid grid-cols-2 gap-3 p-3 mt-2">
+                      <div className="bg-cb-purple/10 dark:bg-cb-purple/20 border border-cb-purple/30 dark:border-cb-purple/40 rounded-lg p-3">
+                        <span className="text-xs font-bold text-cb-purple dark:text-cb-lavender-light uppercase tracking-wider mb-3 block">Eventos</span>
                         <div className="flex flex-col gap-2">
-                          {eventos.map(item => (
-                            <Link key={item.slug} href={`/portafolio/${item.slug}`} className="text-sm font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple" onClick={() => setIsOpen(false)}>
-                              {item.title}
-                            </Link>
-                          ))}
+                          {eventos.map(item => {
+                            const isItemActive = pathname === `/portafolio/${item.slug}`;
+                            return (
+                              <Link key={item.slug} href={`/portafolio/${item.slug}`} className={cn("text-xs font-medium border-b-2 pb-1 transition-colors", isItemActive ? "text-cb-purple dark:text-cb-lavender-light font-bold border-cb-purple dark:border-cb-lavender-light" : "text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-lavender-light border-transparent")} onClick={() => setIsOpen(false)}>
+                                {item.title}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
-                      <div>
-                        <span className="text-sm font-bold text-cb-dark/50 dark:text-cb-white/50 uppercase tracking-wider mb-2 block">Servicios</span>
+                      <div className="bg-cb-navy/10 dark:bg-cb-navy/20 border border-cb-navy/30 dark:border-cb-navy/40 rounded-lg p-3">
+                        <span className="text-xs font-bold text-cb-navy dark:text-cb-lavender-light uppercase tracking-wider mb-3 block">Servicios</span>
                         <div className="flex flex-col gap-2">
-                          {servicios.map(item => (
-                            <Link key={item.slug} href={`/portafolio/${item.slug}`} className="text-sm font-medium text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple" onClick={() => setIsOpen(false)}>
-                              {item.title}
-                            </Link>
-                          ))}
+                          {servicios.map(item => {
+                            const isItemActive = pathname === `/portafolio/${item.slug}`;
+                            return (
+                              <Link key={item.slug} href={`/portafolio/${item.slug}`} className={cn("text-xs font-medium border-b-2 pb-1 transition-colors", isItemActive ? "text-cb-purple dark:text-cb-lavender-light font-bold border-cb-purple dark:border-cb-lavender-light" : "text-cb-dark/80 dark:text-cb-white/80 hover:text-cb-purple dark:hover:text-cb-lavender-light border-transparent")} onClick={() => setIsOpen(false)}>
+                                {item.title}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -252,8 +285,8 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-base font-medium p-2",
-                    isActive ? "text-cb-purple dark:text-cb-white font-semibold" : "text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple"
+                    "text-base font-medium p-2 relative inline-block border-b-2 transition-colors",
+                    isActive ? "text-cb-purple dark:text-cb-white font-semibold border-cb-purple" : "text-cb-dark dark:text-cb-white hover:text-cb-purple dark:hover:text-cb-purple border-transparent"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
