@@ -1,6 +1,7 @@
 import { Camera, Video, Building, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { ScrollAnimator } from "./ScrollAnimator";
 
 const services = [
   {
@@ -36,7 +37,7 @@ export function Services() {
   return (
     <section id="servicios" className="py-24 bg-cb-white dark:bg-cb-dark/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollAnimator animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
             Lo que hacemos
           </span>
@@ -46,42 +47,47 @@ export function Services() {
           <p className="text-lg text-cb-dark dark:text-cb-white/80">
             Ofrecemos soluciones visuales integrales para documentar tus momentos más importantes o potenciar la imagen de tu negocio.
           </p>
-        </div>
+        </ScrollAnimator>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <ScrollAnimator
               key={service.id}
-              className={cn(
-                "p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 border border-cb-lavender-light/30 dark:border-cb-white/10 dark:bg-cb-dark",
-                service.color.replace('bg-cb-white', '').replace('bg-cb-lavender-light/', 'dark:bg-cb-lavender-light/10 bg-cb-lavender-light/')
-              )}
+              animation={index === 0 ? "fadeInLeft" : index === 2 ? "fadeInRight" : "fadeInUp"}
+              delay={index * 100}
             >
-              <div className="w-14 h-14 bg-cb-white dark:bg-cb-white/5 rounded-xl flex items-center justify-center shadow-sm mb-6">
-                <service.icon className={cn("w-7 h-7", service.iconColor === "text-cb-dark" ? "text-cb-dark dark:text-cb-white" : service.iconColor)} />
+              <div
+                className={cn(
+                  "p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 border border-cb-lavender-light/30 dark:border-cb-white/10 dark:bg-cb-dark h-full",
+                  service.color.replace('bg-cb-white', '').replace('bg-cb-lavender-light/', 'dark:bg-cb-lavender-light/10 bg-cb-lavender-light/')
+                )}
+              >
+                <div className="w-14 h-14 bg-cb-white dark:bg-cb-white/5 rounded-xl flex items-center justify-center shadow-sm mb-6">
+                  <service.icon className={cn("w-7 h-7", service.iconColor === "text-cb-dark" ? "text-cb-dark dark:text-cb-white" : service.iconColor)} />
+                </div>
+                <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed mb-6">
+                  {service.description}
+                </p>
+                {service.href ? (
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
+                  >
+                    Saber más <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
+                ) : (
+                  <a
+                    href="#portafolio"
+                    className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
+                  >
+                    Ver ejemplos &rarr;
+                  </a>
+                )}
               </div>
-              <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
-                {service.title}
-              </h3>
-              <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed mb-6">
-                {service.description}
-              </p>
-              {service.href ? (
-                <Link
-                  href={service.href}
-                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
-                >
-                  Saber más <ArrowRight className="ml-1 w-4 h-4" />
-                </Link>
-              ) : (
-                <a
-                  href="#portafolio"
-                  className="inline-flex items-center text-sm font-semibold text-cb-purple hover:text-cb-dark dark:hover:text-cb-white transition-colors"
-                >
-                  Ver ejemplos &rarr;
-                </a>
-              )}
-            </div>
+            </ScrollAnimator>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { buildImageUrl } from "@/lib/cloudinary";
+import { ScrollAnimator } from "./ScrollAnimator";
 
 export function About() {
   return (
@@ -9,7 +10,7 @@ export function About() {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Imagen de equipo */}
-          <div className="w-full lg:w-1/2 relative">
+          <ScrollAnimator animation="fadeInLeft" className="w-full lg:w-1/2">
             <div className="relative aspect-[4/5] max-w-md mx-auto">
               {/* Elementos decorativos */}
               <div className="absolute -inset-4 bg-cb-lavender-light/40 dark:bg-cb-lavender-light/20 rounded-3xl -rotate-6 transform origin-bottom-left transition-transform hover:rotate-0 duration-500"></div>
@@ -34,10 +35,10 @@ export function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollAnimator>
 
           {/* Contenido */}
-          <div className="w-full lg:w-1/2">
+          <ScrollAnimator animation="fadeInRight" className="w-full lg:w-1/2">
             <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
               Nuestra Historia
             </span>
@@ -81,7 +82,7 @@ export function About() {
                 </svg>
               </Link>
             </div>
-          </div>
+          </ScrollAnimator>
 
         </div>
       </div>
