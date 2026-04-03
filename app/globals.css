@@ -120,5 +120,27 @@ body {
 
   .scroll-animation-initial {
     opacity: 0;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .scroll-initial-fadeInUp {
+    transform: translate3d(0, 20px, 0);
+  }
+
+  .scroll-initial-fadeInLeft {
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  .scroll-initial-fadeInRight {
+    transform: translate3d(20px, 0, 0);
+  }
+
+  .scroll-initial-scaleIn {
+    transform: scale(0.96);
+  }
+
+  .scroll-initial-scaleOut {
+    transform: scale(1.04);
   }
 }

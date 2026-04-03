@@ -9,8 +9,8 @@ interface ScrollAnimationConfig {
 
 export function useScrollAnimation(config: ScrollAnimationConfig = {}) {
   const {
-    threshold = 0.2,
-    rootMargin = "0px 0px -100px 0px"
+    threshold = 0.08,
+    rootMargin = "0px 0px -12% 0px"
   } = config;
 
   const ref = useRef<HTMLDivElement>(null);

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrendingUp, Users, Target } from "lucide-react";
 import { buildImageUrl } from "@/lib/cloudinary";
+import { ScrollAnimator } from "@/components/ScrollAnimator";
 
 export const metadata = {
   title: "Nuestros Clientes | Creatibros",
@@ -98,7 +99,7 @@ export default function ClientesPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center text-cb-white">
-          <div className="max-w-4xl mx-auto">
+          <ScrollAnimator animation="fadeInUp" className="max-w-4xl mx-auto">
           <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
             <span className="w-12 h-px bg-cb-lavender-light"></span>
             Casos de Éxito
@@ -110,23 +111,25 @@ export default function ClientesPage() {
           <p className="text-xl text-cb-white/90 leading-relaxed max-w-2xl mx-auto mb-10">
             Hemos tenido el privilegio de impulsar marcas locales creando fotografías y videos profesionales que no solo se ven increíbles, sino que <strong>venden y conectan</strong>.
           </p>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* 2. Grid de Empresas Clientes */}
       <section className="py-24 lg:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
+        <ScrollAnimator animation="fadeInUp" className="mb-16">
           <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6">Empresas que impulsamos</h2>
           <div className="w-24 h-1 bg-cb-purple rounded-full"></div>
-        </div>
+        </ScrollAnimator>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {clients.map((client, idx) => (
-            <div
+            <ScrollAnimator
               key={idx}
-              className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-cb-navy/30 border border-cb-dark/5 dark:border-white/10 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 shadow-md hover:shadow-xl transition-all duration-300"
+              animation={idx % 2 === 0 ? "fadeInLeft" : "fadeInRight"}
+              delay={idx * 70 + 60}
             >
+            <div className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-cb-navy/30 border border-cb-dark/5 dark:border-white/10 hover:border-cb-purple/50 dark:hover:border-cb-purple/50 shadow-md hover:shadow-xl transition-all duration-300">
               {/* Imagen */}
               <div className="relative aspect-video overflow-hidden bg-cb-dark">
                 <Image
@@ -163,6 +166,7 @@ export default function ClientesPage() {
                 </div>
               </div>
             </div>
+            </ScrollAnimator>
           ))}
         </div>
       </section>
@@ -170,13 +174,13 @@ export default function ClientesPage() {
       {/* 3. Sección de Marketing: ¿Por qué invertir en contenido visual? */}
       <section className="bg-cb-navy text-cb-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <ScrollAnimator animation="fadeInUp" className="text-center mb-16">
             <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6">El impacto del buen contenido</h2>
             <p className="text-cb-lavender-light text-lg max-w-2xl mx-auto">Una estrategia visual liderada por profesionales transforma por completo cómo el mercado percibe tu empresa.</p>
-          </div>
+          </ScrollAnimator>
           
           <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+            <ScrollAnimator animation="fadeInLeft" delay={80}><div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="w-14 h-14 bg-cb-purple rounded-2xl flex items-center justify-center mb-6">
                 <Target className="w-7 h-7 text-white" />
               </div>
@@ -184,9 +188,9 @@ export default function ClientesPage() {
               <p className="text-cb-lavender-light/80">
                 Los videos profesionales logran captar la atención de tu audiencia en los primeros 3 segundos vitales en redes sociales.
               </p>
-            </div>
+            </div></ScrollAnimator>
             
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+            <ScrollAnimator animation="fadeInUp" delay={160}><div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="w-14 h-14 bg-cb-purple rounded-2xl flex items-center justify-center mb-6">
                 <Users className="w-7 h-7 text-white" />
               </div>
@@ -194,9 +198,9 @@ export default function ClientesPage() {
               <p className="text-cb-lavender-light/80">
                 Una estética cuidada y constante genera familiaridad y confianza, convirtiendo seguidores pasivos en clientes fieles.
               </p>
-            </div>
+            </div></ScrollAnimator>
             
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
+            <ScrollAnimator animation="fadeInRight" delay={240}><div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
               <div className="w-14 h-14 bg-cb-lavender-light rounded-2xl flex items-center justify-center mb-6">
                 <TrendingUp className="w-7 h-7 text-cb-dark" />
               </div>
@@ -204,7 +208,7 @@ export default function ClientesPage() {
               <p className="text-cb-lavender-light/80">
                 Está comprobado: las personas están dispuestas a pagar más por productos y servicios que se presentan con una calidad premium.
               </p>
-            </div>
+            </div></ScrollAnimator>
           </div>
         </div>
       </section>
@@ -220,7 +224,7 @@ export default function ClientesPage() {
           <div className="absolute inset-0 bg-cb-dark/85" />
         </div>
 
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-cb-white">
+        <ScrollAnimator animation="fadeInUp" className="relative z-10 max-w-3xl mx-auto px-4 text-cb-white">
           <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-8">
             ¿Quieres ser nuestro próximo caso de éxito?
           </h2>
@@ -230,7 +234,7 @@ export default function ClientesPage() {
           >
             Hablemos de tu proyecto
           </Link>
-        </div>
+        </ScrollAnimator>
       </section>
 
     </main>

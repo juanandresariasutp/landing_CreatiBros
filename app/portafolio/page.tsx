@@ -4,6 +4,7 @@ import Image from "next/image";
 import { portfolioCategories } from "@/lib/portfolio-data";
 import { buildImageUrl } from "@/lib/cloudinary";
 import { getCoverImageFromFolder } from "@/lib/cloudinary-actions";
+import { ScrollAnimator } from "@/components/ScrollAnimator";
 
 export const metadata = {
   title: "Portafolio | Creatibros",
@@ -47,7 +48,7 @@ export default async function PortafolioPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full text-cb-white">
-          <div className="max-w-4xl">
+          <ScrollAnimator animation="fadeInUp" className="max-w-4xl">
             <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center gap-4">
               <span className="w-12 h-px bg-cb-lavender-light"></span>
               Nuestro Trabajo
@@ -59,14 +60,14 @@ export default async function PortafolioPage() {
             <p className="text-xl md:text-2xl text-cb-white/90 max-w-2xl leading-relaxed">
               No tomamos fotografías; capturamos la esencia de tu historia. Ya sea el día más importante de tu vida o la identidad visual de tu marca, creamos imágenes que trascienden.
             </p>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* Sección Eventos - Layout Asimétrico con Sticky Sidebar */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-cb-dark/10 dark:border-cb-white/10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-          <div className="lg:w-1/3 flex flex-col justify-start">
+          <ScrollAnimator animation="fadeInLeft" className="lg:w-1/3 flex flex-col justify-start">
             <div className="lg:sticky lg:top-32">
               <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6 leading-tight">Celebraciones <br className="hidden lg:block"/> Inolvidables</h2>
               <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
@@ -74,12 +75,12 @@ export default async function PortafolioPage() {
               </p>
               <div className="hidden lg:block w-16 h-1 bg-cb-purple rounded-full"></div>
             </div>
-          </div>
+          </ScrollAnimator>
           
           <div className="lg:w-2/3 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {eventos.map((categoria, index) => (
+              <ScrollAnimator key={categoria.id} animation={index % 2 === 0 ? "fadeInUp" : "fadeInRight"} delay={index * 90 + 80}>
               <Link 
-                key={categoria.id} 
                 href={`/portafolio/${categoria.slug}`}
                 className={`group relative aspect-[4/5] sm:aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 block w-full bg-cb-navy ${index % 2 !== 0 ? 'sm:mt-16' : ''}`}
               >
@@ -109,6 +110,7 @@ export default async function PortafolioPage() {
                   </div>
                 </div>
               </Link>
+              </ScrollAnimator>
             ))}
           </div>
         </div>
@@ -117,7 +119,7 @@ export default async function PortafolioPage() {
       {/* Sección Servicios - Diseño Alternado */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-cb-dark/10 dark:border-cb-white/10">
         <div className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-20">
-          <div className="lg:w-1/3 flex flex-col justify-start">
+          <ScrollAnimator animation="fadeInRight" className="lg:w-1/3 flex flex-col justify-start">
             <div className="lg:sticky lg:top-32">
               <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6 leading-tight">Marcas con <br className="hidden lg:block"/> Propósito</h2>
               <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 mb-8 leading-relaxed">
@@ -125,12 +127,12 @@ export default async function PortafolioPage() {
               </p>
               <div className="hidden lg:block w-16 h-1 bg-cb-purple rounded-full"></div>
             </div>
-          </div>
+          </ScrollAnimator>
           
           <div className="lg:w-2/3 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {servicios.map((categoria, index) => (
+              <ScrollAnimator key={categoria.id} animation={index % 2 === 0 ? "fadeInUp" : "fadeInLeft"} delay={index * 90 + 80}>
               <Link 
-                key={categoria.id} 
                 href={`/portafolio/${categoria.slug}`}
                 className={`group relative aspect-[4/5] sm:aspect-[3/4] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 block w-full bg-cb-navy ${index % 2 !== 0 ? 'sm:-mt-16' : ''}`}
                 style={{ marginTop: index % 2 !== 0 ? 'auto' : '' }}
@@ -161,6 +163,7 @@ export default async function PortafolioPage() {
                   </div>
                 </div>
               </Link>
+              </ScrollAnimator>
             ))}
           </div>
         </div>

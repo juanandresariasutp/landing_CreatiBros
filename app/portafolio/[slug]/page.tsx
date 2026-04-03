@@ -8,6 +8,7 @@ import Image from "next/image";
 import { buildImageUrl } from "@/lib/cloudinary";
 import { getCoverImageFromFolder, getImagesFromFolder } from "@/lib/cloudinary-actions";
 import { AgeGate } from "@/components/AgeGate";
+import { ScrollAnimator } from "@/components/ScrollAnimator";
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const category = portfolioCategories.find((c) => c.slug === params.slug);
@@ -57,7 +58,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Navegación Top */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
+      <ScrollAnimator animation="fadeInUp" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
         <Link 
           href="/portafolio" 
           className="inline-flex items-center gap-2 text-cb-purple hover:text-cb-dark dark:hover:text-cb-lavender-light transition-colors font-medium border border-transparent hover:border-cb-purple px-4 py-2 rounded-full"
@@ -65,12 +66,12 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
           <ArrowLeft className="w-5 h-5" />
           Volver al portafolio
         </Link>
-      </div>
+      </ScrollAnimator>
 
       {/* 2. Hero Emocional / Persuasivo */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 lg:pt-6 lg:pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="order-1">
+          <ScrollAnimator animation="fadeInLeft" className="order-1">
             <span className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-xs md:text-sm mb-4 flex items-center gap-3">
               <span className="w-8 h-px bg-cb-purple"></span>
               {category.group}
@@ -101,9 +102,9 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
                 Cotizar ahora
                </a>
             </div>
-          </div>
+          </ScrollAnimator>
           
-          <div className="hidden lg:block order-2 w-full h-[50vh] lg:h-[70vh] relative rounded-3xl overflow-hidden shadow-2xl">
+          <ScrollAnimator animation="fadeInRight" delay={120} className="hidden lg:block order-2 w-full h-[50vh] lg:h-[70vh] relative rounded-3xl overflow-hidden shadow-2xl">
             <Image 
               src={heroImageUrl}
               alt={`${category.title} - Cover`}
@@ -112,13 +113,13 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/50 to-transparent"></div>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* 3. Propuesta de Valor Dinámica (Depende si es Evento o Servicio) */}
       <section className="bg-cb-lavender-light/20 dark:bg-white/5 py-20 lg:py-28 mt-12 border-y border-cb-lavender-light/35 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <ScrollAnimator animation="fadeInUp" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-12">
             {isEvento ? "¿Por qué documentar este momento?" : "¿Por qué invertir en tu imagen?"}
           </h2>
@@ -162,7 +163,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
                </>
             )}
           </div>
-        </div>
+        </ScrollAnimator>
       </section>
 
       {/* 4. Galería - Nuestro Trabajo */}
@@ -170,7 +171,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
         id="galeria"
         className="py-20 lg:py-32 bg-gradient-to-b from-cb-white via-cb-lavender-light/20 to-cb-lavender-light/10 dark:from-cb-dark dark:via-cb-navy/30 dark:to-cb-dark border-b border-cb-lavender-light/35 dark:border-white/10"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+        <ScrollAnimator animation="fadeInUp" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <span className="inline-flex items-center gap-2 rounded-full border border-cb-purple/30 bg-cb-purple/10 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-cb-purple mb-6">
             Galeria Destacada
           </span>
@@ -180,17 +181,17 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
           <p className="text-lg text-cb-dark/90 dark:text-cb-white/75 max-w-3xl mx-auto leading-relaxed">
             Recorre una seleccion curada de imagenes reales donde cuidamos composicion, luz y narrativa visual para contar cada historia.
           </p>
-        </div>
+        </ScrollAnimator>
         {galleryImages.length === 0 && (
           <p className="text-center text-cb-dark/70 dark:text-cb-white/70 mb-8 px-4">
             Aún no hay imágenes disponibles en esta categoría o Cloudinary alcanzó su límite temporal.
           </p>
         )}
-        <div className="max-w-[92rem] mx-auto px-3 sm:px-5">
+        <ScrollAnimator animation="scaleIn" delay={120} className="max-w-[92rem] mx-auto px-3 sm:px-5">
           <div className="rounded-3xl border border-cb-lavender-light/40 dark:border-cb-white/10 bg-white/70 dark:bg-cb-navy/20 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-[0_18px_50px_rgba(10,12,40,0.12)]">
             <PortfolioCarousel title="" description={""} images={galleryImages} />
           </div>
-        </div>
+        </ScrollAnimator>
       </section>
 
       {/* 5. Cierre Persuasivo antes del contacto */}
@@ -198,7 +199,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
         <div className="absolute inset-0 bg-gradient-to-br from-cb-lavender-light/35 via-white to-cb-white dark:from-cb-navy dark:via-cb-dark dark:to-cb-navy" />
         <div className="absolute inset-0 opacity-60 dark:opacity-30 bg-[radial-gradient(circle_at_top_left,rgba(134,132,255,0.25),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(14,18,45,0.08),transparent_28%)]" />
 
-        <div className="relative max-w-5xl mx-auto">
+        <ScrollAnimator animation="fadeInUp" className="relative max-w-5xl mx-auto">
           <div className="rounded-[2rem] border border-white/50 dark:border-white/10 bg-white/75 dark:bg-cb-dark/65 backdrop-blur-xl shadow-[0_24px_70px_rgba(15,19,55,0.14)] px-6 sm:px-10 lg:px-14 py-12 sm:py-14 text-center">
             <h2 className="font-arsenica text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-cb-dark dark:text-cb-white mb-5">
               {isEvento ? "Tu gran día solo pasa una vez." : "Tu marca está lista para el siguiente nivel."}
@@ -209,7 +210,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
                 : "Haz que tu marca se vea tan profesional como el valor que ofrece, con una identidad visual auténtica y memorable."}
             </p>
           </div>
-        </div>
+        </ScrollAnimator>
       </section>
 
       {/* 6. Contacto */}

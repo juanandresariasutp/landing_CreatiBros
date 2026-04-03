@@ -3,6 +3,7 @@ import { ReelsGrid } from "@/components/ReelsGrid";
 import Image from "next/image";
 import { PlayCircle, Video, TrendingUp, MonitorSmartphone } from "lucide-react";
 import { buildImageUrl, buildVideoUrl } from "@/lib/cloudinary";
+import { ScrollAnimator } from "@/components/ScrollAnimator";
 
 export const metadata = {
   title: "Producción Audiovisual | Creatibros",
@@ -54,7 +55,7 @@ export default function AudiovisualPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full text-cb-white text-center">
-          <div className="max-w-4xl mx-auto">
+          <ScrollAnimator animation="fadeInUp" className="max-w-4xl mx-auto">
             <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
               <span className="w-12 h-px bg-cb-lavender-light"></span>
               Producción Audiovisual
@@ -67,14 +68,14 @@ export default function AudiovisualPage() {
             <p className="text-xl md:text-2xl text-cb-white/90 max-w-2xl mx-auto leading-relaxed">
               Desde piezas cinematográficas hasta el impacto del formato vertical. Creamos videos que cuentan historias y generan resultados.
             </p>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* El poder del Reel */}
       <section className="py-24 bg-cb-lavender-light/20 dark:bg-cb-white/5 border-y border-cb-lavender-light/30 dark:border-cb-white/10 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
-          <div className="max-w-xl">
+          <ScrollAnimator animation="fadeInLeft" className="max-w-xl">
             <span className="flex items-center gap-2 text-cb-purple font-semibold tracking-wider text-sm mb-4">
               <MonitorSmartphone className="w-5 h-5" />
               EL FORMATO DEL MOMENTO
@@ -90,9 +91,9 @@ export default function AudiovisualPage() {
                 Diseñamos clips dinámicos, con excelente iluminación, sonido nítido y la narrativa precisa para los primeros 3 segundos. Entendemos el lenguaje de internet para que tu marca se destaque donde la gente pasa su tiempo.
               </p>
             </div>
-          </div>
+          </ScrollAnimator>
 
-          <div className="relative flex justify-center lg:justify-self-end w-full">
+          <ScrollAnimator animation="fadeInRight" delay={120} className="relative flex justify-center lg:justify-self-end w-full">
             <div className="aspect-[9/16] w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] lg:max-w-[300px] bg-cb-navy dark:bg-cb-dark rounded-[2rem] shadow-2xl overflow-hidden border-[6px] border-cb-white dark:border-cb-white/10 flex items-center justify-center relative mx-auto lg:mx-0">
               {/* Pantalla falsa del celular */}
               <div className="absolute top-0 inset-x-0 h-6 bg-cb-white dark:bg-cb-white/10 rounded-b-3xl w-32 mx-auto"></div>
@@ -128,50 +129,59 @@ export default function AudiovisualPage() {
 
             {/* Decors */}
             <div className="absolute -z-10 top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 w-64 h-64 bg-cb-purple/30 rounded-full blur-3xl"></div>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* Referencias en Reels */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
+          <ScrollAnimator animation="fadeInUp">
+            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
             Nuestro trabajo en acción
-          </h2>
-          <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
+            </h2>
+          </ScrollAnimator>
+          <ScrollAnimator animation="fadeInUp" delay={120}>
+            <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-16 max-w-2xl mx-auto">
             Historias que capturan miradas en segundos: descubre una selección de reels diseñados para emocionar, conectar y convertir tu contenido en resultados reales.
-          </p>
+            </p>
+          </ScrollAnimator>
 
-          <ReelsGrid reelIds={reelVideos} />
+          <ScrollAnimator animation="scaleIn" delay={180}>
+            <ReelsGrid reelIds={reelVideos} />
+          </ScrollAnimator>
         </div>
       </section>
 
       {/* Por qué crear videos */}
       <section className="py-20 md:py-28 bg-cb-lavender-light/15 dark:bg-cb-white/5 border-y border-cb-lavender-light/30 dark:border-cb-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <ScrollAnimator animation="fadeInUp" className="text-center mb-16">
             <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mb-6">
               ¿Por qué invertir en video?
             </h2>
             <div className="w-16 h-1 bg-cb-purple mx-auto rounded-full"></div>
-          </div>
+          </ScrollAnimator>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {reasons.map((item, index) => (
-              <div
+              <ScrollAnimator
                 key={index}
-                className="bg-white/60 dark:bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300"
+                animation={index === 0 ? "fadeInLeft" : index === 2 ? "fadeInRight" : "fadeInUp"}
+                delay={index * 120 + 80}
               >
-                <div className="w-14 h-14 bg-cb-purple text-cb-white rounded-2xl flex items-center justify-center mb-6">
-                  <item.icon className="w-7 h-7" />
+                <div className="bg-white/60 dark:bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-cb-lavender-light/30 dark:border-cb-white/10 hover:-translate-y-2 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-cb-purple text-cb-white rounded-2xl flex items-center justify-center mb-6">
+                    <item.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="font-arsenica text-2xl font-bold text-cb-dark dark:text-cb-white mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-cb-dark/90 dark:text-cb-white/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+              </ScrollAnimator>
             ))}
           </div>
         </div>

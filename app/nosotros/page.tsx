@@ -3,6 +3,7 @@ import { Contact } from "@/components/Contact";
 import { Values } from "@/components/Values";
 import { Camera, Mountain } from "lucide-react";
 import { buildImageUrl } from "@/lib/cloudinary";
+import { ScrollAnimator } from "@/components/ScrollAnimator";
 
 export const metadata = {
   title: "Quiénes Somos | Creatibros",
@@ -29,7 +30,7 @@ export default function NosotrosPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center text-cb-white">
-          <div className="max-w-4xl mx-auto">
+          <ScrollAnimator animation="fadeInUp" className="max-w-4xl mx-auto">
           <p className="text-cb-lavender-light font-semibold tracking-[0.2em] uppercase text-sm mb-6 flex items-center justify-center gap-4">
             <span className="w-12 h-px bg-cb-lavender-light"></span>
             Nuestra Historia
@@ -42,7 +43,7 @@ export default function NosotrosPage() {
           <p className="text-xl md:text-2xl text-cb-white/90 leading-relaxed max-w-2xl mx-auto">
             Fundamos Creatibros con la visión de fusionar el arte audiovisual con el mundo digital y los grandes momentos.
           </p>
-          </div>
+          </ScrollAnimator>
         </div>
       </section>
 
@@ -50,6 +51,7 @@ export default function NosotrosPage() {
       <section className="bg-cb-navy text-cb-white dark:bg-[#0c1220] py-20 lg:py-24 px-4 sm:px-6 lg:px-8 shadow-2xl">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
+            <ScrollAnimator animation="fadeInLeft">
             <div>
               <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-6 text-white drop-shadow-md">
                 Nuestro <span className="text-cb-purple italic">Propósito</span>
@@ -83,8 +85,9 @@ export default function NosotrosPage() {
                 </div>
               </div>
             </div>
+            </ScrollAnimator>
             
-            <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
+            <ScrollAnimator animation="fadeInRight" delay={120} className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
                {/* Imagen representativa del eje cafetero o trabajando. Reemplazar cuando se tenga fotos reales. */}
                <Image 
                 src={buildImageUrl("", "proposito.png")}
@@ -97,21 +100,21 @@ export default function NosotrosPage() {
                 <p className="text-2xl font-arsenica font-bold text-white mb-2">Creatividad y Estrategia</p>
                 <p className="text-cb-lavender-light font-medium">De la visión a la realidad.</p>
               </div>
-            </div>
+            </ScrollAnimator>
           </div>
         </div>
       </section>
 
       {/* Los Fundadores */}
       <section className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-12 lg:mb-16">
+        <ScrollAnimator animation="fadeInUp" className="text-center mb-12 lg:mb-16">
           <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-4">Conoce al Equipo</h2>
           <div className="w-24 h-1 bg-cb-purple mx-auto rounded-full"></div>
-        </div>
+        </ScrollAnimator>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           {/* Juan Andrés Arias */}
-          <div className="group flex flex-col items-center text-center">
+          <ScrollAnimator animation="fadeInLeft" delay={80}><div className="group flex flex-col items-center text-center">
             <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src={buildImageUrl("", "juan.jpg")}
@@ -127,10 +130,10 @@ export default function NosotrosPage() {
             <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               Con más de <strong>6 años de experiencia</strong> en el cubrimiento de eventos y 2 años como realizador audiovisual. Su perfil técnico como <strong>Ingeniero de Sistemas y Computación</strong> le permite integrar tecnología y eficiencia en estrategias de marketing digital de alto impacto.
             </p>
-          </div>
+          </div></ScrollAnimator>
 
           {/* Andrés Camilo Trochez */}
-          <div className="group flex flex-col items-center text-center">
+          <ScrollAnimator animation="fadeInRight" delay={150}><div className="group flex flex-col items-center text-center">
             <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src={buildImageUrl("", "camilo1.jpg")}
@@ -146,7 +149,7 @@ export default function NosotrosPage() {
             <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
               Con <strong>más de 5 años de experiencia</strong> en el sector de la recreación, aporta un enfoque creativo y dinámico para dar solución a necesidades logísticas, desarrollando propuestas innovadoras que conectan de manera efectiva con cada proyecto y su público.
             </p>
-          </div>
+          </div></ScrollAnimator>
         </div>
       </section>
 

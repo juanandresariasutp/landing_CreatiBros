@@ -24,12 +24,21 @@ export function ScrollAnimator({
     scaleIn: "animate-scroll-scaleIn",
     scaleOut: "animate-scroll-scaleOut",
   } as const;
+  const initialStateClasses = {
+    fadeInUp: "scroll-initial-fadeInUp",
+    fadeInLeft: "scroll-initial-fadeInLeft",
+    fadeInRight: "scroll-initial-fadeInRight",
+    scaleIn: "scroll-initial-scaleIn",
+    scaleOut: "scroll-initial-scaleOut",
+  } as const;
 
   return (
     <div
       ref={ref}
       className={cn(
-        isVisible ? animationClasses[animation] : "scroll-animation-initial",
+        "scroll-animation-initial",
+        initialStateClasses[animation],
+        isVisible && animationClasses[animation],
         className
       )}
       style={{
