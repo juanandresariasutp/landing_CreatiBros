@@ -86,7 +86,7 @@ export function Navbar() {
               width={320}
               height={90}
               className={cn(
-                "h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-[1.02] dark:invert-0",
+                "h-10 sm:h-11 md:h-12 lg:h-14 w-auto max-w-[132px] sm:max-w-[148px] md:max-w-[168px] lg:max-w-[210px] object-contain transition-transform duration-300 group-hover:scale-[1.02] dark:invert-0",
                 isHomeTop
                   ? "drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
                   : "invert"
@@ -96,7 +96,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav className="hidden lg:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => {
               // Determina si esta es la ruta activa. Maneja tanto matching exacto como subrutas (ej: /portafolio/bodas)
               const isActive = link.href === "/" 
@@ -206,7 +206,7 @@ export function Navbar() {
           </nav>
 
           {/* Mobile Menu Button & Theme toggle */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
             <button
               ref={mobileMenuButtonRef}
@@ -225,7 +225,7 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div ref={mobileMenuRef} className="md:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
+        <div ref={mobileMenuRef} className="lg:hidden absolute top-full left-0 w-full max-h-[80vh] overflow-y-auto bg-cb-white dark:bg-cb-dark border-t border-cb-lavender-light dark:border-cb-white/10 shadow-lg py-4 px-4 flex flex-col gap-4">
           {navLinks.map((link) => {
             const isActive = link.href === "/" 
               ? pathname === "/" 
