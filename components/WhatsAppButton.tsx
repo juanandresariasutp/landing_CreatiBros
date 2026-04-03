@@ -6,13 +6,28 @@ export function WhatsAppButton() {
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
 
   return (
+    <>
+      <style>{`
+        @keyframes bounce-subtle {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        .animate-bounce-subtle {
+          animation: bounce-subtle 2s infinite;
+        }
+      `}</style>
+      
     <div className="fixed bottom-6 right-6 z-[99] flex flex-row-reverse items-center gap-4">
       {/* Botón Circular */}
       <a 
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="peer flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300"
+        className="peer animate-bounce-subtle flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] text-white rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300"
         aria-label="Contactar por WhatsApp"
       >
         <svg 
@@ -29,5 +44,6 @@ export function WhatsAppButton() {
         ¿Cómo podemos ayudarte?
       </div>
     </div>
+    </>
   );
 }
