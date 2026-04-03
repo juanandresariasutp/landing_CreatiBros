@@ -67,7 +67,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
       {/* 2. Hero Emocional / Persuasivo */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1">
+          <div className="order-1">
             <span className="text-cb-purple font-semibold tracking-[0.2em] uppercase text-xs md:text-sm mb-4 flex items-center gap-3">
               <span className="w-8 h-px bg-cb-purple"></span>
               {category.group}
@@ -78,6 +78,18 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
             <p className="text-xl md:text-2xl text-cb-dark dark:text-cb-white/80 leading-relaxed mb-8">
               {category.description}
             </p>
+
+            <div className="lg:hidden w-full h-[36vh] sm:h-[42vh] relative rounded-2xl overflow-hidden shadow-2xl mb-8">
+              <Image
+                src={heroImageUrl}
+                alt={`${category.title} - Cover`}
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/50 to-transparent"></div>
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4">
                <a href="#galeria" className="px-8 py-4 bg-cb-navy text-cb-white dark:bg-cb-white dark:text-cb-dark rounded-full font-bold text-center hover:bg-cb-purple dark:hover:bg-cb-purple hover:text-cb-white transition-colors duration-300 shadow-lg">
                 Ver galería
@@ -88,7 +100,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
             </div>
           </div>
           
-          <div className="order-1 lg:order-2 w-full h-[50vh] lg:h-[70vh] relative rounded-3xl overflow-hidden shadow-2xl">
+          <div className="hidden lg:block order-2 w-full h-[50vh] lg:h-[70vh] relative rounded-3xl overflow-hidden shadow-2xl">
             <Image 
               src={heroImageUrl}
               alt={`${category.title} - Cover`}
