@@ -7,6 +7,7 @@ import { ArrowLeft, CheckCircle2, Heart, Award, Star } from "lucide-react";
 import Image from "next/image";
 import { buildImageUrl } from "@/lib/cloudinary";
 import { getCoverImageFromFolder, getImagesFromFolder } from "@/lib/cloudinary-actions";
+import { AgeGate } from "@/components/AgeGate";
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const category = portfolioCategories.find((c) => c.slug === params.slug);
@@ -31,6 +32,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
   }
 
   const isEvento = category.group === "Eventos";
+  const requiresAgeGate = category.slug === "boudoir";
   const cloudinaryImages = await getImagesFromFolder(`portafolio/${category.slug}`);
   const controlledCover = await getCoverImageFromFolder(`portafolio/${category.slug}`);
 
@@ -51,6 +53,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
     buildImageUrl("", "hero-portafolio2.jpg");
 
   return (
+    <AgeGate enabled={requiresAgeGate}>
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
       
       {/* 1. Navegación Top */}
@@ -214,5 +217,6 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
         <Contact />
       </div>
     </main>
+    </AgeGate>
   );
 }
