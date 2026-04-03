@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createPortal } from "react-dom";
 
 interface AgeGateProps {
   enabled: boolean;
@@ -13,6 +14,11 @@ const AGE_GATE_KEY = "creatibros_boudoir_18_verified";
 export function AgeGate({ enabled, children }: AgeGateProps) {
   const router = useRouter();
   const [isVerified, setIsVerified] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!enabled) return;
@@ -22,6 +28,17 @@ export function AgeGate({ enabled, children }: AgeGateProps) {
       setIsVerified(true);
     }
   }, [enabled]);
+
+  useEffect(() => {
+    if (!enabled || isVerified) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [enabled, isVerified]);
 
   const handleConfirm = () => {
     window.localStorage.setItem(AGE_GATE_KEY, "true");
@@ -36,7 +53,11 @@ export function AgeGate({ enabled, children }: AgeGateProps) {
     return <>{children}</>;
   }
 
-  return (
+  if (!isMounted) {
+    return null;
+  }
+
+  return createPortal(
     <>
       <div className="fixed inset-0 z-[120] bg-cb-dark/80 backdrop-blur-sm" />
       <div className="fixed inset-0 z-[121] flex items-center justify-center px-4">
@@ -66,7 +87,7 @@ export function AgeGate({ enabled, children }: AgeGateProps) {
           </div>
         </div>
       </div>
-      <div className="opacity-0 pointer-events-none select-none">{children}</div>
-    </>
+    </>,
+    document.body
   );
 }
