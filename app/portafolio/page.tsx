@@ -76,7 +76,7 @@ export default async function PortafolioPage() {
             </div>
           </div>
           
-          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+          <div className="lg:w-2/3 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {eventos.map((categoria, index) => (
               <Link 
                 key={categoria.id} 
@@ -95,8 +95,8 @@ export default async function PortafolioPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/95 via-cb-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
                 
                 {/* Contenido inferior */}
-                <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end transform transition-transform duration-500">
-                  <h3 className="text-3xl font-bold mb-3 text-cb-white drop-shadow-md">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 flex flex-col justify-end transform transition-transform duration-500">
+                  <h3 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-3 text-cb-white drop-shadow-md">
                     {categoria.title}
                   </h3>
                   <div className="flex items-center gap-2 overflow-hidden">
@@ -127,7 +127,7 @@ export default async function PortafolioPage() {
             </div>
           </div>
           
-          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+          <div className="lg:w-2/3 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {servicios.map((categoria, index) => (
               <Link 
                 key={categoria.id} 
@@ -147,8 +147,8 @@ export default async function PortafolioPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-cb-navy/95 via-cb-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
                 
                 {/* Contenido inferior */}
-                <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end transform transition-transform duration-500">
-                  <h3 className="text-3xl font-bold mb-3 text-cb-white drop-shadow-md">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 flex flex-col justify-end transform transition-transform duration-500">
+                  <h3 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-3 text-cb-white drop-shadow-md">
                     {categoria.title}
                   </h3>
                   <div className="flex items-center gap-2 overflow-hidden">
