@@ -1,6 +1,7 @@
 import { Zap, Award, Target, Camera, Sparkles, Heart } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ScrollAnimator } from "./ScrollAnimator";
 
 const values = [
   {
@@ -58,8 +59,10 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
 
       {/* Floating Badges (Desktop XL) */}
       {values.map((v, i) => (
-        <div 
-          key={i} 
+        <ScrollAnimator
+          key={i}
+          animation="scaleIn"
+          delay={120 + i * 70}
           className={cn(
             "absolute items-center gap-4 bg-cb-white/80 dark:bg-[#16161f] border border-cb-lavender-light/40 dark:border-white/10 pr-6 p-2 rounded-full shadow-xl dark:shadow-2xl backdrop-blur-sm z-20 hover:scale-105 hover:border-cb-purple/50 transition-all duration-300",
             v.position,
@@ -70,11 +73,11 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
             {v.icon}
           </div>
           <span className="font-medium text-sm lg:text-base text-cb-dark/85 dark:text-white/90">{v.title}</span>
-        </div>
+        </ScrollAnimator>
       ))}
 
       {/* Center Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <ScrollAnimator animation="fadeInUp" className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="flex items-center gap-2 mb-8">
           <Sparkles className="w-5 h-5 text-cb-lavender-med" />
           <span className="text-cb-lavender-med font-bold tracking-widest uppercase text-sm">
@@ -109,10 +112,10 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
             </Link>
           </div>
         )}
-      </div>
+      </ScrollAnimator>
 
       {/* Mobile Badges Grid (visible only on smaller screens < xl) */}
-      <div className="xl:hidden relative z-10 w-full px-4 mt-20 flex flex-wrap justify-center gap-4 max-w-3xl">
+      <ScrollAnimator animation="fadeInUp" delay={180} className="xl:hidden relative z-10 w-full px-4 mt-20 flex flex-wrap justify-center gap-4 max-w-3xl">
         {values.map((v, i) => (
           <div 
             key={i} 
@@ -124,7 +127,7 @@ export function Values({ showButtons = true }: { showButtons?: boolean }) {
             <span className="font-medium text-xs sm:text-sm text-cb-dark/85 dark:text-white/90">{v.title}</span>
           </div>
         ))}
-      </div>
+      </ScrollAnimator>
     </section>
   );
 }
