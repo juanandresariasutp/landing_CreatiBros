@@ -57,25 +57,40 @@ body {
   }
 }
 
+@keyframes scaleOut {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
   .animate-scroll-fadeInUp {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.95s ease-out forwards;
   }
 
   .animate-scroll-fadeInLeft {
-    animation: fadeInLeft 0.8s ease-out forwards;
+    animation: fadeInLeft 0.95s ease-out forwards;
   }
 
   .animate-scroll-fadeInRight {
-    animation: fadeInRight 0.8s ease-out forwards;
+    animation: fadeInRight 0.95s ease-out forwards;
   }
 
   .animate-scroll-scaleIn {
-    animation: scaleIn 0.8s ease-out forwards;
+    animation: scaleIn 1s ease-out forwards;
+  }
+
+  .animate-scroll-scaleOut {
+    animation: scaleOut 1.05s ease-out forwards;
   }
 
   .scroll-animation-initial {

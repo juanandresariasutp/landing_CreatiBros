@@ -39,39 +39,49 @@ export function About() {
 
           {/* Contenido */}
           <ScrollAnimator animation="fadeInRight" className="w-full lg:w-1/2">
-            <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
-              Nuestra Historia
-            </span>
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
-              Más que una agencia, somos Creatibros
-            </h2>
+            <ScrollAnimator animation="fadeInUp">
+              <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
+                Nuestra Historia
+              </span>
+            </ScrollAnimator>
+            <ScrollAnimator animation="fadeInUp" delay={100}>
+              <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
+                Más que una agencia, somos Creatibros
+              </h2>
+            </ScrollAnimator>
             
-            <div className="space-y-6 text-lg text-cb-dark dark:text-cb-white/80">
-              <p>
-                Nacimos de la pasión compartida por contar historias visuales que emocionen. Somos un equipo de profesionales creativos dedicados a transformar momentos fugaces en recuerdos eternos.
-              </p>
-              <p>
-                Durante más de 2 años, hemos acompañado a parejas, familias, marcas y emprendedores, ofreciendo una mirada fresca y profesional que se adapta a las necesidades únicas de cada proyecto.
-              </p>
-            </div>
+            <ScrollAnimator animation="fadeInUp" delay={180}>
+              <div className="space-y-6 text-lg text-cb-dark dark:text-cb-white/80">
+                <p>
+                  Nacimos de la pasión compartida por contar historias visuales que emocionen. Somos un equipo de profesionales creativos dedicados a transformar momentos fugaces en recuerdos eternos.
+                </p>
+                <p>
+                  Durante más de 2 años, hemos acompañado a parejas, familias, marcas y emprendedores, ofreciendo una mirada fresca y profesional que se adapta a las necesidades únicas de cada proyecto.
+                </p>
+              </div>
+            </ScrollAnimator>
 
             <div className="mt-12 grid sm:grid-cols-2 gap-8">
-              <div className="border-l-2 border-cb-purple pl-4">
-                <h4 className="font-arsenica text-xl font-bold text-cb-dark dark:text-cb-white mb-2">Visión Creativa</h4>
-                <p className="text-cb-dark/90 dark:text-cb-white/70">
-                  Enfocados en el detalle, la luz y las emociones reales por encima de las poses forzadas.
-                </p>
-              </div>
-              <div className="border-l-2 border-cb-lavender-med pl-4">
-                <h4 className="font-arsenica text-xl font-bold text-cb-dark dark:text-cb-white mb-2">Nuestro Compromiso</h4>
-                <p className="text-cb-dark/90 dark:text-cb-white/70">
-                  Calidad excepcional, entrega a tiempo y una experiencia cercana y humana.
-                </p>
-              </div>
+              <ScrollAnimator animation="fadeInLeft" delay={220}>
+                <div className="border-l-2 border-cb-purple pl-4">
+                  <h4 className="font-arsenica text-xl font-bold text-cb-dark dark:text-cb-white mb-2">Visión Creativa</h4>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">
+                    Enfocados en el detalle, la luz y las emociones reales por encima de las poses forzadas.
+                  </p>
+                </div>
+              </ScrollAnimator>
+              <ScrollAnimator animation="fadeInRight" delay={300}>
+                <div className="border-l-2 border-cb-lavender-med pl-4">
+                  <h4 className="font-arsenica text-xl font-bold text-cb-dark dark:text-cb-white mb-2">Nuestro Compromiso</h4>
+                  <p className="text-cb-dark/90 dark:text-cb-white/70">
+                    Calidad excepcional, entrega a tiempo y una experiencia cercana y humana.
+                  </p>
+                </div>
+              </ScrollAnimator>
             </div>
 
             {/* Botón Leer Más */}
-            <div className="mt-10">
+            <ScrollAnimator animation="fadeInUp" delay={380} className="mt-10">
               <Link 
                 href="/nosotros" 
                 className="inline-flex items-center gap-2 px-8 py-4 bg-cb-navy hover:bg-cb-purple text-cb-white dark:bg-cb-white dark:text-cb-dark dark:hover:bg-cb-purple dark:hover:text-cb-white rounded-full font-medium transition-colors duration-300 shadow-lg"
@@ -81,7 +91,7 @@ export function About() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-            </div>
+            </ScrollAnimator>
           </ScrollAnimator>
 
         </div>

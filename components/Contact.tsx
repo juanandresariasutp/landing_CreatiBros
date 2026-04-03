@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, MapPin, Mail, MessageCircle } from "lucide-react";
+import { ScrollAnimator } from "./ScrollAnimator";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -77,52 +78,60 @@ ${formData.mensaje}`;
         <div className="grid lg:grid-cols-2 gap-16">
           
           {/* Info de contacto */}
-          <div>
-            <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
-              Contáctanos
-            </span>
-            <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
-              ¿Listo para crear algo increíble?
-            </h2>
-            <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-10">
-              Escríbenos para agendar una sesión, pedir una cotización o simplemente saludar. Estamos aquí para darle vida a tus ideas.
-            </p>
+          <ScrollAnimator animation="fadeInLeft" delay={40} className="space-y-0">
+            <div>
+              <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
+                Contáctanos
+              </span>
+              <h2 className="font-arsenica text-4xl md:text-5xl font-bold text-cb-dark dark:text-cb-white mt-4 mb-6">
+                ¿Listo para crear algo increíble?
+              </h2>
+              <p className="text-lg text-cb-dark dark:text-cb-white/80 mb-10">
+                Escríbenos para agendar una sesión, pedir una cotización o simplemente saludar. Estamos aquí para darle vida a tus ideas.
+              </p>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
-                  <MessageCircle className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">WhatsApp</p>
-                  <p className="font-medium text-cb-dark dark:text-cb-white">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Email</p>
-                  <p className="font-medium text-cb-dark dark:text-cb-white">creatibros.co@gmail.com</p>
-                </div>
-              </div>
+              <div className="space-y-6">
+                <ScrollAnimator animation="fadeInUp" delay={140}>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
+                      <MessageCircle className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">WhatsApp</p>
+                      <p className="font-medium text-cb-dark dark:text-cb-white">+{process.env.NEXT_PUBLIC_WA_NUMBER}</p>
+                    </div>
+                  </div>
+                </ScrollAnimator>
+                
+                <ScrollAnimator animation="fadeInUp" delay={220}>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Email</p>
+                      <p className="font-medium text-cb-dark dark:text-cb-white">creatibros.co@gmail.com</p>
+                    </div>
+                  </div>
+                </ScrollAnimator>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Ubicación</p>
-                  <p className="font-medium text-cb-dark dark:text-cb-white">Colombia / Disponible para viajes</p>
-                </div>
+                <ScrollAnimator animation="fadeInUp" delay={300}>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-cb-lavender-light/50 dark:bg-cb-white/5 rounded-full flex items-center justify-center text-cb-purple">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-cb-dark/60 dark:text-cb-white/60">Ubicación</p>
+                      <p className="font-medium text-cb-dark dark:text-cb-white">Colombia / Disponible para viajes</p>
+                    </div>
+                  </div>
+                </ScrollAnimator>
               </div>
             </div>
-          </div>
+          </ScrollAnimator>
 
           {/* Formulario */}
-          <div className="bg-white/60 dark:bg-cb-white/5 p-8 rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/10 shadow-sm">
+          <ScrollAnimator animation="fadeInRight" delay={140} className="bg-white/60 dark:bg-cb-white/5 p-8 rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/10 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium text-cb-dark dark:text-cb-white mb-2">Nombre completo *</label>
@@ -232,7 +241,7 @@ ${formData.mensaje}`;
                 <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>
-          </div>
+          </ScrollAnimator>
 
         </div>
       </div>

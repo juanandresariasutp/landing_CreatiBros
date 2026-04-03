@@ -37,7 +37,7 @@ export function Services() {
   return (
     <section id="servicios" className="py-24 bg-cb-white dark:bg-cb-dark/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollAnimator animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollAnimator animation="fadeInUp" delay={40} className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-cb-purple font-semibold tracking-wider uppercase text-sm">
             Lo que hacemos
           </span>
@@ -54,7 +54,7 @@ export function Services() {
             <ScrollAnimator
               key={service.id}
               animation={index === 0 ? "fadeInLeft" : index === 2 ? "fadeInRight" : "fadeInUp"}
-              delay={index * 100}
+              delay={index * 160 + 80}
             >
               <div
                 className={cn(
