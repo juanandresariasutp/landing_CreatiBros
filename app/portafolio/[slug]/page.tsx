@@ -40,7 +40,7 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
           id: index + 1,
           folder: category.slug,
           filename: `${img.publicId.split("/").pop()}.${img.format}`,
-          alt: `${category.title} ${index + 1}`,
+          alt: "Fotografia de galeria",
           url: img.url,
         }))
       : [];
@@ -114,13 +114,13 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
       </section>
 
       {/* 3. Propuesta de Valor Dinámica (Depende si es Evento o Servicio) */}
-      <section className="bg-white/60 dark:bg-white/5 py-20 lg:py-28 mt-12">
+      <section className="bg-cb-lavender-light/20 dark:bg-white/5 py-20 lg:py-28 mt-12 border-y border-cb-lavender-light/35 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-arsenica text-4xl lg:text-5xl font-bold mb-12">
             {isEvento ? "¿Por qué documentar este momento?" : "¿Por qué invertir en tu imagen?"}
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 bg-white/55 dark:bg-white/5 backdrop-blur-sm p-6 sm:p-8 lg:p-10 rounded-[2rem] border border-cb-lavender-light/30 dark:border-white/10 shadow-[0_18px_45px_rgba(15,19,55,0.08)]">
             {isEvento ? (
                <>
                 <div className="bg-cb-white dark:bg-cb-navy p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow">
@@ -162,35 +162,50 @@ export default async function PortfolioCategoryPage({ params }: { params: { slug
         </div>
       </section>
 
-      {/* 4. Galería - Carrusel */}
-      <section id="galeria" className="py-20 lg:py-32">
+      {/* 4. Galería - Nuestro Trabajo */}
+      <section
+        id="galeria"
+        className="py-20 lg:py-32 bg-gradient-to-b from-cb-white via-cb-lavender-light/20 to-cb-lavender-light/10 dark:from-cb-dark dark:via-cb-navy/30 dark:to-cb-dark border-b border-cb-lavender-light/35 dark:border-white/10"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
-           <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-4">Nuestro Trabajo</h2>
-           <p className="text-lg text-cb-dark/90 dark:text-cb-white/70 max-w-2xl mx-auto">
-             Observa cómo cuidamos la luz, la composición y el instante preciso en cada toma.
-           </p>
+          <span className="inline-flex items-center gap-2 rounded-full border border-cb-purple/30 bg-cb-purple/10 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-cb-purple mb-6">
+            Galeria Destacada
+          </span>
+          <h2 className="font-arsenica text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-cb-dark dark:text-cb-white">
+            Nuestro Trabajo
+          </h2>
+          <p className="text-lg text-cb-dark/90 dark:text-cb-white/75 max-w-3xl mx-auto leading-relaxed">
+            Recorre una seleccion curada de imagenes reales donde cuidamos composicion, luz y narrativa visual para contar cada historia.
+          </p>
         </div>
         {galleryImages.length === 0 && (
           <p className="text-center text-cb-dark/70 dark:text-cb-white/70 mb-8 px-4">
             Aún no hay imágenes disponibles en esta categoría o Cloudinary alcanzó su límite temporal.
           </p>
         )}
-        <PortfolioCarousel 
-          title=""
-          description={""}
-          images={galleryImages} 
-        />
+        <div className="max-w-[92rem] mx-auto px-3 sm:px-5">
+          <div className="rounded-3xl border border-cb-lavender-light/40 dark:border-cb-white/10 bg-white/70 dark:bg-cb-navy/20 backdrop-blur-sm p-4 sm:p-6 lg:p-8 shadow-[0_18px_50px_rgba(10,12,40,0.12)]">
+            <PortfolioCarousel title="" description={""} images={galleryImages} />
+          </div>
+        </div>
       </section>
 
       {/* 5. Cierre Persuasivo antes del contacto */}
-      <section className="bg-cb-purple text-white py-16 text-center px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-arsenica text-3xl md:text-5xl font-bold mb-6">
-            {isEvento ? "Tu gran día solo pasa una vez." : "Tu marca está lista para el siguiente nivel."}
-          </h2>
-          <p className="text-lg md:text-xl font-medium mb-8 text-white/90">
-            No dejes la parte más importante de tu {isEvento ? "historia" : "negocio"} al azar. Trabajemos juntos.
-          </p>
+      <section className="relative overflow-hidden py-20 px-4">
+        <div className="absolute inset-0 bg-gradient-to-br from-cb-lavender-light/35 via-white to-cb-white dark:from-cb-navy dark:via-cb-dark dark:to-cb-navy" />
+        <div className="absolute inset-0 opacity-60 dark:opacity-30 bg-[radial-gradient(circle_at_top_left,rgba(134,132,255,0.25),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(14,18,45,0.08),transparent_28%)]" />
+
+        <div className="relative max-w-5xl mx-auto">
+          <div className="rounded-[2rem] border border-white/50 dark:border-white/10 bg-white/75 dark:bg-cb-dark/65 backdrop-blur-xl shadow-[0_24px_70px_rgba(15,19,55,0.14)] px-6 sm:px-10 lg:px-14 py-12 sm:py-14 text-center">
+            <h2 className="font-arsenica text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-cb-dark dark:text-cb-white mb-5">
+              {isEvento ? "Tu gran día solo pasa una vez." : "Tu marca está lista para el siguiente nivel."}
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-cb-dark/80 dark:text-cb-white/75 max-w-3xl mx-auto leading-relaxed">
+              {isEvento
+                ? "No dejes que estos recuerdos se pierdan con el tiempo. Conservemos cada emoción con una fotografía que puedas revivir siempre."
+                : "Haz que tu marca se vea tan profesional como el valor que ofrece, con una identidad visual auténtica y memorable."}
+            </p>
+          </div>
         </div>
       </section>
 
