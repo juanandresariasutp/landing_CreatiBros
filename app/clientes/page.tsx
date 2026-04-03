@@ -69,6 +69,16 @@ const clients = [
 
 export default function ClientesPage() {
   const clientesHeroBg = buildImageUrl("", "hero-clientes.jpg");
+  const clientesCtaBgCandidates = [
+    buildImageUrl("", "cta-clientes.jpg"),
+    buildImageUrl("", "cta-clientes.png"),
+    buildImageUrl("", "cta-clientes.webp"),
+    buildImageUrl("clientes", "cta-clientes.jpg"),
+    buildImageUrl("clientes", "cta-clientes.png"),
+    buildImageUrl("clientes", "cta-clientes.webp"),
+    buildImageUrl("", "cta-clientes"),
+    buildImageUrl("clientes", "cta-clientes"),
+  ];
 
   return (
     <main className="bg-cb-white dark:bg-cb-dark pt-24 min-h-screen text-cb-dark dark:text-cb-white transition-colors duration-300">
@@ -200,8 +210,17 @@ export default function ClientesPage() {
       </section>
 
       {/* 4. CTA Final */}
-      <section className="bg-cb-white dark:bg-cb-dark pb-20 pt-16 text-center border-t border-cb-lavender-light/20 dark:border-white/10">
-        <div className="max-w-3xl mx-auto px-4">
+      <section className="relative overflow-hidden pb-20 pt-16 text-center border-t border-cb-lavender-light/20 dark:border-white/10">
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{
+            backgroundImage: clientesCtaBgCandidates.map((url) => `url(\"${url}\")`).join(", "),
+          }}
+        >
+          <div className="absolute inset-0 bg-cb-dark/85" />
+        </div>
+
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-cb-white">
           <h2 className="font-arsenica text-4xl md:text-5xl font-bold mb-8">
             ¿Quieres ser nuestro próximo caso de éxito?
           </h2>
