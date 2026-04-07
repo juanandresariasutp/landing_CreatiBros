@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -28,6 +28,7 @@ export function PortfolioCarousel({ title, description, images }: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const galleryTopRef = useRef<HTMLDivElement | null>(null);
 
   const lightboxSlides = images.map((img) => ({
     src: img.url ?? buildImageUrl(`portafolio/${img.folder}`, img.filename),
@@ -46,10 +47,24 @@ export function PortfolioCarousel({ title, description, images }: Props) {
     setCurrentPage(1);
   }, [images]);
 
+  const scrollToGalleryTop = () => {
+    if (!galleryTopRef.current) return;
+
+    const navbarOffset = 110;
+    const top = galleryTopRef.current.getBoundingClientRect().top + window.scrollY - navbarOffset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  };
+
+  const handlePageChange = (nextPage: number) => {
+    if (nextPage === currentPage) return;
+    scrollToGalleryTop();
+    setCurrentPage(nextPage);
+  };
+
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="mb-8">
+    <div ref={galleryTopRef} className="mb-8">
       {(title || description) && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -96,7 +111,10 @@ export function PortfolioCarousel({ title, description, images }: Props) {
           <div className="mt-8 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
             <button
               type="button"
-              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              onClick={(event) => {
+                event.currentTarget.blur();
+                handlePageChange(Math.max(1, currentPage - 1));
+              }}
               disabled={currentPage === 1}
               className="px-3 py-2 rounded-xl border border-cb-lavender-light/40 dark:border-cb-white/20 text-sm font-medium text-cb-dark dark:text-cb-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-cb-lavender-light/30 dark:hover:bg-cb-white/10"
             >
@@ -107,7 +125,7 @@ export function PortfolioCarousel({ title, description, images }: Props) {
               <button
                 key={page}
                 type="button"
-                onClick={() => setCurrentPage(page)}
+                onClick={() => handlePageChange(page)}
                 className={`min-w-10 h-10 px-3 rounded-xl border text-sm font-semibold transition ${
                   currentPage === page
                     ? "border-cb-pink bg-cb-pink text-white"
@@ -122,7 +140,10 @@ export function PortfolioCarousel({ title, description, images }: Props) {
 
             <button
               type="button"
-              onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+              onClick={(event) => {
+                event.currentTarget.blur();
+                handlePageChange(Math.min(totalPages, currentPage + 1));
+              }}
               disabled={currentPage === totalPages}
               className="px-3 py-2 rounded-xl border border-cb-lavender-light/40 dark:border-cb-white/20 text-sm font-medium text-cb-dark dark:text-cb-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-cb-lavender-light/30 dark:hover:bg-cb-white/10"
             >
