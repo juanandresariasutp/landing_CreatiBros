@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/counter.css";
 import { buildImageUrl } from "@/lib/cloudinary";
 
 export type PortfolioImage = {
@@ -22,28 +24,26 @@ interface Props {
 }
 
 export function PortfolioCarousel({ title, description, images }: Props) {
+  const IMAGES_PER_PAGE = 15;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const lightboxSlides = images.map((img) => ({
     src: img.url ?? buildImageUrl(`portafolio/${img.folder}`, img.filename),
     alt: img.alt,
   }));
 
-  const rows = useMemo(() => {
-    const chunkSize = 10;
-    const chunkedRows: Array<Array<{ image: PortfolioImage; index: number }>> = [];
+  const totalPages = Math.max(1, Math.ceil(images.length / IMAGES_PER_PAGE));
 
-    for (let index = 0; index < images.length; index += chunkSize) {
-      chunkedRows.push(
-        images.slice(index, index + chunkSize).map((image, offset) => ({
-          image,
-          index: index + offset,
-        }))
-      );
-    }
+  const pagedImages = useMemo(() => {
+    const start = (currentPage - 1) * IMAGES_PER_PAGE;
+    const end = start + IMAGES_PER_PAGE;
+    return images.slice(start, end);
+  }, [currentPage, images]);
 
-    return chunkedRows;
+  useEffect(() => {
+    setCurrentPage(1);
   }, [images]);
 
   if (!images || images.length === 0) return null;
@@ -61,93 +61,83 @@ export function PortfolioCarousel({ title, description, images }: Props) {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-1 sm:px-2">
-        <div className="space-y-4 sm:space-y-5">
-          {rows.map((row, rowIndex) => {
+      <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4">
+        <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 [column-fill:_balance]">
+          {pagedImages.map((image, index) => {
+            const globalIndex = (currentPage - 1) * IMAGES_PER_PAGE + index;
+
             return (
-              <div
-                key={`row-${rowIndex}`}
-                className="overflow-hidden rounded-2xl"
+              <button
+                key={`${image.id}-${globalIndex}`}
+                type="button"
+                className="group relative mb-3 sm:mb-4 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/15 bg-gradient-to-br from-white/75 to-cb-lavender-light/20 dark:from-cb-white/10 dark:to-cb-navy/20 shadow-[0_10px_28px_rgba(15,19,55,0.12)] transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_18px_42px_rgba(15,19,55,0.22)]"
+                onClick={() => {
+                  setPhotoIndex(globalIndex);
+                  setLightboxOpen(true);
+                }}
               >
-                <div
-                  className={`marquee-track ${rowIndex % 2 === 1 ? "marquee-right" : "marquee-left"}`}
-                  style={{ animationDuration: `${Math.max(36, row.length * 12)}s` }}
-                >
-                  {Array.from({ length: 2 }).map((_, duplicateIndex) => (
-                    <div key={`${rowIndex}-copy-${duplicateIndex}`} className="flex gap-4 w-max py-1 pr-4">
-                      {row.map(({ image, index }, itemIndex) => (
-                        <button
-                          key={`${rowIndex}-${duplicateIndex}-${itemIndex}-${image.id}`}
-                          type="button"
-                          className="group relative flex-shrink-0 w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] h-[170px] sm:h-[190px] md:h-[220px] rounded-2xl overflow-hidden border border-cb-lavender-light/30 dark:border-cb-white/15 bg-gradient-to-br from-white/75 to-cb-lavender-light/20 dark:from-cb-white/10 dark:to-cb-navy/20 shadow-[0_10px_28px_rgba(15,19,55,0.12)]"
-                          onClick={() => {
-                            setPhotoIndex(index);
-                            setLightboxOpen(true);
-                          }}
-                        >
-                          <Image
-                            src={image.url ?? buildImageUrl(`portafolio/${image.folder}`, image.filename)}
-                            alt={image.alt}
-                            fill
-                            sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
-                            className="object-contain p-1.5 sm:p-2 transition-transform duration-500 group-hover:scale-[1.02]"
-                          />
-                          <div className="absolute inset-0 bg-cb-navy/0 group-hover:bg-cb-navy/20 transition-colors duration-300" />
-                        </button>
-                      ))}
-                    </div>
-                  ))}
+                <div className="relative w-full">
+                  <Image
+                    src={image.url ?? buildImageUrl(`portafolio/${image.folder}`, image.filename)}
+                    alt={image.alt}
+                    width={1400}
+                    height={1800}
+                    sizes="(max-width: 640px) 48vw, (max-width: 768px) 48vw, (max-width: 1024px) 31vw, 23vw"
+                    className="h-auto w-full origin-center transform-gpu transition-transform duration-700 ease-out group-hover:scale-[1.12]"
+                  />
+                  <div className="absolute inset-0 bg-cb-navy/0 group-hover:bg-cb-navy/14 transition-colors duration-500" />
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
+
+        {totalPages > 1 && (
+          <div className="mt-8 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="px-3 py-2 rounded-xl border border-cb-lavender-light/40 dark:border-cb-white/20 text-sm font-medium text-cb-dark dark:text-cb-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-cb-lavender-light/30 dark:hover:bg-cb-white/10"
+            >
+              Anterior
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                type="button"
+                onClick={() => setCurrentPage(page)}
+                className={`min-w-10 h-10 px-3 rounded-xl border text-sm font-semibold transition ${
+                  currentPage === page
+                    ? "border-cb-pink bg-cb-pink text-white"
+                    : "border-cb-lavender-light/40 dark:border-cb-white/20 text-cb-dark dark:text-cb-white hover:bg-cb-lavender-light/30 dark:hover:bg-cb-white/10"
+                }`}
+                aria-label={`Ir a la página ${page}`}
+                aria-current={currentPage === page ? "page" : undefined}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="px-3 py-2 rounded-xl border border-cb-lavender-light/40 dark:border-cb-white/20 text-sm font-medium text-cb-dark dark:text-cb-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:bg-cb-lavender-light/30 dark:hover:bg-cb-white/10"
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
       </div>
-
-      <style jsx>{`
-        .marquee-track {
-          display: flex;
-          width: max-content;
-          will-change: transform;
-        }
-
-        .marquee-left {
-          animation-name: scroll-left;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-
-        .marquee-right {
-          animation-name: scroll-right;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-
-        @keyframes scroll-left {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes scroll-right {
-          from {
-            transform: translateX(-50%);
-          }
-          to {
-            transform: translateX(0);
-          }
-        }
-      `}</style>
 
       <Lightbox
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
         index={photoIndex}
         slides={lightboxSlides}
-        plugins={[Zoom]}
+        plugins={[Zoom, Counter]}
         controller={{ closeOnBackdropClick: true }}
         zoom={{
           maxZoomPixelRatio: 4,
