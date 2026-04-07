@@ -132,5 +132,18 @@ export const portfolioCategories: PortfolioCategory[] = [
       { id: 2, folder: "boudoir", filename: "boudoir2.jpg", alt: "Juegos de iluminación" },
       { id: 3, folder: "boudoir", filename: "boudoir3.jpg", alt: "Detalles finos" },
     ]
+  },
+  {
+    id: "9",
+    slug: "embarazos",
+    title: "Embarazos",
+    description: "Capturamos los momentos especiales de esta etapa única en la vida.",
+    group: "Servicios Profesionales",
+    coverImage: "embarazo1.jpg",
+    images: [
+      { id: 1, folder: "embarazos", filename: "embarazo1.jpg", alt: "Fotografía del embarazo" },
+      { id: 2, folder: "embarazos", filename: "embarazo2.jpg", alt: "Juegos de iluminación" },
+      { id: 3, folder: "embarazos", filename: "embarazo3.jpg", alt: "Detalles finos" },
+    ]
   }
 ];
