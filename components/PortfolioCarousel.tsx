@@ -25,9 +25,12 @@ interface Props {
 
 export function PortfolioCarousel({ title, description, images }: Props) {
   const IMAGES_PER_PAGE = 15;
+  const DEFAULT_IMAGE_RATIO = 1.25;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [columnCount, setColumnCount] = useState(4);
+  const [imageRatios, setImageRatios] = useState<Record<number, number>>({});
   const galleryTopRef = useRef<HTMLDivElement | null>(null);
 
   const lightboxSlides = images.map((img) => ({
@@ -43,8 +46,46 @@ export function PortfolioCarousel({ title, description, images }: Props) {
     return images.slice(start, end);
   }, [currentPage, images]);
 
+  const distributedColumns = useMemo(() => {
+    const baseIndex = (currentPage - 1) * IMAGES_PER_PAGE;
+    const columns = Array.from({ length: columnCount }, () => [] as Array<{ image: PortfolioImage; globalIndex: number }>);
+    const estimatedHeights = Array.from({ length: columnCount }, () => 0);
+
+    pagedImages.forEach((image, index) => {
+      const globalIndex = baseIndex + index;
+      const estimatedRatio = imageRatios[globalIndex] ?? DEFAULT_IMAGE_RATIO;
+      const targetColumn = estimatedHeights.indexOf(Math.min(...estimatedHeights));
+
+      estimatedHeights[targetColumn] += estimatedRatio;
+      columns[targetColumn].push({ image, globalIndex: baseIndex + index });
+    });
+
+    return columns;
+  }, [DEFAULT_IMAGE_RATIO, columnCount, currentPage, imageRatios, pagedImages]);
+
+  useEffect(() => {
+    const updateColumnCount = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setColumnCount(4);
+      } else if (width >= 768) {
+        setColumnCount(3);
+      } else {
+        setColumnCount(2);
+      }
+    };
+
+    updateColumnCount();
+    window.addEventListener("resize", updateColumnCount);
+    return () => window.removeEventListener("resize", updateColumnCount);
+  }, []);
+
   useEffect(() => {
     setCurrentPage(1);
+  }, [images]);
+
+  useEffect(() => {
+    setImageRatios({});
   }, [images]);
 
   const scrollToGalleryTop = () => {
@@ -77,34 +118,43 @@ export function PortfolioCarousel({ title, description, images }: Props) {
       )}
 
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-4">
-        <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 [column-fill:_balance]">
-          {pagedImages.map((image, index) => {
-            const globalIndex = (currentPage - 1) * IMAGES_PER_PAGE + index;
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {distributedColumns.map((column, columnIndex) => (
+            <div key={`column-${columnIndex}`} className="flex flex-col gap-3 sm:gap-4">
+              {column.map(({ image, globalIndex }) => (
+                <button
+                  key={`${image.id}-${globalIndex}`}
+                  type="button"
+                  className="group relative block w-full overflow-hidden rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/15 bg-gradient-to-br from-white/75 to-cb-lavender-light/20 dark:from-cb-white/10 dark:to-cb-navy/20 shadow-[0_10px_28px_rgba(15,19,55,0.12)] transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_18px_42px_rgba(15,19,55,0.22)]"
+                  onClick={() => {
+                    setPhotoIndex(globalIndex);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <div className="relative w-full">
+                    <Image
+                      src={image.url ?? buildImageUrl(`portafolio/${image.folder}`, image.filename)}
+                      alt={image.alt}
+                      width={1400}
+                      height={1800}
+                      onLoadingComplete={(img) => {
+                        const ratio = img.naturalHeight / img.naturalWidth;
+                        if (!ratio || Number.isNaN(ratio)) return;
 
-            return (
-              <button
-                key={`${image.id}-${globalIndex}`}
-                type="button"
-                className="group relative mb-3 sm:mb-4 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-cb-lavender-light/30 dark:border-cb-white/15 bg-gradient-to-br from-white/75 to-cb-lavender-light/20 dark:from-cb-white/10 dark:to-cb-navy/20 shadow-[0_10px_28px_rgba(15,19,55,0.12)] transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_18px_42px_rgba(15,19,55,0.22)]"
-                onClick={() => {
-                  setPhotoIndex(globalIndex);
-                  setLightboxOpen(true);
-                }}
-              >
-                <div className="relative w-full">
-                  <Image
-                    src={image.url ?? buildImageUrl(`portafolio/${image.folder}`, image.filename)}
-                    alt={image.alt}
-                    width={1400}
-                    height={1800}
-                    sizes="(max-width: 640px) 48vw, (max-width: 768px) 48vw, (max-width: 1024px) 31vw, 23vw"
-                    className="h-auto w-full origin-center transform-gpu transition-transform duration-700 ease-out group-hover:scale-[1.12]"
-                  />
-                  <div className="absolute inset-0 bg-cb-navy/0 group-hover:bg-cb-navy/14 transition-colors duration-500" />
-                </div>
-              </button>
-            );
-          })}
+                        setImageRatios((prev) => {
+                          if (prev[globalIndex] === ratio) return prev;
+                          return { ...prev, [globalIndex]: ratio };
+                        });
+                      }}
+                      sizes="(max-width: 640px) 48vw, (max-width: 768px) 48vw, (max-width: 1024px) 31vw, 23vw"
+                      className="h-auto w-full origin-center transform-gpu transition-transform duration-700 ease-out group-hover:scale-[1.12]"
+                    />
+                    <div className="absolute inset-0 bg-cb-navy/0 group-hover:bg-cb-navy/14 transition-colors duration-500" />
+                  </div>
+                </button>
+              ))}
+            </div>
+          ))}
         </div>
 
         {totalPages > 1 && (
