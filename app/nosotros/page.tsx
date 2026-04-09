@@ -90,7 +90,7 @@ export default function NosotrosPage() {
             <ScrollAnimator animation="fadeInRight" delay={120} className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group">
                {/* Imagen representativa del eje cafetero o trabajando. Reemplazar cuando se tenga fotos reales. */}
                <Image 
-                src={buildImageUrl("", "proposito.png")}
+                src={buildImageUrl("", "proposito1.png")}
                 alt="Creatibros trabajando en el Eje Cafetero"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -112,10 +112,10 @@ export default function NosotrosPage() {
           <div className="w-24 h-1 bg-cb-purple mx-auto rounded-full"></div>
         </ScrollAnimator>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
           {/* Juan Andrés Arias */}
           <ScrollAnimator animation="fadeInLeft" delay={80}><div className="group flex flex-col items-center text-center">
-            <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-48 h-48 md:w-52 md:h-52 lg:w-56 lg:h-56 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src={buildImageUrl("", "juan.jpg")}
                 alt="Juan Andrés Arias"
@@ -127,14 +127,14 @@ export default function NosotrosPage() {
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Ingeniero de Sistemas
             </p>
-            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
+            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-[15px]">
               Con más de <strong>6 años de experiencia</strong> en el cubrimiento de eventos y 2 años como realizador audiovisual. Su perfil técnico como <strong>Ingeniero de Sistemas y Computación</strong> le permite integrar tecnología y eficiencia en estrategias de marketing digital de alto impacto.
             </p>
           </div></ScrollAnimator>
 
           {/* Andrés Camilo Trochez */}
           <ScrollAnimator animation="fadeInRight" delay={150}><div className="group flex flex-col items-center text-center">
-            <div className="relative w-56 h-56 md:w-64 md:h-64 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-48 h-48 md:w-52 md:h-52 lg:w-56 lg:h-56 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
               <Image 
                 src={buildImageUrl("", "camilo1.jpg")}
                 alt="Andrés Camilo Trochez"
@@ -146,8 +146,27 @@ export default function NosotrosPage() {
             <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
               Fotógrafo / Realizador Audiovisual
             </p>
-            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-base">
+            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-[15px]">
               Con <strong>más de 5 años de experiencia</strong> en el sector de la recreación, aporta un enfoque creativo y dinámico para dar solución a necesidades logísticas, desarrollando propuestas innovadoras que conectan de manera efectiva con cada proyecto y su público.
+            </p>
+          </div></ScrollAnimator>
+
+          {/* Tania Camila Arango */}
+          <ScrollAnimator animation="fadeInUp" delay={220}><div className="group flex flex-col items-center text-center">
+            <div className="relative w-48 h-48 md:w-52 md:h-52 lg:w-56 lg:h-56 mb-6 rounded-full overflow-hidden shadow-xl border-4 border-cb-white dark:border-cb-dark transition-transform duration-500 group-hover:scale-105">
+              <Image 
+                src={buildImageUrl("", "tania.jpg")}
+                alt="Tania Camila Arango"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <h3 className="font-arsenica text-2xl md:text-3xl font-bold mb-2">Tania Camila Arango</h3>
+            <p className="text-cb-purple font-medium mb-4 uppercase tracking-wider text-sm">
+              Fotógrafa / Dirección Creativa
+            </p>
+            <p className="text-cb-dark/80 dark:text-cb-white/80 leading-relaxed max-w-sm text-sm md:text-[15px]">
+              Su mirada estética y sensibilidad visual aportan una dirección creativa sólida en cada proyecto, cuidando que cada imagen transmita identidad, emoción y conexión real con la audiencia.
             </p>
           </div></ScrollAnimator>
         </div>
