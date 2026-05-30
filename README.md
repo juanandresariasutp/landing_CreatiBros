@@ -68,6 +68,6 @@ Este proyecto se ha desarrollado con algunas de las más recientes herramientas 
 
 ## 📬 Contacto Creatibros
 Si deseas ponerte en contacto para trabajar juntos, ¡estamos listos para escuchar tus ideas!
-👉 **hola@creatibros.com**
+👉 **creatibros@gmail.com**
 
 *Hecho con 💜 para traer la mejor experiencia visual a tus clientes.*

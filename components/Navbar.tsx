@@ -86,7 +86,7 @@ export function Navbar() {
               width={320}
               height={90}
               className={cn(
-                "h-10 sm:h-11 md:h-12 lg:h-14 w-auto max-w-[132px] sm:max-w-[148px] md:max-w-[168px] lg:max-w-[210px] object-contain transition-transform duration-300 group-hover:scale-[1.02] dark:invert-0",
+                "h-12 sm:h-14 md:h-16 lg:h-16 w-auto max-w-[160px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[240px] object-contain transition-transform duration-300 group-hover:scale-[1.02] dark:invert-0",
                 isHomeTop
                   ? "drop-shadow-[0_4px_10px_rgba(0,0,0,0.45)]"
                   : "invert"
